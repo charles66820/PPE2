@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="css/imgNav.css">
+<link rel="stylesheet" href="./style/imgNav.css">
+<link rel="stylesheet" href="./style/nav.min.css">
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navcol-1">
