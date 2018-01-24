@@ -60,7 +60,7 @@ if(isset($_POST['formconnexion'])) {
     ?>
 </div>
 
-<a href="inscription.php"><br />Bonjour. Toujours pas inscrit ? Rejoignez le club des Tako ;-)</a>
+<a href="inscription.php"><br />Bonjour. Toujours pas inscrit ? Rejoignez le club Ô'Tako ;-)</a>
 
 </body>
 <footer>
