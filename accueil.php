@@ -9,17 +9,16 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div>
-    <div class="">
-        <div class="col-md-12" style="padding: 0px">
-            <ul>
-                <li><a href="index.html"><img class="" src="">(Logo)</a></li>
-                <li><strong><a href="me.html">À propos de Moi</a></strong></li>
-                <li><strong><a href="portfolio.html">Portfolio</a></strong></li>
-                <li style="float:right"></li>
-            </ul>
-        </div>
-    </div>
-</div>
+<!-- nav (kevin)  -->
+
+
+
+
+<!-- pauline -->
+
+
+
+
+
 </body>
 </html>
