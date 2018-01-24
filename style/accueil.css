@@ -1,8 +1,13 @@
 /* Carrousel */
 div#slider {
   width: 80%; /* Largeur de la fenêtre à 80% pour la rendre responsive */
+  min-height: 50px; /* Hauteur minimum */
+  max-height: 400px; /* Hauteur maximum */
   max-width: 1000px; /* Largeur maximum */
   overflow: hidden; /*Cacher ce qui dépasse de la div */
+  margin: auto;
+  position: relative; /* Centre le carrousel */
+  border-radius: 8px;
 }
 
 div#slider figure {
@@ -17,8 +22,9 @@ div#slider figure {
 }
 
 div#slider figure img {
-  width: 20%; /*Chaque image prend 1/5 de l'espace horizontal */
-  height: auto;
+  width: 20%; /* Chaque image prend 1/5 de l'espace horizontal */
+  min-height: 50px; /* Hauteur minimum */
+  max-height: 400px; /* Hauteur maximum */
   float: left; /*Pour éviter un bug de Safari 5 pour Windows */
 }
 
