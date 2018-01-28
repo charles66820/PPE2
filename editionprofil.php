@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="./style/style.css"/>
     <title>Editer mon profil</title>
 </head>
 
@@ -13,8 +13,8 @@
 
 <!--Ancre-->
 <div>
-    <a class="bouton-footer" href=#footer><img src="../img/down.png" alt="aller en bas de la page"/></a>
-    <a class="bouton-top" href="#"><img src="../img/top.png" alt="aller en haut de la page"/></a>
+    <a class="bouton-footer" href=#footer><img src="./img/down.png" alt="aller en bas de la page"/></a>
+    <a class="bouton-top" href="#"><img src="./img/top.png" alt="aller en haut de la page"/></a>
 </div>
 
 
