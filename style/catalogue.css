@@ -29,3 +29,24 @@ article{
   display: inline-block;
   margin: 8px;
 }
+.imgBox{
+  width: 250px;
+  height: 200px;
+  position: relative;
+}
+.imgBox img{
+  max-width: 250px;
+  max-height: 200px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.articleNom{
+
+}
+.articleStar{
+
+}
