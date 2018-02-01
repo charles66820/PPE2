@@ -40,11 +40,14 @@
                                 $insertmbr = $bdd->prepare("INSERT INTO membres(pseudo, mail, motdepasse) VALUES(?, ?, ?)");
                                 $insertmbr->execute(array($pseudo, $mail, $mdp));
                                 $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"../index.php\"><br />Revenir sur la page d'accueil</a>";
+                                // nouvelle page "felicitation"
                             } else {
                                 $erreur = "Vos mots de passes ne correspondent pas !";
+
                             }
                         } else {
                             $erreur = "Adresse mail déjà utilisée !";
+                            // 
                         }
                     } else {
                         $erreur = "Votre adresse mail n'est pas valide !";
