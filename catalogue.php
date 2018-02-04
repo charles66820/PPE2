@@ -26,7 +26,7 @@
         array('id'=>'28', 'nom'=>"Poulpe5", 'prix'=>"20.0€", 'imgNom'=>"test5.jpg",'star'=>"stars2_5"));
 
         foreach ($dbrep as $row) {
-          echo '<a href="article.php?'.$row["id"].'" class="articleElm">
+          echo '<a href="article.php?id='.$row["id"].'" class="articleElm">
           <div class="imgBox">
             <img src="./img/imagesUpload/'.$row["imgNom"].'" alt="">
           </div>
