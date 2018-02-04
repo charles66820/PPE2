@@ -1,6 +1,6 @@
 article{
   min-width: 320px;
-  max-width: 810px;
+  max-width: 816px;
   margin: auto;
   position: relative;
 }
@@ -8,7 +8,7 @@ article{
 /* class du catalogue */
 .rechercheBar{
   height: 80px;
-  width: 100%
+  width: 100%;
   position: absolute;
 
 }
@@ -24,10 +24,12 @@ article{
 .articleElm{
   width: 250px;
   height: 270px;
-  background-color: blue;
   position: relative;
   display: inline-block;
   margin: 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  box-shadow: 1px 0 5px 0 rgba(0,0,0,0.2);
 }
 .imgBox{
   width: 250px;
@@ -45,8 +47,80 @@ article{
   margin: auto;
 }
 .articleNom{
-
+  height: 35px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 28px;
+  color: black;
 }
 .articleStar{
+  height: 35px;
+  width: 182px;
+  float: left;
+}
+.articlePrix{
+  float: right;
+  max-width: 100px;
+  min-width: 2px;
+  overflow: hidden;
+  height: 35px;
+  padding: 4px 12px;
+  font-size: 18px;
+  color: red;
+}
 
+.stars0{
+  background: url(../img/stars.png) -176px 2px;
+  background-size: 358px;
+  background-repeat: no-repeat;
+}
+.stars0_5{
+  background: url(../img/stars.png) -140px -32px;
+  background-size: 358px;
+  background-repeat: no-repeat;
+}
+.stars1{
+  background: url(../img/stars.png) -140px 2px;
+  background-size: 358px;
+  background-repeat: no-repeat;
+}
+.stars1_5{
+  background: url(../img/stars.png) -104px -32px;
+  background-size: 358px;
+  background-repeat: no-repeat;
+}
+.stars2{
+  background: url(../img/stars.png) -104px 2px;
+  background-size: 358px;
+  background-repeat: no-repeat;
+}
+.stars2_5{
+  background: url(../img/stars.png) -68px -32px;
+  background-size: 358px;
+  background-repeat: no-repeat;
+}
+.stars3{
+  background: url(../img/stars.png) -68px 2px;
+  background-size: 358px;
+  background-repeat: no-repeat;
+}
+.stars3_5{
+  background: url(../img/stars.png) -32px -32px;
+  background-size: 358px;
+  background-repeat: no-repeat;
+}
+.stars4{
+  background: url(../img/stars.png) -32px 2px;
+  background-size: 358px;
+  background-repeat: no-repeat;
+}
+.stars4_5{
+  background: url(../img/stars.png) 4px -32px;
+  background-size: 358px;
+  background-repeat: no-repeat;
+}
+.stars5{
+  background: url(../img/stars.png) 4px 2px;
+  background-size: 358px;
+  background-repeat: no-repeat;
 }
