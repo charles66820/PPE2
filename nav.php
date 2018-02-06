@@ -1,5 +1,5 @@
 <head>
-  <link rel="stylesheet" href="./style/imgNav.css">
+  <link rel="stylesheet" href="./assets/css/imgNav.css">
 </head>
 <div>
     <nav class="navbar navbar-light navbar-expand-md">

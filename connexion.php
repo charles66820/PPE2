@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" >
     <title>Connexion</title>
-    <link rel="stylesheet" href="./syle/style.css" >
+    <link rel="stylesheet" href="./assets/css/.css" >
 </head>
 <body>
 

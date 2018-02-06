@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>Inscription</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="./assets/img/logoIcon.gif"/>
+    <link rel="stylesheet" href="./assets/css/.css">
   </head>
   <body>
 
@@ -47,7 +48,7 @@
                             }
                         } else {
                             $erreur = "Adresse mail déjà utilisée !";
-                            // 
+                            //
                         }
                     } else {
                         $erreur = "Votre adresse mail n'est pas valide !";

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./style/style.css"/>
-    <title>Editer mon profil</title>
+  <meta charset="UTF-8">
+  <title>Editer mon profil</title>
+  <link rel="icon" href="./assets/img/logoIcon.gif"/>
+    <link rel="stylesheet" href="./assets/css/.css"/>
 </head>
 
 <body>
