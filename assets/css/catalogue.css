@@ -1,10 +1,3 @@
-article{
-  min-width: 320px;
-  max-width: 816px;
-  margin: auto;
-  position: relative;
-}
-
 /* class du catalogue */
 .rechercheBar{
   height: 80px;
@@ -14,11 +7,12 @@ article{
 }
 .articleBox{
   min-height: 100px;
-  width: 100%;
+  width: 1000px;
   background-color: #eee;
   border-radius: 8px;
   box-shadow: inset 1px 0 5px 0 rgba(0,0,0,0.2);
-  position: relative;
+  position: absolute;
+  right: 0px;
   padding: 8px;
 }
 .articleElm{
@@ -123,4 +117,30 @@ article{
   background: url(../img/stars.png) 4px 2px;
   background-size: 358px;
   background-repeat: no-repeat;
+}
+
+nav{
+  position: relative;
+}
+
+.rectangle{
+  position: absolute;
+  left: 0px;
+  height: 300px;
+  width: 200px;
+}
+
+.rectangle div {
+  height: 35px;
+  width: 182px;
+}
+
+.etplus{
+  left: 182px;
+  position: absolute;
+}
+
+.range{
+  height: 100px;
+  width: 300px;
 }
