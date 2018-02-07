@@ -21,19 +21,22 @@
       </div>
       <div class="articleBox">
         <?php
-        $dbrep = array(array('id'=>'2', 'nom'=>"Poulpe", 'prix'=>"10.0€", 'imgNom'=>"test1.jpg",'star'=>"stars2"),
-        array('id'=>'5', 'nom'=>"Poulpe2", 'prix'=>"20.0€", 'imgNom'=>"test2.jpeg",'star'=>"stars4_5"),
-        array('id'=>'6', 'nom'=>"Poulpe3", 'prix'=>"20.0€", 'imgNom'=>"test3.jpg",'star'=>"stars3"),
-        array('id'=>'13', 'nom'=>"Poulpe4", 'prix'=>"20.0€", 'imgNom'=>"test4.jpg",'star'=>"stars0_5"),
-        array('id'=>'28', 'nom'=>"Poulpe5", 'prix'=>"20.0€", 'imgNom'=>"test5.jpg",'star'=>"stars2_5"));
+        $dbrep = array(array('id'=>'2', 'nom'=>"Poulpe", 'prix'=>"10.0€", 'imgNom'=>"test1.jpg",'star'=>"stars2", 'description'=>'testtttt'),
+        array('id'=>'5', 'nom'=>"Poulpe2", 'prix'=>"20.0€", 'imgNom'=>"test2.jpeg",'star'=>"stars4_5", 'description'=>'testtttt'),
+        array('id'=>'6', 'nom'=>"Poulpe3", 'prix'=>"20.0€", 'imgNom'=>"test3.jpg",'star'=>"stars3", 'description'=>'testtttt'),
+        array('id'=>'13', 'nom'=>"Poulpe4", 'prix'=>"20.0€", 'imgNom'=>"test4.jpg",'star'=>"stars0_5", 'description'=>'testtttt'),
+        array('id'=>'28', 'nom'=>"Poulpe5", 'prix'=>"20.0€", 'imgNom'=>"test5.jpg",'star'=>"stars2_5", 'description'=>'testtttt'));
 
         foreach ($dbrep as $row) {
           echo '<a href="article.php?id='.$row["id"].'" class="articleElm">
-          <div class="imgBox">
           <div class="articleNom">
           '.$row["nom"].'
           </div>
+          <div class="imgBox">
             <img src="./assets/img/imagesUpload/'.$row["imgNom"].'" alt="">
+          </div>
+          <div class="articleNom">
+          '.$row["description"].'
           </div>
           <div class="'.$row["star"].' articleStar">
           </div>
