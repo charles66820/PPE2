@@ -3,7 +3,7 @@
 </head>
 <div>
     <nav class="navbar navbar-light navbar-expand-md">
-        <div class="container"><a class="navbar-brand" href="accueil.php"><img class="imgLogo" src="./img/logoPoulpe.png"/></a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="accueil.php"><img class="imgLogo" src="./assets/img/logoPoulpe.png"/></a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <form class="form-inline navbar-left">

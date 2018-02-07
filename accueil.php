@@ -31,11 +31,11 @@
 <!-- pauline -->
 <div id="slider">
   <figure>
-    <img src="./img/poulpe1.jpg" alt>
-    <img src="./img/poulpe2.jpg" alt>
-    <img src="./img/poulpe3.jpg" alt>
-    <img src="./img/poulpe4.jpg" alt>
-    <img src="./img/poulpe1.jpg" alt>
+    <img src="./assets/img/poulpe1.jpg" alt>
+    <img src="./assets/img/poulpe2.jpg" alt>
+    <img src="./assets/img/poulpe3.jpg" alt>
+    <img src="./assets/img/poulpe4.jpg" alt>
+    <img src="./assets/img/poulpe1.jpg" alt>
   </figure>
 </div>
 <footer>  <div class="highlight-phone">
