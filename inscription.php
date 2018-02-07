@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="./assets/css/inscription.css">
   </head>
   <body>
-    <?php include 'nav.php'; ?>
-
     <?php
+    include 'nav.php';
+
     $bdd = new PDO('mysql:host=127.0.0.1;dbname=ppe2', 'root', '');
 
     if(isset($_POST['forminscription'])) {
@@ -69,7 +69,7 @@
             $erreur = "Votre pseudo ne doit pas dépasser 20 caratères !";
             }
         } else {
-          $erreur = "Tous les champs doivent être complétés !";
+          $erreur = "Tous les champs avec une * doivent être complétés !";
         }
     }
     ?>
@@ -80,7 +80,15 @@
     <h1>Inscription</h1><br />
 
     <form method="POST" action="">
-        <table>
+        <table class="identite">
+            <tr>
+                <td align="right">
+                    <label for="pseudo">Pseudo* :</label>
+                </td>
+                <td>
+                    <input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" /> <!--permet de laisser afficher apres validation si erreur-->
+                </td>
+            </tr>
             <tr>
               <td align="right">
                   <label for="nom">Nom :</label>
@@ -99,15 +107,7 @@
             </tr>
             <tr>
                 <td align="right">
-                    <label for="pseudo">Pseudo :</label>
-                </td>
-                <td>
-                    <input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" /> <!--permet de laisser afficher apres validation si erreur-->
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    <label for="mail">Mail :</label>
+                    <label for="mail">Mail* :</label>
                 </td>
                 <td>
                     <input type="email" placeholder="Votre mail" id="mail" name="mail" value="<?php if(isset($mail)) { echo $mail; } ?>" />
@@ -115,7 +115,7 @@
             </tr>
             <tr>
                 <td align="right">
-                    <label for="mail2">Confirmation du mail :</label>
+                    <label for="mail2">Confirmation du mail* :</label>
                 </td>
                 <td>
                     <input type="email" placeholder="Confirmez votre mail" id="mail2" name="mail2" value="<?php if(isset($mail2)) { echo $mail2; } ?>" />
@@ -123,7 +123,7 @@
             </tr>
             <tr>
                 <td align="right">
-                    <label for="mdp">Mot de passe :</label>
+                    <label for="mdp">Mot de passe* :</label>
                 </td>
                 <td>
                     <input type="password" placeholder="Votre mot de passe" id="mdp" name="mdp" />
@@ -131,7 +131,7 @@
             </tr>
             <tr>
                 <td align="right">
-                    <label for="mdp2">Confirmation du mot de passe :</label>
+                    <label for="mdp2">Confirmation du mot de passe* :</label>
                 </td>
                 <td>
                     <input type="password" placeholder="Confirmez votre mdp" id="mdp2" name="mdp2" />
@@ -139,10 +139,40 @@
             </tr>
             <tr>
                 <td align="right">
-                    <label for="adresse">Adresse :</label>
+                    <label for="telephone">Téléphone :</label>
                 </td>
                 <td>
-                    <input type="adresse" placeholder="Votre adresse" id="adresse" name="adresse" value="<?php if(isset($adresse)) { echo $adresse; } ?>" />
+                    <input type="telephone" placeholder="Votre n° de téléphone" id="telephone" name="telephone" value="<?php if(isset($telephone)) { echo $telephone; } ?>" />
+                </td>
+            </tr>
+          </table> <br />
+
+
+
+
+          <table class="adresse">
+            <tr>
+                <td align="right">
+                    <label for="numerorue">N° :</label>
+                </td>
+                <td>
+                    <input type="numerorue" placeholder="N°" id="numerorue" name="$numerorue" value="<?php if(isset($numero)) { echo $numero; } ?>" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <label for="rue">Rue :</label>
+                </td>
+                <td>
+                    <input type="rue" placeholder="Votre rue" id="rue" name="rue" value="<?php if(isset($rue)) { echo $rue; } ?>" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <label for="complement">Complément d'adresse :</label>
+                </td>
+                <td>
+                    <input type="complement" placeholder="Complement d'adresse" id="complement" name="complement" value="<?php if(isset($complement)) { echo $complement; } ?>" />
                 </td>
             </tr>
             <tr>
@@ -163,10 +193,10 @@
             </tr>
             <tr>
                 <td align="right">
-                    <label for="telephone">Téléphone :</label>
+                    <label for="pays">Pays :</label>
                 </td>
                 <td>
-                    <input type="telephone" placeholder="Votre n° de téléphone" id="telephone" name="telephone" value="<?php if(isset($telephone)) { echo $telephone; } ?>" />
+                    <input type="pays" placeholder="Votre pays" id="pays" name="pays" value="<?php if(isset($pays)) { echo $pays; } ?>" />
                 </td>
             </tr>
         </table>
