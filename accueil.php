@@ -1,3 +1,4 @@
+<?php session_strat(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
