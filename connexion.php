@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8" >
     <title>Connexion</title>
-    <link rel="stylesheet" href="./assets/css/.css" >
+    <link rel="icon" href="./assets/img/logoIcon.gif"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/connexion.css">
 </head>
 <body>
 
 <!-- Barre de navigation -->
-
-
-<!--Ancre-->
-<div>
-    <a class="bouton-footer" href=#footer><img src="./img/down.png" alt="aller en bas de la page"/></a>
-    <a class="bouton-top" href="#"><img src="./img/top.png" alt="aller en haut de la page"/></a>
-</div>
-
+<?php include 'nav.php'; ?>
 
 <?php
 session_start();
 
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=espace_membre', 'root', '');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=espace_membre', 'PPE', 'PPE123');
 
 if(isset($_POST['formconnexion'])) {
     $mailconnect = htmlspecialchars($_POST['mailconnect']);
@@ -60,7 +58,9 @@ if(isset($_POST['formconnexion'])) {
     ?>
 </div>
 
+<div id="inscription">
 <a href="inscription.php"><br />Bonjour. Toujours pas inscrit ? Rejoignez le club Ô'Tako ;-)</a>
+</div>
 
 </body>
 <footer>
