@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <title>Inscription</title>
     <link rel="icon" href="./assets/img/logoIcon.gif"/>
-    <link rel="stylesheet" href="./assets/css/.css">
+    <link rel="icon" href="./assets/img/logoIcon.gif"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/inscription.css">
   </head>
   <body>
+    <?php include 'nav.php'; ?>
 
     <?php
-    //$bdd = new PDO('mysql:host=127.0.0.1;dbname=espace_membre', 'root', '');
+    $bdd = new PDO('mysql:host=127.0.0.1;dbname=ppe2', 'root', '');
 
     if(isset($_POST['forminscription'])) {
         $nom = htmlspecialchars($_POST['nom']);
