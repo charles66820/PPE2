@@ -16,12 +16,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div><img src="assets/img/4424460.jpg" style="width:200px;height:165px;margin:100px;"></div>
-                    <div><img src="assets/img/postal_pulpo_lindo_del_dibujo_animado_en_rosa-rab08a3c83fee4266ab88ca97e53546ba_vgbaq_8byvr_324.jpg" style="height:80px;margin:3px;width:80px;"><img src="assets/img/postal_pulpo_lindo_del_dibujo_animado_en_rosa-rab08a3c83fee4266ab88ca97e53546ba_vgbaq_8byvr_324.jpg" style="margin:3px;width:80px;height:80px;"><img src="assets/img/postal_pulpo_lindo_del_dibujo_animado_en_rosa-rab08a3c83fee4266ab88ca97e53546ba_vgbaq_8byvr_324.jpg" style="margin:3px;width:80px;height:80px;"><img src="assets/img/postal_pulpo_lindo_del_dibujo_animado_en_rosa-rab08a3c83fee4266ab88ca97e53546ba_vgbaq_8byvr_324.jpg"
-                            style="margin:3px;height:80px;width:80px;"><img src="assets/img/postal_pulpo_lindo_del_dibujo_animado_en_rosa-rab08a3c83fee4266ab88ca97e53546ba_vgbaq_8byvr_324.jpg" style="margin:3px;height:80px;width:80px;"></div>
+                    <div><img src="assets/img/poulpe1.jpg" style="width:200px;height:165px;margin:100px;"></div>
+                    <div>
+                      <img src="assets/img/poulpe2.jpg" style="height:80px;margin:3px;width:80px;">
+                      <img src="assets/img/poulpe3.jpg" style="margin:3px;width:80px;height:80px;">
+                      <img src="assets/img/poulpe4.jpg" style="margin:3px;width:80px;height:80px;">
+                      <img src="assets/img/poulpe5.jpg" style="margin:3px;height:80px;width:80px;">
+                      <img src="assets/img/poulpe6.jpg" style="margin:3px;height:80px;width:80px;">
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    <aside style="height:290px;">
+                    <aside style="height:200px;">
                         <div>
                             <h1 class="text-center text-primary" style="padding:11px;margin:4px;">TITRE </h1>
                         </div>
@@ -43,8 +48,7 @@
                                   <option value="">9</option>
                                 </select>
                               </div>
-                            <div
-                                style="width:201px;">
+                            <div style="width:200px;">
                                 <h1 class="text-dark" style="font-size:22px;width:109px;margin:6px;height:28px;float:left;">Taille</h1>
                                 <select style="height:25px;width:53px;padding:0px;margin-top:0px;margin-bottom:0px;min-height:-1px;">
                                   <option value="" selected="">XS</option>
@@ -55,8 +59,8 @@
                                   <option value="">XXL</option>
                                 </select>
                               </div>
-                </div>
-                <div>
+                            </div>
+                            <div>
                     <h1 style="font-size:22px;">PRIX</h1>
                 </div><button class="btn btn-primary" type="button">Button</button></aside>
             </div>
