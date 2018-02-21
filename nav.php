@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <head>
   <link rel="stylesheet" href="./assets/css/imgNav.css">
 </head>
@@ -44,6 +45,21 @@
                           <a class="dropdown-item" role="presentation" href="catalogue.php?">Bonnets & Casquettes</a>
                         </div>
                     </li>
+                    <?php
+                    if (isset($_SESSION['id'])) {
+                      echo '
+                      <li class="dropdown">
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Compte </a>
+                          <div class="dropdown-menu" role="menu">
+                            <a class="dropdown-item" role="presentation" href="editionprofil.php">Identifiez vous !</a>
+                            <a class="dropdown-item" role="presentation" href="inscription.php">Nouveau client !</a>
+                          </div>
+                      </li>
+                      ';
+                    }else {
+                      //en cours de dev...
+                    }
+                    ?>
                     <li class="dropdown">
                       <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Compte </a>
                         <div class="dropdown-menu" role="menu">

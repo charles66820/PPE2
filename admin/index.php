@@ -4,10 +4,11 @@
   <head>
     <meta charset="utf-8">
     <title>administration</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
   </head>
   <body>
     <?php
-    if () {
+    if ($_SESSION['id']) {
       # code...
     }
     // button provisoire
