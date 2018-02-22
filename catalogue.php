@@ -15,13 +15,13 @@
   <body>
     <?php include 'nav.php'; ?>
 
-<div class="col-md-2" style="float: left;">
+<div class="col-md-4" style="float: left; width: 280px;">
   <nav>
     <div class="range">
-    <form action="/action_page.php">
-    Prix de : <input type="range" name="points" min="0" max="100">€
-    <input type="submit">
-    </form>
+      <form action="/action_page.php">
+        Prix de : <input type="range" name="points" min="0" max="100">€
+        <input type="submit">
+      </form>
     </div>
     <div class="rectangle">
       <div class="stars1"></div> <div class="etplus" style="top: 10px;" >&plus</div> <!-- Met le "&plus" en face des étoiles -->
@@ -32,11 +32,8 @@
     </div>
   </nav>
 </div>
-<div class="col-md-10" style="display: inline-block;">
-
-
-
-    <div class="articleBox">
+<div class="col-md-8" style="display: inline-block;">
+    <div class="container articleBox">
       <?php
       $dbrep = array(array('id'=>'2', 'nom'=>"Poulpe", 'prix'=>"10.0€", 'imgNom'=>"test1.jpg",'star'=>"stars2", 'description'=>'testtttt'),
       array('id'=>'5', 'nom'=>"Poulpe2", 'prix'=>"20.0€", 'imgNom'=>"test2.jpeg",'star'=>"stars4_5", 'description'=>'testtttt'),
