@@ -46,7 +46,7 @@
       array('id'=>'28', 'nom'=>"Poulpe5", 'prix'=>"20.0€", 'imgNom'=>"test5.jpg",'star'=>"stars3_5", 'description'=>'testjyfuydtttt'));
 
       foreach ($dbrep as $row) {
-        echo '<a href="article.php?id='.$row["id"].'" class="articleElm">
+        echo '<a href="produit.php?id='.$row["id"].'" class="articleElm">
         <div class="articleNom">
         '.$row["nom"].'
         </div>
