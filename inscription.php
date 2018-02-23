@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/inscription.css">
+    <!-- <link rel="stylesheet" href="./assets/css/inscription.css"> -->
   </head>
   <body>
     <?php
     //navbar
-    include 'nav.php';
+    include './assets/php/nav.php';
 
     //tretement inscription
     if(isset($_POST['forminscription'])) {
@@ -175,7 +175,7 @@
         }
       ?>
     </div>
-    <?php include 'footer.php'; ?>
+    <?php include './assets/php/footer.php'; ?>
     <script src="./assets/js/jquery-3.3.1.min.js"></script>
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
   </body>

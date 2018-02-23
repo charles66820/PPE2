@@ -13,22 +13,25 @@
   <body>
 
     <!-- Barre de navigation -->
-    <?php include 'nav.php'; ?>
-
     <?php
+    include './assets/php/nav.php';
+
     if(isset($_POST['formconnexion'])) {
-      $mailconnect = htmlspecialchars($_POST['mailconnect']);
+      $pseudoconnect = htmlspecialchars($_POST['pseudoconnect']);
       $mdpconnect = sha1($_POST['mdpconnect']);
-      if(!empty($mailconnect) AND !empty($mdpconnect)) {
-        $requser = $bdd->prepare("SELECT * FROM membres WHERE mail = ? AND motdepasse = ?");
-        $requser->execute(array($mailconnect, $mdpconnect));
+      if(!empty($pseudoconnect) AND !empty($mdpconnect)) {
+        $requser = $bdd->prepare("SELECT client.IDClient, client.Pseudo, client.Email, client.AvatarUrl FROM client WHERE Pseudo = ? AND MotDePasse = ?");
+        $requser->execute(array($pseudoconnect, $mdpconnect));
         $userexist = $requser->rowCount();
         if($userexist == 1) {
           $userinfo = $requser->fetch();
-          $_SESSION['id'] = $userinfo['id'];
-          $_SESSION['pseudo'] = $userinfo['pseudo'];
-          $_SESSION['mail'] = $userinfo['mail'];
-          header("Location: profil.php?id=".$_SESSION['id']);
+          $_SESSION['id'] = $userinfo['IDClient'];
+          $_SESSION['pseudo'] = $userinfo['Pseudo'];
+          $_SESSION['mail'] = $userinfo['Email'];
+          $_SESSION['avatarurl'] = $userinfo['AvatarUrl'];
+
+          //remplachement du header("Location: index.php); par du js a cause d'une erreur
+          echo '<script> document.location.replace("accueil.php"); </script>';
         } else {
           $erreur = "<br />Mauvais mail ou mot de passe !";
         }
@@ -42,7 +45,7 @@
       <h2>Connexion</h2>
       <br /><br />
       <form method="POST" action="">
-        <input type="email" name="mailconnect" placeholder="Mail" />
+        <input type="text" name="pseudoconnect" placeholder="Pseudo" />
         <input type="password" name="mdpconnect" placeholder="Mot de passe" />
         <br /><br />
         <input type="submit" name="formconnexion" value="Se connecter" />
@@ -58,7 +61,7 @@
       <a href="inscription.php"><br />Bonjour. Toujours pas inscrit ? Rejoignez le club Ô'Tako ;-)</a>
     </div>
 
-    <?php include 'footer.php'; ?>
+    <?php include './assets/php/footer.php'; ?>
     <script src="./assets/js/jquery-3.3.1.min.js"></script>
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
   </body>

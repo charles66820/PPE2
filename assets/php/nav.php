@@ -53,36 +53,34 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=ppe2', 'PPE', 'PPE123');
             </div>
           </li>
           <?php
+          //test si un client est connecter
           if (isset($_SESSION['id'])) {
+            //afficher le menu connecter
+            echo '
+            <li class="dropdown">
+              <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">
+                <img src="./assets/img/'.$_SESSION['avatarurl'].'" style="width:20px display: unset;">
+                <p style="display: unset;">'.$_SESSION['pseudo'].'</p>
+              </a>
+              <div class="dropdown-menu" role="menu">
+                <a class="dropdown-item" role="presentation" href="inscription.php">Nouveau client !</a>
+                <a class="dropdown-item" role="presentation" href="./assets/php/deconnexion.php">Déconnectez-vous !</a>
+              </div>
+            </li>
+            ';
+          }else {
+            //afficher le menu par default
             echo '
             <li class="dropdown">
               <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Compte </a>
-                <div class="dropdown-menu" role="menu">
-                  <a class="dropdown-item" role="presentation" href="connexion.php">Identifiez vous !</a>
-                  <a class="dropdown-item" role="presentation" href="inscription.php">Nouveau client !</a>
-                </div>
-              </li>
-            ';
-          }else {
-            //en cours de dev...
-
+              <div class="dropdown-menu" role="menu">
+                <a class="dropdown-item" role="presentation" href="connexion.php">Identifiez vous !</a>
+                <a class="dropdown-item" role="presentation" href="inscription.php">Nouveau client !</a>
+              </div>
+            </li>';
           }
           ?>
-          <li class="dropdown">
-            <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Compte </a>
-            <div class="dropdown-menu" role="menu">
-              <a class="dropdown-item" role="presentation" href="connexion.php">Identifiez vous !</a>
-              <a class="dropdown-item" role="presentation" href="inscription.php">Nouveau client !</a>
-            </div>
-          </li>
-          <div class="media">
-            <div class="media-left">
-              <img src="img_avatar1.png" class="media-object" style="width:45px">
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">John Doe</h4>
-            </div>
-          </div>
+
         </ul>
       </div>
     </div>

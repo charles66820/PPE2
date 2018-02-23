@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <?php include 'nav.php'; ?>
+    <?php include './assets/php/nav.php'; ?>
 
     <div class="col-md-4" style="float: left; width: 280px;">
       <nav>
@@ -63,7 +63,7 @@
         ?>
       </div>
     </div>
-    <?php include 'footer.php'; ?>
+    <?php include './assets/php/footer.php'; ?>
     <script src="./assets/js/jquery-3.3.1.min.js"></script>
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
   </body>

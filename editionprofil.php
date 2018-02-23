@@ -13,7 +13,7 @@
 
   <body>
     <!-- Barre de navigation -->
-    <?php include 'nav.php'; ?>
+    <?php include './assets/php/nav.php'; ?>
 
     <!--Ancre-->
     <div>
@@ -74,7 +74,7 @@
     }
 
     //footer
-    include 'footer.php'; ?>
+    include './assets/php/footer.php'; ?>
     <script src="./assets/js/jquery-3.3.1.min.js"></script>
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
   </body>
