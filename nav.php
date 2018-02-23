@@ -75,6 +75,14 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=ppe2', 'PPE', 'PPE123');
               <a class="dropdown-item" role="presentation" href="inscription.php">Nouveau client !</a>
             </div>
           </li>
+          <div class="media">
+            <div class="media-left">
+              <img src="img_avatar1.png" class="media-object" style="width:45px">
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">John Doe</h4>
+            </div>
+          </div>
         </ul>
       </div>
     </div>
