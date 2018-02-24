@@ -35,6 +35,11 @@
     <div class="col-md-8" style="display: inline-block;">
       <div class="container articleBox">
         <?php
+        //création de requet sql
+        // TODO: faire de requet sql en fonction de chix dans le menu (navbar)
+
+        //resultat de la base de donnéer
+        //en atendent c'est un tableau a deux dimention
         $dbrep = array(array('id'=>'2', 'nom'=>"Poulpe", 'prix'=>"10.0€", 'imgNom'=>"test1.jpg",'star'=>"stars2", 'description'=>'testtttt'),
         array('id'=>'5', 'nom'=>"Poulpe2", 'prix'=>"20.0€", 'imgNom'=>"test2.jpeg",'star'=>"stars4_5", 'description'=>'testtttt'),
         array('id'=>'6', 'nom'=>"Poulpe3", 'prix'=>"20.0€", 'imgNom'=>"test3.jpg",'star'=>"stars3", 'description'=>'testtttt'),
@@ -42,6 +47,7 @@
         array('id'=>'69', 'nom'=>"Poulpe99", 'prix'=>"20.0€", 'imgNom'=>"test4.jpg",'star'=>"stars0_5", 'description'=>'testtttt'),
         array('id'=>'28', 'nom'=>"Poulpe5", 'prix'=>"20.0€", 'imgNom'=>"test5.jpg",'star'=>"stars3_5", 'description'=>'testjyfuydtttt'));
 
+        //chargement des produit du catalogue
         foreach ($dbrep as $row) {
           echo '<a href="produit.php?id='.$row["id"].'" class="articleElm">
           <div class="articleNom">
