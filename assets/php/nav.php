@@ -58,8 +58,8 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=ppe2', 'PPE', 'PPE123');
 
             //affiche les pages de gestion de l'admin
             if ($_SESSION['pseudo'] == 'Admin') {
-              $adminoption = '<a class="dropdown-item" role="presentation" href="./admin/modifierCatalogue.php">Modifier le catalogue !</a>';
-              $adminoption = '<a class="dropdown-item" role="presentation" href="./admin/modifierCatalogue.php">Modifier le catalogue !</a>';
+              $adminoption = '<a class="dropdown-item" role="presentation" href="./modifierCatalogue.php">Modifier le catalogue !</a>';
+              $adminoption = '<a class="dropdown-item" role="presentation" href="./modifierCatalogue.php">Modifier le catalogue !</a>';
             }else {
               $adminoption = ' ';
             }
