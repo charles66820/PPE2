@@ -55,6 +55,15 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=ppe2', 'PPE', 'PPE123');
           <?php
           //test si un client est connecter
           if (isset($_SESSION['id'])) {
+
+            //affiche les pages de gestion de l'admin
+            if ($_SESSION['pseudo'] == 'Admin') {
+              $adminoption = '<a class="dropdown-item" role="presentation" href="./admin/modifierCatalogue.php">Modifier le catalogue !</a>';
+              $adminoption = '<a class="dropdown-item" role="presentation" href="./admin/modifierCatalogue.php">Modifier le catalogue !</a>';
+            }else {
+              $adminoption = ' ';
+            }
+
             //afficher le menu connecter
             echo '
             <li class="dropdown">
@@ -63,7 +72,8 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=ppe2', 'PPE', 'PPE123');
                 <p style="display: unset;">'.$_SESSION['pseudo'].'</p>
               </a>
               <div class="dropdown-menu" role="menu">
-                <a class="dropdown-item" role="presentation" href="inscription.php">Nouveau client !</a>
+                <a class="dropdown-item" role="presentation" href="editionprofil.php">Editer mon profil</a>
+                <a class="dropdown-item" role="presentation" href="commandes.php">Historique des commandes</a>'.$adminoption.'
                 <a class="dropdown-item" role="presentation" href="./assets/php/deconnexion.php">Déconnectez-vous !</a>
               </div>
             </li>

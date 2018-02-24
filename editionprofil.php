@@ -21,6 +21,8 @@
       <a class="bouton-top" href="#"><img src="./img/top.png" alt="aller en haut de la page"/></a>
     </div>
     <?php
+    // TODO: faire en sorte que les donner sois charger de la bdd pour les voire avent de les modifier
+
     if(isset($_SESSION['id'])) {
       $requser = $bdd->prepare("SELECT * FROM membres WHERE id = ?");
       $requser->execute(array($_SESSION['id']));

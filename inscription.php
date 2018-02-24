@@ -44,7 +44,7 @@
                   if($mdp == $mdp2) {
                     $insertmbr = $bdd->prepare("INSERT INTO client(Pseudo, Email, MotDePasse, Nom, Prenom, Civilite, Telephone, AvatarUrl) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
                     $insertmbr->execute(array($pseudo, $mail, $mdp, $nom, $prenom, $civilite, $telephone, $avatarurl));
-                    $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"./index.php\"><br />Revenir sur la page d'accueil</a>";
+                    $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"./accueil.php\"><br />Revenir sur la page d'accueil</a>";
                     // nouvelle page "felicitation"
                   } else {
                     $erreur = "Vos mots de passes ne correspondent pas !";

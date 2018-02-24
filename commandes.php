@@ -16,8 +16,9 @@
     <h1>page en cours de construction</h1>
     <pre>
 
-    cette page va permetre de voir le catalogue actuelle, supprimer, modifier et ajouter des produit.
-    elle est accsésible selement par l'Admin.
+    cette page va contenire la liste des commandes efectuer par le client.
+
+    pour l'admin il vas voire toute les commandes
 
     </pre>
 
