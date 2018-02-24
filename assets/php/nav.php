@@ -2,7 +2,11 @@
 session_start();
 
 //connexion a la bdd
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=ppe2', 'PPE', 'PPE123');
+try {
+  $bdd = new PDO('mysql:host=ppe2.ddns.net;dbname=ppe2', 'PPE', 'PPE123');
+} catch (Exception $e) {
+  echo var_dump($e);
+}
 
 ?>
 <head>
