@@ -80,7 +80,6 @@ if (isset($_POST['formajouterproduit'])) {
                 $reqcategorie->execute();
                 $categorieinfo = $reqcategorie->fetchAll();
                 foreach ($categorieinfo as $row) {
-                  var_dump($row);
                   echo '<option value="'.$row["IdCategorie"].'">'.$row["LibelleCategorie"].'</option>';
                 }
                 ?>

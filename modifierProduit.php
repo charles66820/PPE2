@@ -14,7 +14,7 @@ $nomproduit = "toto";
 $prix = 99;
 $reference = "AXTEQ7F";
 $quantite = 297;
-$categorie;//je sais pas comment change la selection du select
+$categorie = 2;
 $description = "or zjfi dj sdffsdojf dsd fsdf fd jsdf jj j fdsjf djjkfds";
 
 
@@ -95,8 +95,11 @@ if (isset($_POST['formmodifierproduit'])) {
                 $reqcategorie->execute();
                 $categorieinfo = $reqcategorie->fetchAll();
                 foreach ($categorieinfo as $row) {
-                  var_dump($row);
-                  echo '<option value="'.$row["IdCategorie"].'">'.$row["LibelleCategorie"].'</option>';
+                  if ($row["IdCategorie"] == $categorie) {
+                    echo '<option value="'.$row["IdCategorie"].'" selected="selected">'.$row["LibelleCategorie"].'</option>';
+                  }else {
+                    echo '<option value="'.$row["IdCategorie"].'">'.$row["LibelleCategorie"].'</option>';
+                  }
                 }
                 ?>
               </select>
