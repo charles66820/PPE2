@@ -1,14 +1,4 @@
-<?php
-session_start();
-
-//connexion a la bdd
-try {
-  $bdd = new PDO('mysql:host=ppe2.ddns.net;dbname=ppe2', 'PPE', 'PPE123');
-} catch (Exception $e) {
-  echo var_dump($e);
-}
-
-?>
+<?php include 'setting.bdd.php'; ?>
 <head>
   <link rel="stylesheet" href="./assets/css/imgNav.css">
 </head>
@@ -72,8 +62,8 @@ try {
             echo '
             <li class="dropdown">
               <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">
-                <img src="./assets/img/'.$_SESSION['avatarurl'].'" style="width:20px display: unset;">
-                <p style="display: unset;">'.$_SESSION['pseudo'].'</p>
+                <img src="./assets/img/'.$_SESSION['avatarurl'].'" style="width:20px;">
+                <span>'.$_SESSION['pseudo'].'</span>
               </a>
               <div class="dropdown-menu" role="menu">
                 <a class="dropdown-item" role="presentation" href="editionprofil.php">Editer mon profil</a>
