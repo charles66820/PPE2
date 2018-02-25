@@ -1,8 +1,15 @@
 <!-- 3ligne peut être temporaire -->
-<?php include 'setting.bdd.php'; ?>
+<?php include './assets/php/setting.bdd.php'; ?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+<script src="./assets/js/jquery-3.3.1.min.js"></script>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
 
+<?php
+if (isset($_POST['formajouterproduit'])) {
+  echo htmlspecialchars($_POST['nomproduit'])." : ".htmlspecialchars($_POST['prix'])." : ".htmlspecialchars($_POST['reference'])." : ".htmlspecialchars($_POST['quantite'])." : ".htmlspecialchars($_POST['categorie'])." : ".htmlspecialchars($_POST['description']);
+}
+?>
 
 <!-- pour ajouter un produit -->
 <style media="screen">
@@ -35,32 +42,32 @@
 </style>
 <div class="container">
   <h1>Ajouter un produit</h1>
-  <form class="" action="" method="post">
+  <form action="" method="post">
     <div class="row bg-light rounded">
       <div class="col">
         <div class="row">
           <div class="col-sm-5">
             <div class="form-inline m-2">
               <label class="mr-1">Nom du Produit :</label>
-              <input type="text" class="form-control" id="">
+              <input type="text" class="form-control" name="nomproduit" id="">
             </div>
           </div>
           <div class="col-sm-5">
             <div class="form-inline m-2">
               <label class="mr-1">Prix Unitair HT :</label>
-              <input type="text" class="form-control" id="">
+              <input type="text" class="form-control" name="prix" id="">
             </div>
           </div>
           <div class="col-sm-5">
             <div class="form-inline m-2">
               <label class="mr-1">Reference :</label>
-              <input type="text" class="form-control" id="">
+              <input type="text" class="form-control" name="reference" id="">
             </div>
           </div>
           <div class="col-sm-5">
             <div class="form-inline m-2">
               <label class="mr-1">Quantité :</label>
-              <input type="text" class="form-control" id="">
+              <input type="text" class="form-control" name="quantite" id="">
             </div>
           </div>
           <div class="col-sm-5">
@@ -69,11 +76,12 @@
               <select class="form-control" name="categorie" id="">
                 <?php
                 //charge les categorie
-                $requser = $bdd->prepare("SELECT * FROM categorie");
-                $requser->execute(array($pseudoconnect, $mdpconnect));
-                $categorieinfo = $requser->fetch();
+                $reqcategorie = $bdd->prepare("SELECT * FROM categorie");
+                $reqcategorie->execute();
+                $categorieinfo = $reqcategorie->fetchAll();
                 foreach ($categorieinfo as $row) {
-                  echo '<option value="'.$row['IdCategorie'].'">'.$row['LibelleCategorie'].'</option>';
+                  var_dump($row);
+                  echo '<option value="'.$row["IdCategorie"].'">'.$row["LibelleCategorie"].'</option>';
                 }
                 ?>
               </select>
@@ -81,8 +89,8 @@
           </div>
         </div>
         <div class="form-group m-2">
-          <label for="comment" class="mr-1">Comment:</label>
-          <textarea class="form-control" rows="5" id="comment" style="min-height:100px;"></textarea>
+          <label class="mr-1">description :</label>
+          <textarea class="form-control" rows="5" name="description" id="" style="min-height:100px;"></textarea>
         </div>
       </div>
 
@@ -106,10 +114,7 @@
     </div>
     <div class="container mt-3">
       <button type="button" class="btn btn-danger float-left btn-lg" onclick="document.location.replace('modifierCatalogue.php')">Annuler</button>
-      <button type="submit" class="btn btn-success float-right btn-lg">Valider</button>
+      <button type="submit" name="formajouterproduit" class="btn btn-success float-right btn-lg">Valider</button>
     </div>
   </form>
 </div>
-
-<script src="./assets/js/jquery-3.3.1.min.js"></script>
-<script src="./assets/js/bootstrap.bundle.min.js"></script>

@@ -37,11 +37,6 @@
   font-size: 28px;
   color: black;
 }
-.articleStar{
-  height: 35px;
-  width: 182px;
-  float: left;
-}
 .articlePrix{
   float: right;
   max-width: 100px;
@@ -53,6 +48,7 @@
   color: red;
 }
 
+/*stars*/
 .stars0{
   background: url(../img/stars.png) -176px 2px;
   background-size: 358px;

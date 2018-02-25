@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link href="./assets/css/catalogue.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/catalogue.css">
   </head>
 
   <body>
@@ -60,7 +60,7 @@
           <div class="articleNom">
           '.$row["description"].'
           </div>
-          <div class="'.$row["star"].' articleStar">
+          <div class="'.$row["star"].'" style="height: 35px; width: 182px; float: left;">
           </div>
           <div class="articlePrix">
           '.$row["prix"].'
