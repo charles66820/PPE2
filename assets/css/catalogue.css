@@ -39,7 +39,7 @@
 }
 .articlePrix{
   float: right;
-  max-width: 100px;
+  max-width: 68px;
   min-width: 2px;
   overflow: hidden;
   height: 35px;

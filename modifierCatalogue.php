@@ -12,7 +12,14 @@
       <link rel="stylesheet" href="./assets/css/catalogue.css">
   </head>
   <body>
-    <?php include './assets/php/nav.php'; ?>
+    <?php
+    include './assets/php/nav.php';
+    if (isset($_SESSION['id']) && $_SESSION['pseudo'] == 'Admin') {
+      if (isset($_POST['delproduit'])) {
+        $reqdel = $bdd->prepare("DELETE FROM produits WHERE IDProduit = ?");
+        $reqdel->execute(array($_POST['id']));
+      }
+    ?>
 
     <div class="container">
       <div class="text-right">
@@ -21,38 +28,55 @@
     </div>
     <div class="container articleBox">
       <?php
-      //création de requet sql
-      // TODO: faire de requet sql en fonction de chix dans le menu (navbar)
+        //création de requet sql
+        // TODO: faire de requet sql en fonction de chix dans le menu (navbar)
+        $reqproduit = $bdd->prepare("SELECT * FROM produits");
+        $reqproduit->execute();
+        $dbrep = $reqproduit->fetchAll();
 
-      //resultat de la base de donnéer
-      //en atendent c'est un tableau a deux dimention
-      $dbrep = array(array('id'=>'2', 'nom'=>"Poulpe", 'prix'=>"10.0€", 'imgNom'=>"test1.jpg",'star'=>"stars2", 'description'=>'testtttt'),
-      array('id'=>'5', 'nom'=>"Poulpe2", 'prix'=>"20.0€", 'imgNom'=>"test2.jpeg",'star'=>"stars4_5", 'description'=>'testtttt'),
-      array('id'=>'6', 'nom'=>"Poulpe3", 'prix'=>"20.0€", 'imgNom'=>"test3.jpg",'star'=>"stars3", 'description'=>'testtttt'),
-      array('id'=>'13', 'nom'=>"Poulpe4", 'prix'=>"20.0€", 'imgNom'=>"test4.jpg",'star'=>"stars0_5", 'description'=>'testtttt'),
-      array('id'=>'69', 'nom'=>"Poulpe99", 'prix'=>"20.0€", 'imgNom'=>"test4.jpg",'star'=>"stars0_5", 'description'=>'testtttt'),
-      array('id'=>'28', 'nom'=>"Poulpe5", 'prix'=>"20.0€", 'imgNom'=>"test5.jpg",'star'=>"stars3_5", 'description'=>'testjyfuydtttt'));
+        //chargement des produits du catalogue
+        foreach ($dbrep as $row) {
+          //recuperée l'image par raport a l'id du produit
+          $reqphotoproduit = $bdd->prepare("SELECT * FROM photoproduit WHERE IDPhotoProduit = ?");
+          $reqphotoproduit->execute(array($row["IDProduit"]));
+          $produitexist = $reqphotoproduit->rowCount();
 
-      //chargement des produit du catalogue
-      foreach ($dbrep as $row) {
-        echo '
-        <div class="articleElm" style="height: 323px;">
-          <div class="articleNom">'.$row["nom"].'</div>
-          <div class="imgBox">
-            <img src="./assets/img/imagesUpload/'.$row["imgNom"].'" alt="">
-          </div>
-          <div class="text-center m-1">
-            <button type="button" class="btn btn-warning" onclick="document.location.replace(\'modifierproduit.php?id='.$row["id"].'\')">Modifier</button>
-          </div>
-          <div class="text-center" style="width: 182px; float: left;">
-            <button type="button" class="btn btn-danger" onclick="document.location.replace(\'modifierCatalogue.php?id='.$row["id"].'\')">Supprimer</button>
-          </div>
-          <div class="articlePrix">'.$row["prix"].'</div>
-        </div>';
+          //test si il y a une photo pour le produit ou pas
+          if ($produitexist == 0) {
+            $imgproduit = './assets/img/defaultproduitimg.jpg';
+          }else {
+            $imgproduitrep = $reqphotoproduit->fetch();
+            $imgproduit = './assets/img/imagesUpload/'.$imgproduitrep["Photo"];
+          }
+
+          //afficher le produit
+          echo '
+          <div class="articleElm" style="height: 323px;">
+            <div class="articleNom">'.$row["LibelleProduit"].'</div>
+            <div class="imgBox">
+              <img src="'.$imgproduit.'" alt="">
+            </div>
+            <div class="text-center m-1">
+              <button type="button" class="btn btn-warning" onclick="document.location.replace(\'modifierproduit.php?id='.$row["IDProduit"].'\')">Modifier</button>
+            </div>
+            <div class="text-center" style="width: 182px; float: left;">
+              <form class="" action="" method="post">
+                <input type="text" name="id" value="'.$row["IDProduit"].'" style="display:none">
+                <button type="submit" class="btn btn-danger" name="delproduit">Supprimer</button>
+              </form>
+            </div>
+            <div class="articlePrix">'.$row["PrixUnitaireHT"].'</div>
+          </div>';
+        }
+      }else {
+      ?>
+      <div class="container mt-3 text-center">
+        <font color="red">vous n'avais pas le drois d'accséder a cette pages</font>
+      </div>
+      <?php
       }
       ?>
     </div>
-
     <?php include './assets/php/footer.php'; ?>
     <script src="./assets/js/jquery-3.3.1.min.js"></script>
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
