@@ -67,6 +67,7 @@
               </a>
               <div class="dropdown-menu" role="menu">
                 <a class="dropdown-item" role="presentation" href="editionprofil.php">Editer mon profil</a>
+                <a class="dropdown-item" role="presentation" href="panier.php">Mon panier</a>
                 <a class="dropdown-item" role="presentation" href="commandes.php">Historique des commandes</a>'.$adminoption.'
                 <a class="dropdown-item" role="presentation" href="./assets/php/deconnexion.php">Déconnectez-vous !</a>
               </div>
