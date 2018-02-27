@@ -47,7 +47,7 @@
             </div>
           </li>
           <li class="nav-item" role="presentation">
-            <a class="nav-link active" href="panier.php"><img class="imgLogo" src="./assets/img/logoPoulpe.png"/></a>
+            <a class="nav-link active" href="panier.php"><img class="imgPanier" src="./assets/img/panier.png"/>   Panier</a>
           </li>
           <?php
           //test si un client est connecter
@@ -55,7 +55,7 @@
 
             //affiche les pages de gestion de l'admin
             if ($_SESSION['pseudo'] == 'Admin') {
-              $adminoption = '<a class="dropdown-item" role="presentation" href="./modifierCatalogue.php">Modifier le catalogue !</a>';
+              $adminoption = '<a class="dropdown-item" role="presentation" href="./modifiercatalogue.php">Modifier le catalogue !</a>';
             }else {
               $adminoption = ' ';
             }

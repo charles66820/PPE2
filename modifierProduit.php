@@ -189,7 +189,7 @@
             </div>
           </div>
           <div class="container mt-3 text-center">
-            <button type="button" class="btn btn-danger float-left btn-lg" onclick="document.location.replace('modifierCatalogue.php')">Annuler</button>
+            <button type="button" class="btn btn-danger float-left btn-lg" onclick="document.location.replace('modifiercatalogue.php')">Annuler</button>
             <?php
             if(isset($erreur)) {
               echo '<font color="red">'.$erreur."</font>";
@@ -205,7 +205,7 @@
       ?>
       <div class="container mt-3 text-center">
         <font color="red">Erreur : aucun produit selectionner</font>
-        <button type="button" class="btn btn-danger btn-lg" onclick="document.location.replace('modifierCatalogue.php')">Retour</button>
+        <button type="button" class="btn btn-danger btn-lg" onclick="document.location.replace('modifiercatalogue.php')">Retour</button>
       </div>
       <?php
         }
@@ -213,7 +213,7 @@
       ?>
       <div class="container mt-3 text-center">
         <font color="red">Erreur : propriéter id introuvable</font>
-        <button type="button" class="btn btn-danger btn-lg" onclick="document.location.replace('modifierCatalogue.php')">Retour</button>
+        <button type="button" class="btn btn-danger btn-lg" onclick="document.location.replace('modifiercatalogue.php')">Retour</button>
       </div>
       <?php
       };
