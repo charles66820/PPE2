@@ -55,7 +55,7 @@
 
             //affiche les pages de gestion de l'admin
             if ($_SESSION['pseudo'] == 'Admin') {
-              $adminoption = '<a class="dropdown-item" role="presentation" href="./modifierCatalogue.php">Modifier le catalogue !</a>';
+              $adminoption = '<a class="dropdown-item" role="presentation" href="./modifiercatalogue.php">Modifier le catalogue !</a>';
             }else {
               $adminoption = ' ';
             }
