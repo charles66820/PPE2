@@ -165,7 +165,7 @@
             <input type="text" name="ingsJSON" id="ingsJSON" value="" style="display:none;">
           </div>
           <div class="container mt-3 text-center">
-            <button type="button" class="btn btn-danger float-left btn-lg" onclick="document.location.replace('modifierCatalogue.php')">Annuler</button>
+            <button type="button" class="btn btn-danger float-left btn-lg" onclick="document.location.replace('modifiercatalogue.php')">Annuler</button>
             <?php
             if(isset($erreur)) {
               echo '<font color="red">'.$erreur."</font>";
