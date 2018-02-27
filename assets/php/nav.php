@@ -46,13 +46,15 @@
               <a class="dropdown-item" role="presentation" href="catalogue.php?">Bonnets & Casquettes</a>
             </div>
           </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" href="panier.php"><img class="imgLogo" src="./assets/img/logoPoulpe.png"/></a>
+          </li>
           <?php
           //test si un client est connecter
           if (isset($_SESSION['id'])) {
 
             //affiche les pages de gestion de l'admin
             if ($_SESSION['pseudo'] == 'Admin') {
-              $adminoption = '<a class="dropdown-item" role="presentation" href="./modifierCatalogue.php">Modifier le catalogue !</a>';
               $adminoption = '<a class="dropdown-item" role="presentation" href="./modifierCatalogue.php">Modifier le catalogue !</a>';
             }else {
               $adminoption = ' ';
@@ -67,7 +69,6 @@
               </a>
               <div class="dropdown-menu" role="menu">
                 <a class="dropdown-item" role="presentation" href="editionprofil.php">Editer mon profil</a>
-                <a class="dropdown-item" role="presentation" href="panier.php">Mon panier</a>
                 <a class="dropdown-item" role="presentation" href="commandes.php">Historique des commandes</a>'.$adminoption.'
                 <a class="dropdown-item" role="presentation" href="./assets/php/deconnexion.php">Déconnectez-vous !</a>
               </div>
