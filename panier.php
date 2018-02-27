@@ -23,10 +23,10 @@ if($action !== null)
    //On traite $q qui peut etre un entier simple ou un tableau d'entier
 
    if (is_array($q)){
-      $QteArticle = array();
+      $quantiteArticle = array();
       $i=0;
       foreach ($q as $contenu){
-         $QteArticle[$i++] = intval($contenu);
+         $quantiteArticle[$i++] = intval($contenu);
       }
    }
    else
@@ -45,9 +45,9 @@ if (!$erreur){
          break;
 
       Case "refresh" :
-         for ($i = 0 ; $i < count($QteArticle) ; $i++)
+         for ($i = 0 ; $i < count($quantiteArticle) ; $i++)
          {
-            modifierQTeArticle($_SESSION['panier']['libelleProduit'][$i],round($QteArticle[$i]));
+            modifierQTeArticle($_SESSION['panier']['LibelleProduit'][$i],round($QteArticle[$i]));
          }
          break;
 
@@ -80,7 +80,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>';?>
 	<?php
 	if (creationPanier())
 	{
-	   $nbArticles=count($_SESSION['panier']['libelleProduit']);
+	   $nbArticles=count($_SESSION['panier']['LibelleProduit']);
 	   if ($nbArticles <= 0)
 	   echo "<tr><td>Votre panier est vide </ td></tr>";
 	   else
@@ -88,10 +88,10 @@ echo '<?xml version="1.0" encoding="utf-8"?>';?>
 	      for ($i=0 ;$i < $nbArticles ; $i++)
 	      {
 	         echo "<tr>";
-	         echo "<td>".htmlspecialchars($_SESSION['panier']['libelleProduit'][$i])."</ td>";
-	         echo "<td><input type=\"text\" size=\"4\" name=\"q[]\" value=\"".htmlspecialchars($_SESSION['panier']['qteProduit'][$i])."\"/></td>";
-	         echo "<td>".htmlspecialchars($_SESSION['panier']['prixProduit'][$i])."</td>";
-	         echo "<td><a href=\"".htmlspecialchars("panier.php?action=suppression&l=".rawurlencode($_SESSION['panier']['libelleProduit'][$i]))."\">XX</a></td>";
+	         echo "<td>".htmlspecialchars($_SESSION['panier']['LibelleProduit'][$i])."</ td>";
+	         echo "<td><input type=\"text\" size=\"4\" name=\"q[]\" value=\"".htmlspecialchars($_SESSION['panier']['quantiteProduit'][$i])."\"/></td>";
+	         echo "<td>".htmlspecialchars($_SESSION['panier']['prixUnitaireHT'][$i])."</td>";
+	         echo "<td><a href=\"".htmlspecialchars("panier.php?action=suppression&l=".rawurlencode($_SESSION['panier']['LibelleProduit'][$i]))."\">XX</a></td>";
 	         echo "</tr>";
 	      }
 
