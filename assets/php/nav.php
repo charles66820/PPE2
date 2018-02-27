@@ -47,7 +47,7 @@
             </div>
           </li>
           <li class="nav-item" role="presentation">
-            <a class="nav-link active" href="panier.php"><img class="imgLogo" src="./assets/img/logoPoulpe.png"/></a>
+            <a class="nav-link active" href="panier.php"><img class="imgPanier" src="./assets/img/panier.png"/>   Panier</a>
           </li>
           <?php
           //test si un client est connecter
