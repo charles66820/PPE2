@@ -24,7 +24,7 @@
               <a class="btn btn-primary" role="button" href="#" style="background-color:rgb(27,159,167);height:75px;margin:15px;width:300px;padding:20px;font-size:20px;">M'inscrire maintenant !</a>
             </div>
           </div>
-          <div class="col-sm-4" style="background-image:url(&quot;assets/img/postal_pulpo_lindo_del_dibujo_animado_en_rosa-rab08a3c83fee4266ab88ca97e53546ba_vgbaq_8byvr_324.jpg&quot;);">
+          <div class="col-sm-4" style="background-image:url(&quot;assets/img/poulpe8.jpg&quot;);">
             <div class="d-none d-md-block iphone-mockup"></div>
           </div>
         </div>
