@@ -23,8 +23,8 @@
         </div>
         <div class="clearfix"></div>
         <div class="col-md-4 footer-about">
-          <h4>About the company</h4>
-          <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+          <h4>Ce site a était présenter par :</h4>
+          <p><a href="team.php">Les rois et les reines des Poulpes</a>
           </p>
           <div class="social-links social-icons"></div>
         </div>
