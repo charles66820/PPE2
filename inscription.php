@@ -46,7 +46,7 @@
                     $insertmbr = $bdd->prepare("INSERT INTO client(Pseudo, Email, MotDePasse, Nom, Prenom, Civilite, Telephone, AvatarUrl) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
                     $insertmbr->execute(array($pseudo, $mail, $mdp, $nom, $prenom, $civilite, $telephone, $avatarurl));
                     $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"./accueil.php\"><br />Revenir sur la page d'accueil</a>";
-                    
+
                   } else {
                     $erreur = "Vos mots de passes ne correspondent pas !";
                   }
@@ -73,7 +73,7 @@
     ?>
 
     <!-- formulaire d'inscription -->
-    <div>
+    <div align="center">
       <h1>Inscription</h1>
       <br/>
       <form method="POST" action="">
