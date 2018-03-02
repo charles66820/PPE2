@@ -161,8 +161,8 @@
               <label>civilite :</label>
             </td>
             <td>
-              <input type="radio" name="civilite" value="homme" checked> homme<br>
-              <input type="radio" name="civilite" value="femme"> femme<br>
+              <input type="radio" name="civilite" value="homme" checked> Monsieur<br>
+              <input type="radio" name="civilite" value="femme"> Madame<br>
             </td>
           </tr>
 
