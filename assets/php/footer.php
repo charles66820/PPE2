@@ -4,8 +4,11 @@
       <div class="row">
         <div class="col-sm-6 col-md-4 footer-navigation">
           <h3><a href="accueil.php">O<span>'Tako </span></a></h3>
-          <p class="links"><a href="accueil.php">Accueil</a><strong> · </strong><a href="accueil.php">Sécurité</a><strong> · </strong><a href="accueil.php">Livraison</a><strong> · </strong><a href="accueil.php">Paiement</a><strong> · </strong></p>
-          <p class="company-name">Company Name © 2015 </p>
+          <p class="links"><a href="accueil.php">Accueil</a>
+            <strong> · </strong><a href="accueil.php">Sécurité</a>
+            <strong> · </strong><a href="accueil.php">Livraison</a>
+            <strong> · </strong><a href="accueil.php">Paiement</a>
+            <strong> · </strong><a href="accueil.php">Assitance</a></p>
         </div>
         <div class="col-sm-6 col-md-4 footer-contacts">
           <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
