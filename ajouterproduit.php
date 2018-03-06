@@ -139,7 +139,7 @@
                 </div>
               </div>
               <div class="form-group m-2">
-                <label class="mr-1">description :</label>
+                <label class="mr-1">Description :</label>
                 <textarea class="form-control" rows="5" name="description" id="" style="min-height:100px;"></textarea>
               </div>
             </div>
@@ -179,7 +179,7 @@
       }else {
       ?>
       <div class="container mt-3 text-center">
-        <font color="red">vous n'avais pas le drois d'accséder a cette pages</font>
+        <font color="red">Vous n'avais pas les drois d'accéder a cette pages</font>
       </div>
       <?php
       }
