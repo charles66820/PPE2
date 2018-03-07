@@ -56,13 +56,13 @@
       <div>
         <form method="POST" action="" enctype="multipart/form-data">
           <label>Pseudo :</label>
-          <input type="text" name="newpseudo" placeholder="Pseudo" value="<?php echo $user['pseudo']; ?>" /><br /><br />
+          <input type="text" name="newpseudo" placeholder="Pseudo" value="<?php echo $user['pseudo']; ?>" /><br />
           <label>Mail :</label>
-          <input type="text" name="newmail" placeholder="Mail" value="<?php echo $user['mail']; ?>" /><br /><br />
+          <input type="text" name="newmail" placeholder="Mail" value="<?php echo $user['mail']; ?>" /><br />
           <label>Mot de passe :</label>
-          <input type="password" name="newmdp1" placeholder="Mot de passe"/><br /><br />
-          <label>Confirmation - mot de passe :</label>
-          <input type="password" name="newmdp2" placeholder="Confirmation du mot de passe" /><br /><br />
+          <input type="password" name="newmdp1" placeholder="Mot de passe"/><br />
+          <label>Confirmation du mot de passe :</label>
+          <input type="password" name="newmdp2" placeholder="Confirmation du mdp" /><br />
           <input type="submit" value="Mettre à jour mon profil" />
         </form>
         <?php if(isset($msg)) { echo $msg; } ?>
