@@ -20,7 +20,7 @@
             <div class="intro">
               <h2 style="height:50px;color:#2a6bab;font-size:36px;"><span style="text-decoration: underline;">Bienvenue</span></h2>
               <p style="height:20px;font-size:22px;">Hey, bienvenue sur Ô'Tako ! Je suis Poulpi et je suis là pour te guider.</p>
-              <p style="font-size:22px;height:20px;">Si tu es nouveau, viens vite tinscrire et deviens un membre de la Tako Family ! </p><br/>
+              <p style="font-size:22px;height:20px;">Si tu es nouveau, viens vite t'inscrire et deviens membre de la Tako Family ! </p><br/>
               <a class="btn btn-primary" role="button" href="#" style="background-color:rgb(27,159,167);height:75px;margin:15px;width:300px;padding:20px;font-size:20px;">M'inscrire maintenant !</a>
             </div>
           </div>

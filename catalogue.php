@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>catalogue</title>
+    <title>Catalogue</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./assets/img/logoIcon.gif"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,11 +25,24 @@
           </form>
         </div>
         <div class="rectangle">
-          <div class="stars1"></div> <div class="etplus" style="top: 10px;">&plus</div> <!-- Met le "&plus" en face des étoiles -->
-          <div class="stars2"></div> <div class="etplus" style="top: 45px;">&plus</div>
-          <div class="stars3"></div> <div class="etplus" style="top: 80px;">&plus</div>
-          <div class="stars4"></div> <div class="etplus" style="top: 115px;">&plus</div>
-          <div class="stars5"></div>
+        <?php
+        if ( isset($_GET['type']) && isset($_GET['categorie']) ) {
+          $categorie = "categorie=".$_GET['categorie']."&";
+          $type ="type=".$_GET['type']."&";
+        }elseif(isset($_GET['categorie'])) {
+          $categorie = "categorie=".$_GET['categorie']."&";
+          $type = '';
+        } else
+        {
+          $categorie = '';
+          $type = '';
+        }
+        ?>
+          <a href="catalogue.php?<?php echo $categorie.$type ?>stars=1"><div class="stars1"></div> <div class="etplus" style="top: 10px;">&plus</div> <a/> <!-- Met le "&plus" en face des étoiles -->
+          <a href="catalogue.php?<?php echo $categorie.$type ?>stars=2"><div class="stars2"></div> <div class="etplus" style="top: 45px;">&plus</div> <a/>
+          <a href="catalogue.php?<?php echo $categorie.$type ?>stars=3"><div class="stars3"></div> <div class="etplus" style="top: 80px;">&plus</div> <a/>
+          <a href="catalogue.php?<?php echo $categorie.$type ?>stars=4"><div class="stars4"></div> <div class="etplus" style="top: 115px;">&plus</div> <a/>
+          <a href="catalogue.php?<?php echo $categorie.$type ?>stars=5"><div class="stars5"></div> <div class="etplus" style="top: 115px;">&plus</div> <a/>
         </div>
       </nav>
     </div>
@@ -51,7 +64,7 @@
 
           //Teste s'il y a une photo pour le produit ou pas
           if ($produitexist == 0) {
-            $imgproduit = './assets/img/defaultproduitimg.jpg';
+            $imgproduit = './assets/img/defaultproduitimg.png';
           }else {
             $imgproduitrep = $reqphotoproduit->fetch();
             $imgproduit = './assets/img/imagesUpload/'.$imgproduitrep["Photo"];
