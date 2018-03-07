@@ -84,7 +84,7 @@
                 echo '<script> console.log("image teeeeest"); document.location.replace("modifierCatalogue.php")</script>';
 
               }else {
-                echo '<script> console.log("Pas d\'image ajouter. Image par default utiliser"); document.location.replace("modifierCatalogue.php")</script>';
+                echo '<script> console.log("Pas d\'image ajouter. Image par default utiliser"); document.location.replace("modifiercatalogue.php")</script>';
               }
             }else {
               $erreur = "La reference \"".$reference."\" est déjà utilisé !";
@@ -144,9 +144,11 @@
                       ?>
                     </select>
                   </div>
+                </div>
+                <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">taille :</label>
-                    <select class="form-control" name="taille" id="taille">
+                    <select class="form-control" name="" id="taille">
                       <?php
                       //charge les categorie
                       $reqcategorie = $bdd->prepare("SELECT * FROM taille");

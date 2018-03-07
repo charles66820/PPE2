@@ -60,7 +60,6 @@
             $description = htmlspecialchars($_POST['description']);
             $taille = intval(htmlspecialchars($_POST['taille']));
 
-
             //teste si les champs ne sont pas vides
             if (!empty($_POST['nomproduit']) && !empty($_POST['prix']) && !empty($_POST['reference']) && !empty($_POST['quantite']) && !empty($_POST['categorie']) && !empty($_POST['description'])) {
 
@@ -117,7 +116,9 @@
           $quantite = $dbrep["QuantiteProduit"];
           $categorie = $dbrep["IdCategorie"];
           $description = $dbrep["DescriptionProduit"];
-          $taille = $dbrep["idtaille"];
+          if (isset($dbrep["idtaille"])) {
+            $taille = $dbrep["idtaille"];
+          }
       ?>
 
       <!-- pour modifier un produit -->
@@ -170,6 +171,11 @@
                       ?>
                     </select>
                   </div>
+                </div>
+                <?php
+                  if (isset($dbrep["idtaille"])) {
+                ?>
+                <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">taille :</label>
                     <select class="form-control" name="taille" id="taille">
@@ -179,12 +185,17 @@
                       $reqcategorie->execute();
                       $categorieinfo = $reqcategorie->fetchAll();
                       foreach ($categorieinfo as $row) {
-                        echo '<option value="'.$row["idtaille"].'">'.$row["libelleTaille"].'</option>';
+                        if ($row["IdCategorie"] == $taille) {
+                          echo '<option value="'.$row["idtaille"].'" selected="selected">'.$row["libelleTaille"].'</option>';
+                        }else {
+                          echo '<option value="'.$row["idtaille"].'">'.$row["libelleTaille"].'</option>';
+                        }
                       }
                       ?>
                     </select>
                   </div>
                 </div>
+                <?php } ?>
               </div>
               <div class="form-group m-2">
                 <label class="mr-1">Description :</label>
