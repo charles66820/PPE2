@@ -16,11 +16,7 @@
     <!-- Barre de navigation -->
     <?php include './assets/php/nav.php'; ?>
 
-    <!--Ancre-->
-    <div>
-      <a class="bouton-footer" href=#footer><img src="./img/down.png" alt="Aller en bas de la page"/></a>
-      <a class="bouton-top" href="#"><img src="./img/top.png" alt="Aller en haut de la page"/></a>
-    </div>
+
     <?php
     // TODO: Faire en sorte que les données soient chargées de la bdd pour les voir avant de les modifier
 
