@@ -51,6 +51,7 @@
         $quantite = intval(htmlspecialchars($_POST['quantite']));
         $categorie = intval(htmlspecialchars($_POST['categorie']));
         $description = htmlspecialchars($_POST['description']);
+        $taille = intval(htmlspecialchars($_POST['taille']));
 
 
         //Teste si les champs ne sont pas vides
@@ -64,9 +65,16 @@
             $reqref->execute(array($reference));
             $refexist = $reqref->rowCount();
             if($refexist == 0) {
-              //Ajoute le produit
-              $insertproduit = $bdd->prepare("INSERT INTO produits(LibelleProduit, PrixUnitaireHT, Reference, QuantiteProduit, IdCategorie, DescriptionProduit) VALUES(?, ?, ?, ?, ?, ?)");
-              $insertproduit->execute(array($nomproduit, $prix, $reference, $quantite, $categorie, $description));
+              //test si il y a une taille
+              if (empty($_POST['taille'])) {
+                //Ajoute le produit
+                $insertproduit = $bdd->prepare("INSERT INTO produits(LibelleProduit, PrixUnitaireHT, Reference, QuantiteProduit, IdCategorie, DescriptionProduit) VALUES(?, ?, ?, ?, ?, ?)");
+                $insertproduit->execute(array($nomproduit, $prix, $reference, $quantite, $categorie, $description));
+              }else {
+                //Ajoute le produit
+                $insertproduit = $bdd->prepare("INSERT INTO produits(LibelleProduit, PrixUnitaireHT, Reference, QuantiteProduit, IdCategorie, DescriptionProduit, idtaille) VALUES(?, ?, ?, ?, ?, ?, ?)");
+                $insertproduit->execute(array($nomproduit, $prix, $reference, $quantite, $categorie, $description, $taille));
+              }
 
               //Teste s'il y a une image envoyée
               if (!empty($_POST['ingsJSON'])) {
@@ -132,6 +140,20 @@
                       $categorieinfo = $reqcategorie->fetchAll();
                       foreach ($categorieinfo as $row) {
                         echo '<option value="'.$row["IdCategorie"].'">'.$row["LibelleCategorie"].'</option>';
+                      }
+                      ?>
+                    </select>
+                  </div>
+                  <div class="form-inline m-2">
+                    <label class="mr-1">taille :</label>
+                    <select class="form-control" name="taille" id="taille">
+                      <?php
+                      //charge les categorie
+                      $reqcategorie = $bdd->prepare("SELECT * FROM taille");
+                      $reqcategorie->execute();
+                      $categorieinfo = $reqcategorie->fetchAll();
+                      foreach ($categorieinfo as $row) {
+                        echo '<option value="'.$row["idtaille"].'">'.$row["libelleTaille"].'</option>';
                       }
                       ?>
                     </select>

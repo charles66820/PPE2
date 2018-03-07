@@ -74,7 +74,7 @@
       }else {
       ?>
       <div class="container mt-3 text-center">
-        <font color="red">Vous n'avez pas les droits pour accéder à cette page</font>
+        <font color="red">Vous n'avez pas les droits pour accéder à cette page!</font>
       </div>
       <?php
       }

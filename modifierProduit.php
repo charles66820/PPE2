@@ -58,6 +58,7 @@
             $quantite = intval(htmlspecialchars($_POST['quantite']));
             $categorie = intval(htmlspecialchars($_POST['categorie']));
             $description = htmlspecialchars($_POST['description']);
+            $taille = intval(htmlspecialchars($_POST['taille']));
 
 
             //teste si les champs ne sont pas vides
@@ -71,9 +72,15 @@
                 $reqref->execute(array($reference, $idproduit));
                 $refexist = $reqref->rowCount();
                 if($refexist == 0) {
-                  //update le produit
-                  $insertproduit = $bdd->prepare("UPDATE produits SET LibelleProduit = ?, PrixUnitaireHT = ?, Reference = ?, QuantiteProduit = ?, IdCategorie = ?, DescriptionProduit = ? WHERE IDProduit = ?");
-                  $insertproduit->execute(array($nomproduit, $prix, $reference, $quantite, $categorie, $description, $idproduit));
+
+                  if (empty($_POST['taille'])) {
+                    //update le produit
+                    $updateproduit = $bdd->prepare("UPDATE produits SET LibelleProduit = ?, PrixUnitaireHT = ?, Reference = ?, QuantiteProduit = ?, IdCategorie = ?, DescriptionProduit = ? WHERE IDProduit = ?");
+                    $updateproduit->execute(array($nomproduit, $prix, $reference, $quantite, $categorie, $description, $idproduit));
+                  }else {
+                    $updateproduit = $bdd->prepare("UPDATE produits SET LibelleProduit = ?, PrixUnitaireHT = ?, Reference = ?, QuantiteProduit = ?, IdCategorie = ?, DescriptionProduit = ?, idtaille = ? WHERE IDProduit = ?");
+                    $updateproduit->execute(array($nomproduit, $prix, $reference, $quantite, $categorie, $description, $idproduit, $taille));
+                  }
 
                   //teste s'il y a une image envoyée
                   if (!empty($_POST['ingsJSON'])) {
@@ -110,6 +117,7 @@
           $quantite = $dbrep["QuantiteProduit"];
           $categorie = $dbrep["IdCategorie"];
           $description = $dbrep["DescriptionProduit"];
+          $taille = $dbrep["idtaille"];
       ?>
 
       <!-- pour modifier un produit -->
@@ -158,6 +166,20 @@
                         }else {
                           echo '<option value="'.$row["IdCategorie"].'">'.$row["LibelleCategorie"].'</option>';
                         }
+                      }
+                      ?>
+                    </select>
+                  </div>
+                  <div class="form-inline m-2">
+                    <label class="mr-1">taille :</label>
+                    <select class="form-control" name="taille" id="taille">
+                      <?php
+                      //charge les categorie
+                      $reqcategorie = $bdd->prepare("SELECT * FROM taille");
+                      $reqcategorie->execute();
+                      $categorieinfo = $reqcategorie->fetchAll();
+                      foreach ($categorieinfo as $row) {
+                        echo '<option value="'.$row["idtaille"].'">'.$row["libelleTaille"].'</option>';
                       }
                       ?>
                     </select>
