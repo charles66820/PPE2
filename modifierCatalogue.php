@@ -10,6 +10,9 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
       <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
       <link rel="stylesheet" href="./assets/css/catalogue.css">
+      <link rel="stylesheet" href="./assets/css/Footer-Clean.css">
+      <link rel="stylesheet" href="./assets/css/Pretty-Footer.css">
+      <link rel="stylesheet" href="./assets/css/stylesF.css">
   </head>
   <body>
     <?php

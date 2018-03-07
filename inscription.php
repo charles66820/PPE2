@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/Footer-Clean.css">
+    <link rel="stylesheet" href="./assets/css/Pretty-Footer.css">
+    <link rel="stylesheet" href="./assets/css/stylesF.css">
     <!-- <link rel="stylesheet" href="./assets/css/inscription.css"> -->
   </head>
   <body>
@@ -27,7 +30,7 @@
       $prenom = htmlspecialchars($_POST['prenom']);
       $civilite = htmlspecialchars($_POST['civilite']);
       $telephone = htmlspecialchars($_POST['telephone']);
-      $avatarurl = 'defaultavatarurl.svg';
+      $avatarurl = 'defaultavatarurl.png';
 
       if(!empty($_POST['pseudo']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) {
         $pseudolength = strlen($pseudo); /* Trouve le nombre de caractères */
