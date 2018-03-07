@@ -1,24 +1,8 @@
-article{
-  min-width: 320px;
-  max-width: 816px;
-  margin: auto;
-  position: relative;
-}
-
 /* class du catalogue */
-.rechercheBar{
-  height: 80px;
-  width: 100%;
-  position: absolute;
-
-}
 .articleBox{
-  min-height: 100px;
-  width: 100%;
   background-color: #eee;
   border-radius: 8px;
   box-shadow: inset 1px 0 5px 0 rgba(0,0,0,0.2);
-  position: relative;
   padding: 8px;
 }
 .articleElm{
@@ -53,14 +37,9 @@ article{
   font-size: 28px;
   color: black;
 }
-.articleStar{
-  height: 35px;
-  width: 182px;
-  float: left;
-}
 .articlePrix{
   float: right;
-  max-width: 100px;
+  max-width: 68px;
   min-width: 2px;
   overflow: hidden;
   height: 35px;
@@ -69,6 +48,7 @@ article{
   color: red;
 }
 
+/*stars*/
 .stars0{
   background: url(../img/stars.png) -176px 2px;
   background-size: 358px;
@@ -123,4 +103,30 @@ article{
   background: url(../img/stars.png) 4px 2px;
   background-size: 358px;
   background-repeat: no-repeat;
+}
+
+nav{
+  position: relative;
+}
+
+.rectangle{
+  position: relative;
+  left: 0px;
+  /* height: 300px; */
+  width: 200px;
+}
+
+.rectangle div {
+  height: 35px;
+  width: 182px;
+}
+
+.etplus{
+  left: 182px;
+  position: absolute;
+}
+
+.range{
+  height: 100px;
+  width: 300px;
 }
