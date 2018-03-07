@@ -108,25 +108,25 @@
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">Nom du Produit :</label>
-                    <input type="text" class="form-control" name="nomproduit" id="">
+                    <input type="text" class="form-control" name="nomproduit" value="<?php echo $nomproduit ?>" id="">
                   </div>
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">Prix Unitaire HT :</label>
-                    <input type="text" class="form-control" name="prix" id="">
+                    <input type="text" class="form-control" name="prix" value="<?php echo $prix ?>" id="">
                   </div>
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">Référence :</label>
-                    <input type="text" class="form-control" name="reference" id="">
+                    <input type="text" class="form-control" name="reference" value="<?php echo $reference ?>" id="">
                   </div>
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">Quantité :</label>
-                    <input type="text" class="form-control" name="quantite" id="">
+                    <input type="text" class="form-control" name="quantite" value="<?php echo $quantite ?>" id="">
                   </div>
                 </div>
                 <div class="col-sm-5">
@@ -139,7 +139,11 @@
                       $reqcategorie->execute();
                       $categorieinfo = $reqcategorie->fetchAll();
                       foreach ($categorieinfo as $row) {
-                        echo '<option value="'.$row["IdCategorie"].'">'.$row["LibelleCategorie"].'</option>';
+                        if ($row["IdCategorie"] == $categorie) {
+                          echo '<option value="'.$row["IdCategorie"].'" selected="selected">'.$row["LibelleCategorie"].'</option>';
+                        }else {
+                          echo '<option value="'.$row["IdCategorie"].'">'.$row["LibelleCategorie"].'</option>';
+                        }
                       }
                       ?>
                     </select>
@@ -155,7 +159,11 @@
                       $reqcategorie->execute();
                       $categorieinfo = $reqcategorie->fetchAll();
                       foreach ($categorieinfo as $row) {
-                        echo '<option value="'.$row["idtaille"].'">'.$row["libelleTaille"].'</option>';
+                        if ($row["IdCategorie"] == $taille) {
+                          echo '<option value="'.$row["idtaille"].'" selected="selected">'.$row["libelleTaille"].'</option>';
+                        }else {
+                          echo '<option value="'.$row["idtaille"].'">'.$row["libelleTaille"].'</option>';
+                        }
                       }
                       ?>
                     </select>
@@ -164,7 +172,7 @@
               </div>
               <div class="form-group m-2">
                 <label class="mr-1">Description :</label>
-                <textarea class="form-control" rows="5" name="description" id="" style="min-height:100px;"></textarea>
+                <textarea class="form-control" rows="5" name="description" id="" style="min-height:100px;"><?php echo $description ?></textarea>
               </div>
             </div>
 
