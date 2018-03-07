@@ -46,7 +46,7 @@
 
         //Variables
         $nomproduit = htmlspecialchars($_POST['nomproduit']);
-        $prix = intval(htmlspecialchars($_POST['prix']));
+        $prix = floatval(htmlspecialchars($_POST['prix']));
         $reference = htmlspecialchars($_POST['reference']);
         $quantite = intval(htmlspecialchars($_POST['quantite']));
         $categorie = intval(htmlspecialchars($_POST['categorie']));
