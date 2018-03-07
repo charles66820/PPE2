@@ -6,7 +6,7 @@
             </strong><a href="#">Sécurité</a><strong> ·
             </strong><a href="#">Livraison</a><strong> ·
             </strong><a href="#">Paiement</a><strong> ·
-            </strong><a href="#">Assitance</a><a href="#"></a></p>
+            </strong><a href="#">Assistance</a><a href="#"></a></p>
         </div>
         <div class="col-sm-6 col-md-4 footer-contacts">
             <div><span class="fa fa-map-marker footer-contacts-icon" style="background-color:rgb(21,107,159);"> </span>
@@ -26,3 +26,27 @@
         </div>
     </div>
 </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header>
+  <p>Je suis un gros CACA et j'en suis extrêmement fièr! :3 </p>
+  <h1>PETITE MERDE!!!!!</h1>
+</header>
