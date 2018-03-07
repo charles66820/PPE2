@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
       <meta charset="UTF-8">
-      <title>commandes</title>
+      <title>Commandes</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="icon" href="./assets/img/logoIcon.gif"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
@@ -14,12 +14,12 @@
   <body>
     <?php include './assets/php/nav.php'; ?>
 
-    <h1>page en cours de construction</h1>
+    <h1>Page en cours de construction</h1>
     <pre>
 
-    cette page va contenire la liste des commandes efectuer par le client.
+    Cette page va contenir la liste des commandes efectuées par le client.
 
-    pour l'admin il vas voire toute les commandes
+    pour l'admin, il va voir toutes les commandes
 
     </pre>
 
