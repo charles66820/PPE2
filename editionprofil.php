@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="./assets/css/.css"/> -->
+    <link rel="stylesheet" href="./assets/css/Footer-Clean.css">
+    <link rel="stylesheet" href="./assets/css/Pretty-Footer.css">
+    <link rel="stylesheet" href="./assets/css/stylesF.css">
   </head>
 
   <body>
@@ -54,13 +56,66 @@
       <div>
         <form method="POST" action="" enctype="multipart/form-data">
           <label>Pseudo :</label>
-          <input type="text" name="newpseudo" placeholder="Pseudo" value="<?php echo $user['pseudo']; ?>" /><br /><br />
+          <input type="text" name="newpseudo" placeholder="Pseudo" value="<?php echo $user['pseudo']; ?>" /><br />
           <label>Mail :</label>
-          <input type="text" name="newmail" placeholder="Mail" value="<?php echo $user['mail']; ?>" /><br /><br />
+          <input type="text" name="newmail" placeholder="Mail" value="<?php echo $user['mail']; ?>" /><br />
           <label>Mot de passe :</label>
-          <input type="password" name="newmdp1" placeholder="Mot de passe"/><br /><br />
-          <label>Confirmation - mot de passe :</label>
-          <input type="password" name="newmdp2" placeholder="Confirmation du mot de passe" /><br /><br />
+          <input type="password" name="newmdp1" placeholder="Mot de passe"/><br />
+          <label>Confirmation du mot de passe :</label>
+          <input type="password" name="newmdp2" placeholder="Confirmation du mdp" /><br /><br />
+
+          <!--partie pour l'adresse-->
+          <div class="adresse">
+            <h4>Adresse</h4><br />
+            <form method="POST" action="">
+              <table>
+                <!-- n° et voie -->
+                <tr>
+                  <td align="right">
+                    <label for="Voie">N° et voie :</label>
+                  </td>
+                  <td>
+                    <input type="text" placeholder="N° et voie" id="Voie" name="Voie" value="<?php if(isset($Voie)) { echo $Voie; } ?>" />
+                  </td>
+                </tr>
+                <!--complement d'adresse-->
+                <tr>
+                  <td align="right">
+                    <label for="Complement">Complément d'adresse :</label>
+                  </td>
+                  <td>
+                    <input type="text" placeholder="Complément d'adresse" id="Complement" name="Complement" value="<?php if(isset($Complement)) { echo $Complement; } ?>" />
+                  </td>
+                </tr>
+                <!--code postal-->
+                <tr>
+                  <td align="right">
+                    <label for="CodePostal">Code postal :</label>
+                  </td>
+                  <td>
+                    <input type="text" placeholder="Code postal" id="CodePostal" name="CodePostal" value="<?php if(isset($CodePostal)) { echo $CodePostal; } ?>" />
+                  </td>
+                </tr>
+                <!--Ville-->
+                <tr>
+                  <td align="right">
+                    <label for="Ville">Ville :</label>
+                  </td>
+                  <td>
+                    <input type="text" placeholder="Ville" id="Ville" name="Ville" value="<?php if(isset($Ville)) { echo $Ville; } ?>" />
+                  </td>
+                </tr>
+                <!--pays-->
+                <tr>
+                  <td align="right">
+                    <label for="Pays">Pays :</label>
+                  </td>
+                  <td>
+                    <input type="text" placeholder="Pays" id="Pays" name="Pays" value="<?php if(isset($Pays)) { echo $Pays; } ?>" />
+                  </td>
+                </tr>
+              </table>
+              
           <input type="submit" value="Mettre à jour mon profil" />
         </form>
         <?php if(isset($msg)) { echo $msg; } ?>

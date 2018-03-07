@@ -1,6 +1,4 @@
-<?php include 'setting.bdd.php'; /*Changer la requete SQL*/
-$requser = $bdd->prepare("SELECT client.IDClient, client.Pseudo, client.Email, client.AvatarUrl FROM client WHERE Pseudo = ? AND MotDePasse = ?");
-$requser->execute(array($pseudoconnect, $mdpconnect));
+<?php
 
 /**
  * Verifie si le panier existe, le créé sinon
@@ -43,13 +41,12 @@ function ajouterArticle($LibelleProduit,$quantiteProduit,$prixUnitaireHT){
          array_push( $_SESSION['panier']['LibelleProduit'],$LibelleProduit);
          array_push( $_SESSION['panier']['quantiteProduit'],$quantiteProduit);
          array_push( $_SESSION['panier']['prixUnitaireHT'],$prixUnitaireHT);
+         // PDO
       }
    }
    else
    echo "Un problème est survenu, veuillez contacter l'administrateur du site.";
 }
-
-
 
 /**
  * Modifie la quantité d'un article

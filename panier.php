@@ -1,6 +1,6 @@
 <?php
-session_start();
-include_once("fonctions-panier.php");
+include("assets/php/setting.bdd.php");
+include("assets/php/fonctions-panier.php");
 
 $erreur = false;
 
