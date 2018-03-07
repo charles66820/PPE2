@@ -73,7 +73,7 @@
     ?>
 
     <!-- formulaire d'inscription -->
-    <div>
+    <div align="center">
       <h1>Inscription</h1>
       <br/>
       <form method="POST" action="">
