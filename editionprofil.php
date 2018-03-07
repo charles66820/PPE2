@@ -18,11 +18,11 @@
 
     <!--Ancre-->
     <div>
-      <a class="bouton-footer" href=#footer><img src="./img/down.png" alt="aller en bas de la page"/></a>
-      <a class="bouton-top" href="#"><img src="./img/top.png" alt="aller en haut de la page"/></a>
+      <a class="bouton-footer" href=#footer><img src="./img/down.png" alt="Aller en bas de la page"/></a>
+      <a class="bouton-top" href="#"><img src="./img/top.png" alt="Aller en haut de la page"/></a>
     </div>
     <?php
-    // TODO: faire en sorte que les donner sois charger de la bdd pour les voire avent de les modifier
+    // TODO: Faire en sorte que les données soient chargées de la bdd pour les voir avant de les modifier
 
     if(isset($_SESSION['id'])) {
       $requser = $bdd->prepare("SELECT * FROM membres WHERE id = ?");

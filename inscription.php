@@ -16,9 +16,9 @@
     //navbar
     include './assets/php/nav.php';
 
-    //tretement inscription
+    //Traitement inscription
     if(isset($_POST['forminscription'])) {
-      $pseudo = htmlspecialchars($_POST['pseudo']); /* fonction qui permet d'enlever tous les caractères html */
+      $pseudo = htmlspecialchars($_POST['pseudo']); /* Fonction qui permet d'enlever tous les caractères html */
       $mail = htmlspecialchars($_POST['mail']);
       $mail2 = htmlspecialchars($_POST['mail2']);
       $mdp = sha1($_POST['mdp']); /* fonction qui permet la sécurisation du mdp */
@@ -30,14 +30,14 @@
       $avatarurl = 'defaultavatarurl.svg';
 
       if(!empty($_POST['pseudo']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) {
-        $pseudolength = strlen($pseudo); /* trouve le nombre de caractère */
+        $pseudolength = strlen($pseudo); /* Trouve le nombre de caractères */
         if($pseudolength <= 20) {
           $reqpseudo = $bdd->prepare("SELECT * FROM client WHERE Pseudo = ?");
           $reqpseudo->execute(array($pseudo));
-          $pseudoexist = $reqpseudo->rowCount(); /* fonction qui compte le nombre de colonne existante pour ce que l'on a rentré */
+          $pseudoexist = $reqpseudo->rowCount(); /* Fonction qui compte le nombre de colonnes existantes pour ce que l'on a rentré */
           if($pseudoexist == 0) {
             if($mail == $mail2) {
-              if(filter_var($mail, FILTER_VALIDATE_EMAIL)) { /* fonction qui permet de voir si c'est bien un email */
+              if(filter_var($mail, FILTER_VALIDATE_EMAIL)) { /* Fonction qui permet de voir si c'est bien un email */
                 $reqmail = $bdd->prepare("SELECT * FROM client WHERE Email = ?");
                 $reqmail->execute(array($mail));
                 $mailexist = $reqmail->rowCount();
@@ -46,12 +46,12 @@
                     $insertmbr = $bdd->prepare("INSERT INTO client(Pseudo, Email, MotDePasse, Nom, Prenom, Civilite, Telephone, AvatarUrl) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
                     $insertmbr->execute(array($pseudo, $mail, $mdp, $nom, $prenom, $civilite, $telephone, $avatarurl));
                     $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"./accueil.php\"><br />Revenir sur la page d'accueil</a>";
-                    
+
                   } else {
                     $erreur = "Vos mots de passes ne correspondent pas !";
                   }
                 } else {
-                  $erreur = "Le Adresse mail déjà utilisée !";
+                  $erreur = "L'adresse mail est déjà utilisée !";
                   //
                 }
               } else {
@@ -73,7 +73,7 @@
     ?>
 
     <!-- formulaire d'inscription -->
-    <div>
+    <div align="center">
       <h1>Inscription</h1>
       <br/>
       <form method="POST" action="">
@@ -85,7 +85,7 @@
               <label for="pseudo">Pseudo :</label>
             </td>
             <td>
-              <input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" /> <!--permet de laisser afficher apres validation si erreur-->
+              <input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" /> <!--Permet de laisser affiché après validation si erreur-->
             </td>
           </tr>
 
@@ -125,7 +125,7 @@
             </td>
           </tr>
 
-          <!-- nom -->
+          <!-- Nom -->
           <tr>
             <td align="right">
               <label for="nom">Nom :</label>
@@ -135,7 +135,7 @@
             </td>
           </tr>
 
-          <!-- prenom -->
+          <!-- Prénom -->
           <tr>
             <td align="right">
               <label for="prenom">Prénom :</label>
@@ -145,7 +145,7 @@
             </td>
           </tr>
 
-          <!-- telephone -->
+          <!-- Téléphone -->
           <tr>
             <td align="right">
               <label for="telephone">Téléphone :</label>
@@ -155,14 +155,14 @@
             </td>
           </tr>
 
-          <!-- civilite -->
+          <!--Civilité-->
           <tr>
             <td align="right">
-              <label>civilite :</label>
+              <label>Civilité :</label>
             </td>
             <td>
-              <input type="radio" name="civilite" value="homme" checked> homme<br>
-              <input type="radio" name="civilite" value="femme"> femme<br>
+              <input type="radio" name="civilite" value="homme" checked> Homme<br>
+              <input type="radio" name="civilite" value="femme"> Femme<br>
             </td>
           </tr>
 

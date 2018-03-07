@@ -31,10 +31,10 @@
           $_SESSION['mail'] = $userinfo['Email'];
           $_SESSION['avatarurl'] = $userinfo['AvatarUrl'];
 
-          //remplachement du header("Location: index.php); par du js a cause d'une erreur
+          //Remplacement du header("Location: index.php); par du js à cause d'une erreur
           echo '<script> document.location.replace("accueil.php"); </script>';
         } else {
-          $erreur = "<br />Mauvais pseudo ou mot de passe !";
+          $erreur = "<br />Mauvais pseudo ou mauvais mot de passe !";
         }
       } else {
         $erreur = "<br />Tous les champs doivent être complétés !";
@@ -59,7 +59,7 @@
     </div>
 
     <div id="inscription">
-      <a href="inscription.php"><br />Bonjour. Toujours pas inscrit ? Rejoignez le club Ô'Tako ;-)</a>
+      <a href="inscription.php"><br />Bonjour, toujours pas inscrit ? Rejoignez le club Ô'Tako ;-)</a>
     </div>
 
     <?php include './assets/php/footer.php'; ?>

@@ -25,7 +25,7 @@
           </form>
         </div>
         <div class="rectangle">
-          <div class="stars1"></div> <div class="etplus" style="top: 10px;" >&plus</div> <!-- Met le "&plus" en face des étoiles -->
+          <div class="stars1"></div> <div class="etplus" style="top: 10px;">&plus</div> <!-- Met le "&plus" en face des étoiles -->
           <div class="stars2"></div> <div class="etplus" style="top: 45px;">&plus</div>
           <div class="stars3"></div> <div class="etplus" style="top: 80px;">&plus</div>
           <div class="stars4"></div> <div class="etplus" style="top: 115px;">&plus</div>
@@ -36,20 +36,20 @@
     <div class="col-md-8" style="display: inline-block;">
       <div class="container articleBox">
         <?php
-        //création de requet sql
-        // TODO: faire de requet sql en fonction de chix dans le menu (navbar)
+        //Création de la requête sql
+        // TODO: Faire la requête sql en fonction du choix dans le menu (navbar)
         $reqproduit = $bdd->prepare("SELECT * FROM produits");
         $reqproduit->execute();
         $dbrep = $reqproduit->fetchAll();
 
-        //chargement des produit du catalogue
+        //Chargement des produits du catalogue
         foreach ($dbrep as $row) {
-          //recuperée l'image par raport a l'id du produit
+          //Récupère l'image par raport à l'id du produit
           $reqphotoproduit = $bdd->prepare("SELECT * FROM photoproduit WHERE IDPhotoProduit = ?");
           $reqphotoproduit->execute(array($row["IDProduit"]));
           $produitexist = $reqphotoproduit->rowCount();
 
-          //test si il y a une photo pour le produit ou pas
+          //Teste s'il y a une photo pour le produit ou pas
           if ($produitexist == 0) {
             $imgproduit = './assets/img/defaultproduitimg.jpg';
           }else {
@@ -57,7 +57,7 @@
             $imgproduit = './assets/img/imagesUpload/'.$imgproduitrep["Photo"];
           }
 
-          //afficher le produit
+          //Afficher le produit
           echo '<a href="produit.php?id='.$row["IDProduit"].'" class="articleElm">
           <div class="articleNom">
           '.$row["LibelleProduit"].'
