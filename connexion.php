@@ -62,7 +62,7 @@
     </div>
 
     <div id="inscription">
-      <a href="inscription.php"><br />Bonjour, toujours pas inscrit ? Rejoignez le club Ô'Tako ;-)</a>
+      <a href="inscription.php"><br />Toujours pas inscrit ? Rejoins le club Ô'Tako 🐙</a>
     </div>
 
     <?php include './assets/php/footer.php'; ?>
