@@ -205,7 +205,7 @@
                 <img class="rounded mx-auto d-block" src="assets/img/4424460.jpg" data-bs-hover-animate="pulse" style="width:422px; max-width:none; height:385px;">
               </div>
               <div class="m-2">
-                <img src="" style="width:80px;height: 80px;">
+                <img src="" data-image-id="" style="width:80px;height: 80px;">
                 <img src="" style="width:80px;height: 80px;">
                 <img src="" style="width:80px;height: 80px;">
                 <img src="" style="width:80px;height: 80px;">
