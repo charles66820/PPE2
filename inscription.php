@@ -85,7 +85,7 @@
           <!-- pseudo -->
           <tr>
             <td align="right">
-              <label for="pseudo">Pseudo :</label>
+              <label for="pseudo">Pseudo : </label>
             </td>
             <td>
               <input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" /> <!--Permet de laisser affiché après validation si erreur-->
@@ -95,7 +95,7 @@
           <!-- mail -->
           <tr>
             <td align="right">
-              <label for="mail">Mail :</label>
+              <label for="mail">Mail : </label>
             </td>
             <td>
               <input type="email" placeholder="Votre mail" id="mail" name="mail" value="<?php if(isset($mail)) { echo $mail; } ?>" />
@@ -103,7 +103,7 @@
           </tr>
           <tr>
             <td align="right">
-              <label for="mail2">Confirmation du mail :</label>
+              <label for="mail2">Confirmation du mail : </label>
             </td>
             <td>
               <input type="email" placeholder="Confirmez votre mail" id="mail2" name="mail2" value="<?php if(isset($mail2)) { echo $mail2; } ?>" />
@@ -113,7 +113,7 @@
           <!-- mdp -->
           <tr>
             <td align="right">
-              <label for="mdp">Mot de passe :</label>
+              <label for="mdp">Mot de passe : </label>
             </td>
             <td>
               <input type="password" placeholder="Votre mot de passe" id="mdp" name="mdp" />
@@ -121,7 +121,7 @@
           </tr>
           <tr>
             <td align="right">
-              <label for="mdp2">Confirmation du mot de passe :</label>
+              <label for="mdp2">Confirmation du mot de passe : </label>
             </td>
             <td>
               <input type="password" placeholder="Confirmez votre mdp" id="mdp2" name="mdp2" />
@@ -131,7 +131,7 @@
           <!-- Nom -->
           <tr>
             <td align="right">
-              <label for="nom">Nom :</label>
+              <label for="nom">Nom : </label>
             </td>
             <td>
               <input type="nom" placeholder="Votre nom" id="nom" name="nom" value="<?php if(isset($nom)) { echo $nom; } ?>" />
@@ -141,7 +141,7 @@
           <!-- Prénom -->
           <tr>
             <td align="right">
-              <label for="prenom">Prénom :</label>
+              <label for="prenom">Prénom : </label>
             </td>
             <td>
               <input type="prenom" placeholder="Votre prénom" id="prenom" name="prenom" value="<?php if(isset($prenom)) { echo $prenom; } ?>" />
@@ -151,7 +151,7 @@
           <!-- Téléphone -->
           <tr>
             <td align="right">
-              <label for="telephone">Téléphone :</label>
+              <label for="telephone">Téléphone : </label>
             </td>
             <td>
               <input type="telephone" placeholder="Votre n° de téléphone" id="telephone" name="telephone" value="<?php if(isset($telephone)) { echo $telephone; } ?>" />
@@ -161,11 +161,11 @@
           <!--Civilité-->
           <tr>
             <td align="right">
-              <label>Civilité :</label>
+              <label>Civilité : </label>
             </td>
             <td>
-              <input type="radio" name="civilite" value="homme" checked> Homme<br>
-              <input type="radio" name="civilite" value="femme"> Femme<br>
+              <input type="radio" name="civilite" value="homme" checked>Homme<br>
+              <input type="radio" name="civilite" value="femme">Femme<br>
             </td>
           </tr>
 
