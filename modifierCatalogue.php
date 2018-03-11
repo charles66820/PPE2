@@ -10,6 +10,9 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
       <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
       <link rel="stylesheet" href="./assets/css/catalogue.css">
+      <link rel="stylesheet" href="./assets/css/Footer-Clean.css">
+      <link rel="stylesheet" href="./assets/css/Pretty-Footer.css">
+      <link rel="stylesheet" href="./assets/css/stylesF.css">
   </head>
   <body>
     <?php
@@ -28,22 +31,22 @@
     </div>
     <div class="container articleBox">
       <?php
-        //création de requet sql
-        // TODO: faire de requet sql en fonction de chix dans le menu (navbar)
+        //création de requête sql
+        // TODO: faire la requête sql en fonction du choix dans le menu (navbar)
         $reqproduit = $bdd->prepare("SELECT * FROM produits");
         $reqproduit->execute();
         $dbrep = $reqproduit->fetchAll();
 
         //chargement des produits du catalogue
         foreach ($dbrep as $row) {
-          //recuperée l'image par raport a l'id du produit
+          //recuperer l'image par rapport à l'id du produit
           $reqphotoproduit = $bdd->prepare("SELECT * FROM photoproduit WHERE IDPhotoProduit = ?");
           $reqphotoproduit->execute(array($row["IDProduit"]));
           $produitexist = $reqphotoproduit->rowCount();
 
-          //test si il y a une photo pour le produit ou pas
+          //teste s'il y a une photo pour le produit ou pas
           if ($produitexist == 0) {
-            $imgproduit = './assets/img/defaultproduitimg.jpg';
+            $imgproduit = './assets/img/defaultproduitimg.png';
           }else {
             $imgproduitrep = $reqphotoproduit->fetch();
             $imgproduit = './assets/img/imagesUpload/'.$imgproduitrep["Photo"];
@@ -71,7 +74,7 @@
       }else {
       ?>
       <div class="container mt-3 text-center">
-        <font color="red">vous n'avais pas le drois d'accséder a cette pages</font>
+        <font color="red">Vous n'avez pas les droits pour accéder à cette page!</font>
       </div>
       <?php
       }

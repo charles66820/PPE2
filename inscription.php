@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/Footer-Clean.css">
+    <link rel="stylesheet" href="./assets/css/Pretty-Footer.css">
+    <link rel="stylesheet" href="./assets/css/stylesF.css">
     <!-- <link rel="stylesheet" href="./assets/css/inscription.css"> -->
   </head>
   <body>
@@ -16,9 +19,9 @@
     //navbar
     include './assets/php/nav.php';
 
-    //tretement inscription
+    //Traitement inscription
     if(isset($_POST['forminscription'])) {
-      $pseudo = htmlspecialchars($_POST['pseudo']); /* fonction qui permet d'enlever tous les caractères html */
+      $pseudo = htmlspecialchars($_POST['pseudo']); /* Fonction qui permet d'enlever tous les caractères html */
       $mail = htmlspecialchars($_POST['mail']);
       $mail2 = htmlspecialchars($_POST['mail2']);
       $mdp = sha1($_POST['mdp']); /* fonction qui permet la sécurisation du mdp */
@@ -27,17 +30,17 @@
       $prenom = htmlspecialchars($_POST['prenom']);
       $civilite = htmlspecialchars($_POST['civilite']);
       $telephone = htmlspecialchars($_POST['telephone']);
-      $avatarurl = 'defaultavatarurl.svg';
+      $avatarurl = 'defaultavatarurl.png';
 
       if(!empty($_POST['pseudo']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) {
-        $pseudolength = strlen($pseudo); /* trouve le nombre de caractère */
+        $pseudolength = strlen($pseudo); /* Trouve le nombre de caractères */
         if($pseudolength <= 20) {
           $reqpseudo = $bdd->prepare("SELECT * FROM client WHERE Pseudo = ?");
           $reqpseudo->execute(array($pseudo));
-          $pseudoexist = $reqpseudo->rowCount(); /* fonction qui compte le nombre de colonne existante pour ce que l'on a rentré */
+          $pseudoexist = $reqpseudo->rowCount(); /* Fonction qui compte le nombre de colonnes existantes pour ce que l'on a rentré */
           if($pseudoexist == 0) {
             if($mail == $mail2) {
-              if(filter_var($mail, FILTER_VALIDATE_EMAIL)) { /* fonction qui permet de voir si c'est bien un email */
+              if(filter_var($mail, FILTER_VALIDATE_EMAIL)) { /* Fonction qui permet de voir si c'est bien un email */
                 $reqmail = $bdd->prepare("SELECT * FROM client WHERE Email = ?");
                 $reqmail->execute(array($mail));
                 $mailexist = $reqmail->rowCount();
@@ -51,7 +54,7 @@
                     $erreur = "Vos mots de passes ne correspondent pas !";
                   }
                 } else {
-                  $erreur = "Le Adresse mail déjà utilisée !";
+                  $erreur = "L'adresse mail est déjà utilisée !";
                   //
                 }
               } else {
@@ -82,17 +85,17 @@
           <!-- pseudo -->
           <tr>
             <td align="right">
-              <label for="pseudo">Pseudo :</label>
+              <label for="pseudo">Pseudo : </label>
             </td>
             <td>
-              <input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" /> <!--permet de laisser afficher apres validation si erreur-->
+              <input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" /> <!--Permet de laisser affiché après validation si erreur-->
             </td>
           </tr>
 
           <!-- mail -->
           <tr>
             <td align="right">
-              <label for="mail">Mail :</label>
+              <label for="mail">Mail : </label>
             </td>
             <td>
               <input type="email" placeholder="Votre mail" id="mail" name="mail" value="<?php if(isset($mail)) { echo $mail; } ?>" />
@@ -100,7 +103,7 @@
           </tr>
           <tr>
             <td align="right">
-              <label for="mail2">Confirmation du mail :</label>
+              <label for="mail2">Confirmation du mail : </label>
             </td>
             <td>
               <input type="email" placeholder="Confirmez votre mail" id="mail2" name="mail2" value="<?php if(isset($mail2)) { echo $mail2; } ?>" />
@@ -110,7 +113,7 @@
           <!-- mdp -->
           <tr>
             <td align="right">
-              <label for="mdp">Mot de passe :</label>
+              <label for="mdp">Mot de passe : </label>
             </td>
             <td>
               <input type="password" placeholder="Votre mot de passe" id="mdp" name="mdp" />
@@ -118,51 +121,56 @@
           </tr>
           <tr>
             <td align="right">
-              <label for="mdp2">Confirmation du mot de passe :</label>
+              <label for="mdp2">Confirmation du mot de passe : </label>
             </td>
             <td>
               <input type="password" placeholder="Confirmez votre mdp" id="mdp2" name="mdp2" />
             </td>
           </tr>
 
-          <!-- nom -->
+          <!-- Nom -->
           <tr>
             <td align="right">
-              <label for="nom">Nom :</label>
+              <label for="nom">Nom : </label>
             </td>
             <td>
               <input type="nom" placeholder="Votre nom" id="nom" name="nom" value="<?php if(isset($nom)) { echo $nom; } ?>" />
             </td>
           </tr>
 
-          <!-- prenom -->
+          <!-- Prénom -->
           <tr>
             <td align="right">
-              <label for="prenom">Prénom :</label>
+              <label for="prenom">Prénom : </label>
             </td>
             <td>
               <input type="prenom" placeholder="Votre prénom" id="prenom" name="prenom" value="<?php if(isset($prenom)) { echo $prenom; } ?>" />
             </td>
           </tr>
 
-          <!-- telephone -->
+          <!-- Téléphone -->
           <tr>
             <td align="right">
-              <label for="telephone">Téléphone :</label>
+              <label for="telephone">Téléphone : </label>
             </td>
             <td>
               <input type="telephone" placeholder="Votre n° de téléphone" id="telephone" name="telephone" value="<?php if(isset($telephone)) { echo $telephone; } ?>" />
             </td>
           </tr>
 
-          <!-- civilite -->
+          <!--Civilité-->
           <tr>
             <td align="right">
-              <label>civilite :</label>
+              <label>Civilité : </label>
             </td>
             <td>
+<<<<<<< HEAD
               <input type="radio" name="civilite" value="homme" checked> Monsieur<br>
               <input type="radio" name="civilite" value="femme"> Madame<br>
+=======
+              <input type="radio" name="civilite" value="homme" checked>Homme<br>
+              <input type="radio" name="civilite" value="femme">Femme<br>
+>>>>>>> 2a53c0a3de590404a4ac4a48a39e369e77cd30c6
             </td>
           </tr>
 

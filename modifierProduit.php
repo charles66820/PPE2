@@ -38,47 +38,53 @@
   </head>
   <body>
     <?php
-    //vaérification du drois d'accsé
+    //vérification du droit d'accès
     if (isset($_SESSION['id']) && $_SESSION['pseudo'] == 'Admin') {
 
-      //teste si la propriéter id est présente
+      //teste si la propriétée id est présente
       if (isset($_GET['id'])) {
 
-        //test si il y a un id set
+        //teste s'il y a un id set
         if (!empty($_GET['id'])) {
 
-          //si le boutton Valider est clicker
+          //si le bouton "Valider" est clické
           if (isset($_POST['formmodifierproduit'])) {
 
-            //variable
+            //variables
             $idproduit = $_POST['idproduit'];
             $nomproduit = htmlspecialchars($_POST['nomproduit']);
-            $prix = intval(htmlspecialchars($_POST['prix']));
+            $prix = floatval(htmlspecialchars($_POST['prix']));
             $reference = htmlspecialchars($_POST['reference']);
             $quantite = intval(htmlspecialchars($_POST['quantite']));
             $categorie = intval(htmlspecialchars($_POST['categorie']));
             $description = htmlspecialchars($_POST['description']);
+            $taille = intval(htmlspecialchars($_POST['taille']));
 
-
-            //test si les champs ne son pas vide
+            //teste si les champs ne sont pas vides
             if (!empty($_POST['nomproduit']) && !empty($_POST['prix']) && !empty($_POST['reference']) && !empty($_POST['quantite']) && !empty($_POST['categorie']) && !empty($_POST['description'])) {
 
-              //test si les type son correcte
+              //teste si les types son correctes
               if (is_numeric($_POST['prix']) && is_numeric($_POST['quantite']) && is_numeric($_POST['categorie'])) {
 
-                //vairiffie si la référence n'existe pas
+                //vérifie si la référence n'existe pas
                 $reqref = $bdd->prepare("SELECT * FROM produits WHERE Reference = ? AND IDProduit != ?");
                 $reqref->execute(array($reference, $idproduit));
                 $refexist = $reqref->rowCount();
                 if($refexist == 0) {
-                  //update le produit
-                  $insertproduit = $bdd->prepare("UPDATE produits SET LibelleProduit = ?, PrixUnitaireHT = ?, Reference = ?, QuantiteProduit = ?, IdCategorie = ?, DescriptionProduit = ? WHERE IDProduit = ?");
-                  $insertproduit->execute(array($nomproduit, $prix, $reference, $quantite, $categorie, $description, $idproduit));
 
-                  //teste si il y a une image envoyer
+                  if (empty($_POST['taille'])) {
+                    //update le produit
+                    $updateproduit = $bdd->prepare("UPDATE produits SET LibelleProduit = ?, PrixUnitaireHT = ?, Reference = ?, QuantiteProduit = ?, IdCategorie = ?, DescriptionProduit = ? WHERE IDProduit = ?");
+                    $updateproduit->execute(array($nomproduit, $prix, $reference, $quantite, $categorie, $description, $idproduit));
+                  }else {
+                    $updateproduit = $bdd->prepare("UPDATE produits SET LibelleProduit = ?, PrixUnitaireHT = ?, Reference = ?, QuantiteProduit = ?, IdCategorie = ?, DescriptionProduit = ?, idtaille = ? WHERE IDProduit = ?");
+                    $updateproduit->execute(array($nomproduit, $prix, $reference, $quantite, $categorie, $description, $idproduit, $taille));
+                  }
+
+                  //teste s'il y a une image envoyée
                   if (!empty($_POST['ingsJSON'])) {
 
-                    // TODO: insére dans photoproduit le photo avec $idproduit
+                    // TODO: insère dans photoproduit la photo avec $idproduit
 
                     echo '<script> console.log("image teeeeest"); document.location.replace("modifierCatalogue.php")</script>';
 
@@ -86,30 +92,33 @@
                     echo '<script> console.log("Pas d\'image ajouter. Image par default utiliser"); document.location.replace("modifiercatalogue.php")</script>';
                   }
                 }else {
-                  $erreur = "La reference \"".$reference."\" est déjà utilisé !";
+                  $erreur = "La référence \"".$reference."\" est déjà utilisée !";
                 }
               }else {
-                $erreur = "Le champ Prix Unitair HT et/ou Quantité ne dois comptenir que des chiffre !";
+                $erreur = "Le champ Prix Unitair HT et/ou Quantité ne doit contenir que des chiffres !";
               }
             }else {
               $erreur = "Tous les champs doivent être complétés !";
             }
           }
 
-          //charge les information actuelle du produit
+          //charge les informations actuelles du produit
 
           //sql SELECT * FROM produit where
           $reqproduit = $bdd->prepare("SELECT * FROM produits WHERE IDProduit = ?");
           $reqproduit->execute(array($_GET['id']));
           $dbrep = $reqproduit->fetch();
 
-          //le resultat remplie des variable
+          //le resultat remplis des variables
           $nomproduit = $dbrep["LibelleProduit"];
           $prix = $dbrep["PrixUnitaireHT"];
           $reference = $dbrep["Reference"];
           $quantite = $dbrep["QuantiteProduit"];
           $categorie = $dbrep["IdCategorie"];
           $description = $dbrep["DescriptionProduit"];
+          if (isset($dbrep["idtaille"])) {
+            $taille = $dbrep["idtaille"];
+          }
       ?>
 
       <!-- pour modifier un produit -->
@@ -127,13 +136,13 @@
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
-                    <label class="mr-1">Prix Unitair HT :</label>
+                    <label class="mr-1">Prix Unitaire HT :</label>
                     <input type="text" class="form-control" name="prix" id="" value="<?php echo $prix ?>">
                   </div>
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
-                    <label class="mr-1">Reference :</label>
+                    <label class="mr-1">Référence :</label>
                     <input type="text" class="form-control" name="reference" id="" value="<?php echo $reference ?>">
                   </div>
                 </div>
@@ -145,10 +154,10 @@
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
-                    <label class="mr-1">categorie :</label>
+                    <label class="mr-1">Catégorie :</label>
                     <select class="form-control" name="categorie" id="">
                       <?php
-                      //charge les categorie
+                      //charge les categories
                       $reqcategorie = $bdd->prepare("SELECT * FROM categorie");
                       $reqcategorie->execute();
                       $categorieinfo = $reqcategorie->fetchAll();
@@ -163,14 +172,38 @@
                     </select>
                   </div>
                 </div>
+                <?php
+                  if (isset($dbrep["idtaille"])) {
+                ?>
+                <div class="col-sm-5">
+                  <div class="form-inline m-2">
+                    <label class="mr-1">taille :</label>
+                    <select class="form-control" name="taille" id="taille">
+                      <?php
+                      //charge les categorie
+                      $reqcategorie = $bdd->prepare("SELECT * FROM taille");
+                      $reqcategorie->execute();
+                      $categorieinfo = $reqcategorie->fetchAll();
+                      foreach ($categorieinfo as $row) {
+                        if ($row["IdCategorie"] == $taille) {
+                          echo '<option value="'.$row["idtaille"].'" selected="selected">'.$row["libelleTaille"].'</option>';
+                        }else {
+                          echo '<option value="'.$row["idtaille"].'">'.$row["libelleTaille"].'</option>';
+                        }
+                      }
+                      ?>
+                    </select>
+                  </div>
+                </div>
+                <?php } ?>
               </div>
               <div class="form-group m-2">
-                <label class="mr-1">description :</label>
+                <label class="mr-1">Description :</label>
                 <textarea class="form-control" rows="5" name="description" id="" style="min-height:100px;"><?php echo $description ?></textarea>
               </div>
             </div>
 
-            <!-- gestion des image -->
+            <!-- gestion des images -->
             <div class="col-xl-6">
               <div class="m-2" style="overflow:auto">
                 <img class="rounded mx-auto d-block" src="assets/img/4424460.jpg" data-bs-hover-animate="pulse" style="width:422px; max-width:none; height:385px;">
@@ -204,7 +237,7 @@
         }else {
       ?>
       <div class="container mt-3 text-center">
-        <font color="red">Erreur : aucun produit selectionner</font>
+        <font color="red">Erreur : aucun produit selectionné</font>
         <button type="button" class="btn btn-danger btn-lg" onclick="document.location.replace('modifiercatalogue.php')">Retour</button>
       </div>
       <?php
@@ -212,7 +245,7 @@
       }else {
       ?>
       <div class="container mt-3 text-center">
-        <font color="red">Erreur : propriéter id introuvable</font>
+        <font color="red">Erreur : propriétée id introuvable</font>
         <button type="button" class="btn btn-danger btn-lg" onclick="document.location.replace('modifiercatalogue.php')">Retour</button>
       </div>
       <?php
@@ -220,7 +253,7 @@
     }else {
     ?>
     <div class="container mt-3 text-center">
-      <font color="red">vous n'avais pas le drois d'accséder a cette pages</font>
+      <font color="red">Vous n'avez pas les droits pour accéder à cette page</font>
     </div>
     <?php
     }

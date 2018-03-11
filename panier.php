@@ -1,6 +1,6 @@
 <?php
-session_start();
-include_once("fonctions-panier.php");
+include("assets/php/setting.bdd.php");
+include("assets/php/fonctions-panier.php");
 
 $erreur = false;
 
@@ -20,7 +20,7 @@ if($action !== null)
    //On verifie que $p soit un float
    $p = floatval($p);
 
-   //On traite $q qui peut etre un entier simple ou un tableau d'entier
+   //On traite $q qui peut être un entier simple ou un tableau d'entiers
 
    if (is_array($q)){
       $quantiteArticle = array();

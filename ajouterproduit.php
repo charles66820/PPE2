@@ -38,51 +38,59 @@
   </head>
   <body>
     <?php
-    //vaérification du drois d'accsé
+    //Vérification du droit d'accès
     if (isset($_SESSION['id']) && $_SESSION['pseudo'] == 'Admin') {
 
-      //si le boutton Valider est clicker
+      //Si on clique sur le bouton "valider"
       if (isset($_POST['formajouterproduit'])) {
 
-        //variable
+        //Variables
         $nomproduit = htmlspecialchars($_POST['nomproduit']);
-        $prix = intval(htmlspecialchars($_POST['prix']));
+        $prix = floatval(htmlspecialchars($_POST['prix']));
         $reference = htmlspecialchars($_POST['reference']);
         $quantite = intval(htmlspecialchars($_POST['quantite']));
         $categorie = intval(htmlspecialchars($_POST['categorie']));
         $description = htmlspecialchars($_POST['description']);
+        $taille = intval(htmlspecialchars($_POST['taille']));
 
 
-        //test si les champs ne son pas vide
+        //Teste si les champs ne sont pas vides
         if (!empty($_POST['nomproduit']) && !empty($_POST['prix']) && !empty($_POST['reference']) && !empty($_POST['quantite']) && !empty($_POST['categorie']) && !empty($_POST['description'])) {
 
-          //test si les type son correcte
+          //Teste si les types sont correctes
           if (is_numeric($_POST['prix']) && is_numeric($_POST['quantite']) && is_numeric($_POST['categorie'])) {
 
-            //vairiffie si la référence n'existe pas
+            //Vérifie si la référence n'existe pas
             $reqref = $bdd->prepare("SELECT Reference FROM produits WHERE Reference = ?");
             $reqref->execute(array($reference));
             $refexist = $reqref->rowCount();
             if($refexist == 0) {
-              //ajoute le produit
-              $insertproduit = $bdd->prepare("INSERT INTO produits(LibelleProduit, PrixUnitaireHT, Reference, QuantiteProduit, IdCategorie, DescriptionProduit) VALUES(?, ?, ?, ?, ?, ?)");
-              $insertproduit->execute(array($nomproduit, $prix, $reference, $quantite, $categorie, $description));
+              //test si il y a une taille
+              if (empty($_POST['taille'])) {
+                //Ajoute le produit
+                $insertproduit = $bdd->prepare("INSERT INTO produits(LibelleProduit, PrixUnitaireHT, Reference, QuantiteProduit, IdCategorie, DescriptionProduit) VALUES(?, ?, ?, ?, ?, ?)");
+                $insertproduit->execute(array($nomproduit, $prix, $reference, $quantite, $categorie, $description));
+              }else {
+                //Ajoute le produit
+                $insertproduit = $bdd->prepare("INSERT INTO produits(LibelleProduit, PrixUnitaireHT, Reference, QuantiteProduit, IdCategorie, DescriptionProduit, idtaille) VALUES(?, ?, ?, ?, ?, ?, ?)");
+                $insertproduit->execute(array($nomproduit, $prix, $reference, $quantite, $categorie, $description, $taille));
+              }
 
-              //teste si il y a une image envoyer
+              //Teste s'il y a une image envoyée
               if (!empty($_POST['ingsJSON'])) {
                 $reqProduitId = $bdd->prepare("SELECT IDProduit FROM produits WHERE Reference = ?");
                 $reqProduitId->execute(array($reference));
-                // TODO: insére dans photoproduit le photo avec idproduit
+                // TODO: Insère dans photoproduit la photo avec idproduit
                 echo '<script> console.log("image teeeeest"); document.location.replace("modifierCatalogue.php")</script>';
 
               }else {
-                echo '<script> console.log("Pas d\'image ajouter. Image par default utiliser"); document.location.replace("modifierCatalogue.php")</script>';
+                echo '<script> console.log("Pas d\'image ajouter. Image par default utiliser"); document.location.replace("modifiercatalogue.php")</script>';
               }
             }else {
               $erreur = "La reference \"".$reference."\" est déjà utilisé !";
             }
           }else {
-            $erreur = "Le champ Prix Unitair HT et/ou Quantité ne dois comptenir que des chiffre !";
+            $erreur = "Le champ Prix Unitaire HT et/ou Quantité ne doit contenir que des chiffres !";
           }
         }else {
           $erreur = "Tous les champs doivent être complétés !";
@@ -90,7 +98,7 @@
       }
       ?>
 
-      <!-- pour ajouter un produit -->
+      <!-- Pour ajouter un produit -->
       <div class="container">
         <h1>Ajouter un produit</h1>
         <form action="" method="post">
@@ -105,13 +113,13 @@
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
-                    <label class="mr-1">Prix Unitair HT :</label>
+                    <label class="mr-1">Prix Unitaire HT :</label>
                     <input type="text" class="form-control" name="prix" id="">
                   </div>
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
-                    <label class="mr-1">Reference :</label>
+                    <label class="mr-1">Référence :</label>
                     <input type="text" class="form-control" name="reference" id="">
                   </div>
                 </div>
@@ -123,7 +131,7 @@
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
-                    <label class="mr-1">categorie :</label>
+                    <label class="mr-1">Catégorie :</label>
                     <select class="form-control" name="categorie" id="">
                       <?php
                       //charge les categorie
@@ -137,9 +145,25 @@
                     </select>
                   </div>
                 </div>
+                <div class="col-sm-5">
+                  <div class="form-inline m-2">
+                    <label class="mr-1">taille :</label>
+                    <select class="form-control" name="" id="taille">
+                      <?php
+                      //charge les categorie
+                      $reqcategorie = $bdd->prepare("SELECT * FROM taille");
+                      $reqcategorie->execute();
+                      $categorieinfo = $reqcategorie->fetchAll();
+                      foreach ($categorieinfo as $row) {
+                        echo '<option value="'.$row["idtaille"].'">'.$row["libelleTaille"].'</option>';
+                      }
+                      ?>
+                    </select>
+                  </div>
+                </div>
               </div>
               <div class="form-group m-2">
-                <label class="mr-1">description :</label>
+                <label class="mr-1">Description :</label>
                 <textarea class="form-control" rows="5" name="description" id="" style="min-height:100px;"></textarea>
               </div>
             </div>
@@ -161,7 +185,7 @@
                 </div>
               </div>
             </div>
-            <!-- contien la liste des image en JSON -->
+            <!-- Contient la liste des images en JSON -->
             <input type="text" name="ingsJSON" id="ingsJSON" value="" style="display:none;">
           </div>
           <div class="container mt-3 text-center">
@@ -179,12 +203,13 @@
       }else {
       ?>
       <div class="container mt-3 text-center">
-        <font color="red">vous n'avais pas le drois d'accséder a cette pages</font>
+        <font color="red">Vous n'avez pas les droits pour accéder à cette page</font>
       </div>
       <?php
       }
       ?>
     <script src="./assets/js/jquery-3.3.1.min.js"></script>
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="'assets/js/ajouterproduit.js'"></script>
   </body>
 </html>

@@ -28,22 +28,22 @@
           <li class="dropdown">
             <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Figurines</a>
             <div class="dropdown-menu" role="menu">
-              <a class="dropdown-item" role="presentation" href="catalogue.php?">Pop</a>
-              <a class="dropdown-item" role="presentation" href="catalogue.php?">Nenedoroid</a>
-              <a class="dropdown-item" role="presentation" href="catalogue.php?">Officiel</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=pop">Catégorie Pop</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=nenedoroid">Catégorie Nenedoroid</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=officiel">Catégorie figurines officielles</a>
             </div>
           </li>
           <li class="dropdown">
-            <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Vêtement </a>
+            <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Vêtements</a>
             <div class="dropdown-menu" role="menu">
-              <a class="dropdown-item" role="presentation" href="catalogue.php?">Homme</a>
-              <a class="dropdown-item" role="presentation" href="catalogue.php?">Femme</a>
-              <a class="dropdown-item" role="presentation" href="catalogue.php?">Enfant</a>
-              <a class="dropdown-item" role="presentation" href="catalogue.php?">Cosplay</a>
-              <a class="dropdown-item" role="presentation" href="catalogue.php?">Kigurumi</a>
-              <a class="dropdown-item" role="presentation" href="catalogue.php?">Bijoux</a>
-              <a class="dropdown-item" role="presentation" href="catalogue.php?">Sous-vêtements</a>
-              <a class="dropdown-item" role="presentation" href="catalogue.php?">Bonnets & Casquettes</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=vetement&type=homme">Hommes</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=vetement&type=femme">Femmes</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=vetement&type=enfant">Enfants</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=vetement&type=cosplay">Cosplays</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=vetement&type=kigurumi">Kigurumi</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=vetement&type=bijoux">Bijoux</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=vetement&type=sous_vetements">Sous-vêtements</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=vetement&type=bonnets_casquettes">Bonnets & Casquettes</a>
             </div>
           </li>
           <li class="nav-item" role="presentation">

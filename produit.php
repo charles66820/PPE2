@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/Footer-Clean.css">
+    <link rel="stylesheet" href="./assets/css/Pretty-Footer.css">
+    <link rel="stylesheet" href="./assets/css/stylesF.css">
   </head>
 
   <body>
@@ -28,10 +31,10 @@
           </div>
           <div class="col-md-4">
             <div>
-              <h1 class="text-capitalize text-center">nom du produit</h1>
+              <h1 class="text-capitalize text-center">Nom du produit</h1>
             </div>
             <div>
-              <h5 class="text-left text-success"><i class="fa fa-check"></i>&nbsp;Produit disponible x stock</h5>
+              <h5 class="text-left text-success"><i class="fa fa-check"></i>&nbsp;Produit disponible en stock</h5>
               <h5 class="text-left text-danger"><i class="fa fa-close"></i>&nbsp;Produit indisponible</h5>
             </div>
             <div>
@@ -57,9 +60,9 @@
               <h1>Description&nbsp;</h1>
             </div>
           <div>
-            <p><i class="icon ion-android-send"></i>Paragraph</p>
-            <p><i class="icon ion-android-send"></i>Paragraph</p>
-            <p><i class="icon ion-android-send"></i>Paragraph</p>
+            <p><i class="icon ion-android-send"></i>Paragraphe</p>
+            <p><i class="icon ion-android-send"></i>Paragraphe</p>
+            <p><i class="icon ion-android-send"></i>Paragraphe</p>
           </div>
         </div>
       </div>

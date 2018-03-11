@@ -1,31 +1,28 @@
-<footer style="margin-top: 100px;">
-  <div class="highlight-phone">
-    <div class="container">
-      <div class="row">
+<footer style="background-color:rgb(23,50,77);">
+    <div class="row">
         <div class="col-sm-6 col-md-4 footer-navigation">
-          <h3><a href="accueil.php">O<span>'Tako </span></a></h3>
-          <p class="links"><a href="accueil.php">Accueil</a><strong> · </strong><a href="accueil.php">Sécurité</a><strong> · </strong><a href="accueil.php">Livraison</a><strong> · </strong><a href="accueil.php">Paiement</a><strong> · </strong></p>
-          <p class="company-name">Company Name © 2015 </p>
+            <h3><a style="font-size:60px;" href="../accueil.php">Ô '<span>&nbsp;Tako</span></a></h3>
+            <p class="links"><a href="../accueil.php">Accueil</a><strong> ·
+            </strong><a href="#">Sécurité</a><strong> ·
+            </strong><a href="#">Livraison</a><strong> ·
+            </strong><a href="#">Paiement</a><strong> ·
+            </strong><a href="#">Assistance</a><a href="#"></a></p>
         </div>
         <div class="col-sm-6 col-md-4 footer-contacts">
-          <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
-            <p><span class="new-line-span">Lycée Jean Lurcat </span> Perpignan, France</p>
-          </div>
-          <div><i class="fa fa-phone footer-contacts-icon"></i>
-            <p class="footer-center-info email text-left">+33 123 456 78</p>
-          </div>
-          <div><i class="fa fa-envelope footer-contacts-icon"></i>
-            <p><a href="#" target="_blank">Ô'tako@tako.com</a></p>
-          </div>
+            <div><span class="fa fa-map-marker footer-contacts-icon" style="background-color:rgb(21,107,159);"> </span>
+                <p><span class="new-line-span">21 Revolution Street</span> Paris, France</p>
+            </div>
+            <div><i class="fa fa-phone footer-contacts-icon" style="background-color:rgb(21,107,159);"></i>
+                <p class="footer-center-info email text-left"> +1 555 123456</p>
+            </div>
+            <div><i class="fa fa-envelope footer-contacts-icon" style="background-color:rgb(21,107,159);"></i>
+                <p> <a href="#">support@company.com</a></p>
+            </div>
         </div>
         <div class="clearfix"></div>
         <div class="col-md-4 footer-about">
-          <h4>About the company</h4>
-          <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
-          </p>
-          <div class="social-links social-icons"></div>
+            <h4>Remerciment&nbsp;</h4>
+            <p> Nous vous remercions d'avoir visiter notre site de vente. Nous espéreons de vous revoir très bientôt. MERCI !&nbsp;</p>
         </div>
-      </div>
     </div>
-  </div>
 </footer>
