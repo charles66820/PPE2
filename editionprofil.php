@@ -59,7 +59,7 @@
             <!--pseudo-->
             <tr>
               <td align="right">
-                <label>Pseudo :</label>
+                <label>Pseudo : </label>
               </td>
               <td>
                 <input type="text" name="newpseudo" placeholder="Pseudo" value="<?php echo $user['pseudo']; ?>" />
@@ -68,7 +68,7 @@
             <!--mail-->
             <tr>
               <td align="right">
-                <label>Mail :</label>
+                <label>Mail : </label>
               </td>
               <td>
                 <input type="text" name="newmail" placeholder="Mail" value="<?php echo $user['mail']; ?>" />
@@ -77,7 +77,7 @@
             <!--mdp-->
             <tr>
               <td align="right">
-                <label>Mot de passe :</label>
+                <label>Mot de passe : </label>
               </td>
               <td>
                 <input type="password" name="newmdp1" placeholder="Mot de passe"/>
@@ -86,7 +86,7 @@
             <!--mdp2-->
             <tr>
               <td align="right">
-                <label>Confirmation du mot de passe :</label>
+                <label>Confirmation du mot de passe : </label>
               </td>
               <td>
                 <input type="password" name="newmdp2" placeholder="Confirmation du mdp" />
@@ -101,7 +101,7 @@
                 <!-- n° et voie -->
                 <tr>
                   <td align="right">
-                    <label for="Voie">N° et voie :</label>
+                    <label for="Voie">N° et voie : </label>
                   </td>
                   <td>
                     <input type="text" placeholder="N° et voie" id="Voie" name="Voie" value="<?php if(isset($Voie)) { echo $Voie; } ?>" />
@@ -110,7 +110,7 @@
                 <!--complement d'adresse-->
                 <tr>
                   <td align="right">
-                    <label for="Complement">Complément d'adresse :</label>
+                    <label for="Complement">Complément d'adresse : </label>
                   </td>
                   <td>
                     <input type="text" placeholder="Complément d'adresse" id="Complement" name="Complement" value="<?php if(isset($Complement)) { echo $Complement; } ?>" />
@@ -119,7 +119,7 @@
                 <!--code postal-->
                 <tr>
                   <td align="right">
-                    <label for="CodePostal">Code postal :</label>
+                    <label for="CodePostal">Code postal : </label>
                   </td>
                   <td>
                     <input type="text" placeholder="Code postal" id="CodePostal" name="CodePostal" value="<?php if(isset($CodePostal)) { echo $CodePostal; } ?>" />
@@ -128,7 +128,7 @@
                 <!--Ville-->
                 <tr>
                   <td align="right">
-                    <label for="Ville">Ville :</label>
+                    <label for="Ville">Ville : </label>
                   </td>
                   <td>
                     <input type="text" placeholder="Ville" id="Ville" name="Ville" value="<?php if(isset($Ville)) { echo $Ville; } ?>" />
@@ -137,7 +137,7 @@
                 <!--pays-->
                 <tr>
                   <td align="right">
-                    <label for="Pays">Pays :</label>
+                    <label for="Pays">Pays : </label>
                   </td>
                   <td>
                     <input type="text" placeholder="Pays" id="Pays" name="Pays" value="<?php if(isset($Pays)) { echo $Pays; } ?>" />
