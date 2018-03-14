@@ -39,7 +39,7 @@
         <img src="./assets/img/promo13.jpg" alt>
         <img src="./assets/img/promo12.jpg" alt>
         <img src="./assets/img/promo14.jpg" alt>
-        <img src="./assets/img/promo4.jpg" alt>
+        <img src="./assets/img/promo3.jpg" alt>
         <img src="./assets/img/promo5.jpg" alt>
         <img src="./assets/img/promo1.jpg" alt>
       </figure>
