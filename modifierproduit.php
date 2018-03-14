@@ -172,13 +172,10 @@
                     </select>
                   </div>
                 </div>
-                <?php
-                  if (isset($dbrep["idtaille"])) {
-                ?>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">taille :</label>
-                    <select class="form-control" name="taille" id="taille">
+                    <select class="form-control" name="" id="taille">
                       <?php
                       //charge les categorie
                       $reqcategorie = $bdd->prepare("SELECT * FROM taille");
@@ -195,7 +192,6 @@
                     </select>
                   </div>
                 </div>
-                <?php } ?>
               </div>
               <div class="form-group m-2">
                 <label class="mr-1">Description :</label>
@@ -209,7 +205,7 @@
                 <img class="rounded mx-auto d-block" src="assets/img/4424460.jpg" data-bs-hover-animate="pulse" style="width:422px; max-width:none; height:385px;">
               </div>
               <div class="m-2">
-                <img src="" style="width:80px;height: 80px;">
+                <img src="" data-image-id="" style="width:80px;height: 80px;">
                 <img src="" style="width:80px;height: 80px;">
                 <img src="" style="width:80px;height: 80px;">
                 <img src="" style="width:80px;height: 80px;">

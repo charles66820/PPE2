@@ -50,7 +50,7 @@
             <a class="nav-link active" href="panier.php"><img class="imgPanier" src="./assets/img/panier.png"/>   Panier</a>
           </li>
           <?php
-          //test si un client est connecter
+          //test si un client est connecté
           if (isset($_SESSION['id'])) {
 
             //affiche les pages de gestion de l'admin
@@ -75,7 +75,7 @@
             </li>
             ';
           }else {
-            //afficher le menu par default
+            //afficher le menu par defaut
             echo '
             <li class="dropdown">
               <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Compte </a>
