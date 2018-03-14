@@ -65,7 +65,7 @@
             $reqref->execute(array($reference));
             $refexist = $reqref->rowCount();
             if($refexist == 0) {
-              //test si il y a une taille
+              //Teste s'il y a une taille
               if (empty($_POST['taille'])) {
                 //Ajoute le produit
                 $insertproduit = $bdd->prepare("INSERT INTO produits(LibelleProduit, PrixUnitaireHT, Reference, QuantiteProduit, IdCategorie, DescriptionProduit) VALUES(?, ?, ?, ?, ?, ?)");
