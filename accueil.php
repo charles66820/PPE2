@@ -41,7 +41,7 @@
         <img src="./assets/img/promo14.jpg" alt>
         <img src="./assets/img/promo3.jpg" alt>
         <img src="./assets/img/promo5.jpg" alt>
-        <img src="./assets/img/promo1.jpg" alt>
+        <img src="./assets/img/promo13.jpg" alt>
       </figure>
     </div>
     <?php include './assets/php/footer.php'; ?>
