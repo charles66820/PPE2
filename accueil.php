@@ -36,12 +36,12 @@
     <!-- pauline -->
     <div id="slider">
       <figure>
-        <img src="./assets/img/promo1.jpg" alt>
-        <img src="./assets/img/promo2.jpg" alt>
+        <img src="./assets/img/promo13.jpg" alt>
+        <img src="./assets/img/promo12.jpg" alt>
+        <img src="./assets/img/promo14.jpg" alt>
         <img src="./assets/img/promo3.jpg" alt>
-        <img src="./assets/img/promo4.jpg" alt>
         <img src="./assets/img/promo5.jpg" alt>
-        <img src="./assets/img/promo1.jpg" alt>
+        <img src="./assets/img/promo13.jpg" alt>
       </figure>
     </div>
     <?php include './assets/php/footer.php'; ?>
