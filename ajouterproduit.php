@@ -134,7 +134,7 @@
                     <label class="mr-1">Catégorie :</label>
                     <select class="form-control" name="categorie" id="">
                       <?php
-                      //charge les categorie
+                      //charge les categories
                       $reqcategorie = $bdd->prepare("SELECT * FROM categorie");
                       $reqcategorie->execute();
                       $categorieinfo = $reqcategorie->fetchAll();
@@ -154,7 +154,7 @@
                     <label class="mr-1">taille :</label>
                     <select class="form-control" name="" id="taille">
                       <?php
-                      //charge les categorie
+                      //charge les categories
                       $reqcategorie = $bdd->prepare("SELECT * FROM taille");
                       $reqcategorie->execute();
                       $categorieinfo = $reqcategorie->fetchAll();
@@ -176,7 +176,7 @@
               </div>
             </div>
 
-            <!-- gestion des image -->
+            <!-- gestion des images -->
             <div class="col-xl-6">
               <div class="m-2" style="overflow:auto">
                 <img class="rounded mx-auto d-block" src="assets/img/4424460.jpg" data-bs-hover-animate="pulse" style="width:422px; max-width:none; height:385px;">

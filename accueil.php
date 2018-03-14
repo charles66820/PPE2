@@ -33,7 +33,7 @@
         </div>
       </div>
     </div>
-    <!-- pauline -->
+  
     <div id="slider">
       <figure>
         <img src="./assets/img/promo13.jpg" alt>
