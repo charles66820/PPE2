@@ -46,7 +46,7 @@
 
           //teste s'il y a une photo pour le produit ou pas
           if ($produitexist == 0) {
-            $imgproduit = './assets/img/defaultproduitimg.jpg';
+            $imgproduit = './assets/img/defaultproduitimg.png';
           }else {
             $imgproduitrep = $reqphotoproduit->fetch();
             $imgproduit = './assets/img/imagesUpload/'.$imgproduitrep["Photo"];
