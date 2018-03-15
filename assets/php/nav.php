@@ -28,9 +28,9 @@
           <li class="dropdown">
             <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Figurines</a>
             <div class="dropdown-menu" role="menu">
-              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=pop">Catégorie Pop</a>
-              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=nenedoroid">Catégorie Nenedoroid</a>
-              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=officiel">Catégorie figurines officielles</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=pop">Pop</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=nenedoroid">Nenedoroid</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=officiel">Figurines officielles</a>
             </div>
           </li>
           <li class="dropdown">
