@@ -55,14 +55,14 @@
                   }
 
                   //teste s'il y a une image envoyée
-                  if (!empty($_POST['ingsJSON'])) {
+                  if (!empty($_POST['imgsJSON'])) {
 
                     //récuper l'id des photoproduit par raport au produit id
                     $selectIdImageExiste = $bdd->prepare("SELECT IDPhotoProduit FROM photoproduit WHERE IDProduit = ?");
                     $selectIdImageExiste->execute(array($idproduit));
                     $idImageExiste = $selectIdImageExiste->fetchAll();
 
-                    $listeDesImages = json_decode($_POST['ingsJSON'], true);
+                    $listeDesImages = json_decode($_POST['imgsJSON'], true);
                     foreach ($listeDesImages as $image) {//pour chaque image
                       if ($image["id"] == null) {//test si l'image est nouvelle
                         //on ajoute l'image
@@ -235,7 +235,7 @@
               </div>
             </div>
             <!-- Contient la liste des images en JSON -->
-            <input type="hidden" name="ingsJSON" id="ingsJSON" value="">
+            <input type="hidden" name="imgsJSON" id="imgsJSON" value="">
           </div>
           <div class="container mt-3 text-center">
             <button type="button" class="btn btn-danger float-left btn-lg" id="btncancel">Annuler</button>
@@ -274,9 +274,10 @@
     <?php
     }
     ?>
-    <script src="./assets/js/jquery-3.3.1.min.js"></script>
-    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/functionimage.js"></script>
+    <script src="assets/js/adminimage.js"></script>
     <script src="assets/js/image.js"></script>
   </body>
 </html>

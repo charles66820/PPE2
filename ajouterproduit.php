@@ -7,34 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="icon" href="./assets/img/logoIcon.gif"/>
       <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-      <style>
-        .addx{
-          vertical-align: middle;
-          position: relative;
-          width: 80px;
-          height: 80px;
-          display: inline-block;
-          box-shadow: 0 0 2px 0px rgba(0,0,0,0.2);
-        }
-        .line-x{
-          top: calc(50% - 12px);
-          left: calc(50% - 40px);
-          width: 80px;
-          height: 24px;
-          background-color: #eee;
-          position: absolute;
-          border-radius: 8px;
-        }
-        .line-y{
-          top: calc(50% - 40px);
-          left: calc(50% - 12px);
-          width: 24px;
-          height: 80px;
-          background-color: #eee;
-          position: absolute;
-          border-radius: 8px;
-        }
-      </style>
+      <link href="assets/css/images.css" rel="stylesheet">
   </head>
   <body>
     <?php
@@ -75,17 +48,28 @@
                 $insertproduit = $bdd->prepare("INSERT INTO produits(LibelleProduit, PrixUnitaireHT, Reference, QuantiteProduit, IdCategorie, DescriptionProduit, idtaille) VALUES(?, ?, ?, ?, ?, ?, ?)");
                 $insertproduit->execute(array($nomproduit, $prix, $reference, $quantite, $categorie, $description, $taille));
               }
+              echo "test".$_POST['imgsJSON'] ;
+              //teste s'il y a une image envoyée
+              if (!empty($_POST['imgsJSON'])) {
 
-              //Teste s'il y a une image envoyée
-              if (!empty($_POST['ingsJSON'])) {
-                $reqProduitId = $bdd->prepare("SELECT IDProduit FROM produits WHERE Reference = ?");
-                $reqProduitId->execute(array($reference));
-                // TODO: Insère dans photoproduit la photo avec idproduit
-                //echo '<script> console.log("image teeeeest"); document.location.replace("modifiercatalogue.php")</script>';
+                $listeDesImages = json_decode($_POST['imgsJSON'], true);
+                foreach ($listeDesImages as $image) {//pour chaque image
+                  //selectionne l'id du produit grace a ça referance
+                  $reqProduitId = $bdd->prepare("SELECT IDProduit FROM produits WHERE Reference = ?");
+                  $reqProduitId->execute(array($reference));
+                  $ProduitId = $reqProduitId->fetch();
 
-              }else {
-                echo '<script> console.log("Pas d\'image ajouter. Image par default utiliser"); document.location.replace("modifiercatalogue.php")</script>';
+                    //on ajoute l'image
+                    $insertPhotoProduit = $bdd->prepare("INSERT INTO photoproduit(IDProduit, Photo) VALUES(?, ?)");
+                    $insertPhotoProduit->execute(array($ProduitId['IDProduit'], $image["imagename"]));
+
+                }
+
+                echo '<script> document.location.replace("modifiercatalogue.php")</script>';
+
               }
+              echo '<script> console.log("Pas d\'image ajouter. Image par default utiliser"); document.location.replace("modifiercatalogue.php")</script>';
+
             }else {
               $erreur = "La reference \"".$reference."\" est déjà utilisé !";
             }
@@ -176,34 +160,53 @@
               </div>
             </div>
 
-            <!-- gestion des images -->
+            <!-- gestion des image -->
             <div class="col-xl-6">
-              <div class="m-2" style="overflow:auto">
-                <img class="rounded mx-auto d-block" src="assets/img/4424460.jpg" data-bs-hover-animate="pulse" style="width:422px; max-width:none; height:385px;">
+              <div class="m-2" style="overflow:auto; position:relative">
+                <img class="rounded mx-auto d-block" id="imgproduit" src="" data-bs-hover-animate="pulse" style="width:422px; max-width:none; height:385px;">
+                <button type="button" class="btn btn-danger" id="btmremoveimgproduit">X</button>
+                <button type="button" class="btn btn-warning m-1" id="btmmodifiimgproduit">changer l'image</button>
+                <div id="addimgproduit" style="position:absolute; background-color:white; top:0; left:0; width:100%; height:100%; min-width:422px; display:none; border: 2px solid rgba(0, 0, 0, 0);">
+                  <div class="container text-center" style="position:absolute; top: 0; bottom: 0; margin: auto; height: 50%;">
+                    <h2 id="tiredropimg" class="text-primary">Envoyer une image</h2>
+                    <p class="text-primary">Glissé déposer votre image ou cliqué ici.</p>
+                    <div id="progressbarimg" class="progress" style="display:none">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:0%">0%</div>
+                    </div>
+                    <button type="button" class="btn btn-danger m-2" style="display:none" id="btmcancelmodifiimgproduit">annuler</button>
+                  </div>
+                </div>
+                  <input type="file" style="display:none;">
               </div>
-              <div class="m-2">
-                <img src="" style="width:80px;height:80px;">
-                <img src="" style="width:80px;height:80px;">
-                <img src="" style="width:80px;height:80px;">
-                <img src="" style="width:80px;height:80px;">
-                <img src="" style="width:80px;height:80px;">
-                <div class="addx" id="">
+              <div class="m-2" id="listimgproduit">
+                <?php
+                //récupére le nom et l'id des photo du produit
+                $reqphotoproduit = $bdd->prepare("SELECT * FROM photoproduit WHERE IDProduit = ?");
+                $reqphotoproduit->execute(array($_GET['id']));
+                $photosProduit = $reqphotoproduit->fetchAll();
+                //affiche les images qui sont existente dans la bdd
+                foreach ($photosProduit as $photo) {
+                  echo '<img src="assets/img/imagesupload/'.$photo["Photo"].'" data-image-id="'.$photo["IDPhotoProduit"].'" style="width:80px;height: 80px; margin:0 2px">';
+                }
+                ?>
+                <div class="addx" id="btmaddimgproduit">
                   <div class="line-x"></div>
                   <div class="line-y"></div>
                 </div>
               </div>
             </div>
             <!-- Contient la liste des images en JSON -->
-            <input type="hidden" name="ingsJSON" id="ingsJSON" value="">
+            <input type="hidden" name="imgsJSON" id="imgsJSON" value="">
           </div>
           <div class="container mt-3 text-center">
-            <button type="button" class="btn btn-danger float-left btn-lg" onclick="document.location.replace('modifiercatalogue.php')">Annuler</button>
+            <button type="button" class="btn btn-danger float-left btn-lg" id="btncancel">Annuler</button>
             <?php
             if(isset($erreur)) {
               echo '<font color="red">'.$erreur."</font>";
             }
             ?>
-            <button type="submit" name="formajouterproduit" class="btn btn-success float-right btn-lg">Valider</button>
+            <input type="text" name="idproduit" value="<?php if(isset($_GET['id'])) { echo $_GET['id'];} ?>" style="display:none">
+            <button type="submit" name="formajouterproduit" class="btn btn-success float-right btn-lg" id="btndone">Valider</button>
           </div>
         </form>
       </div>
@@ -216,8 +219,11 @@
       <?php
       }
       ?>
-    <script src="./assets/js/jquery-3.3.1.min.js"></script>
-    <script src="./assets/js/bootstrap.bundle.min.js"></script>
-    <script src="'assets/js/ajouterproduit.js'"></script>
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/ajouterproduit.js"></script>
+    <script src="assets/js/functionimage.js"></script>
+    <script src="assets/js/adminimage.js"></script>
+    <script src="assets/js/image.js"></script>
   </body>
 </html>

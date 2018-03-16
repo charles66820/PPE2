@@ -19,6 +19,8 @@
     include './assets/php/nav.php';
     if (isset($_SESSION['id']) && $_SESSION['pseudo'] == 'Admin') {
       if (isset($_POST['delproduit'])) {
+        $reqdel = $bdd->prepare("DELETE FROM photoproduit WHERE IDProduit = ?");
+        $reqdel->execute(array($_POST['id']));
         $reqdel = $bdd->prepare("DELETE FROM produits WHERE IDProduit = ?");
         $reqdel->execute(array($_POST['id']));
       }

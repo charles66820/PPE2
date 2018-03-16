@@ -2,7 +2,6 @@
 
 //affichie image avec son index
 function showimgbyindex() {
-  console.log(indeximage);
   if (listimgproduit.children[indeximage].src != "") {
     $("#imgproduit").attr("src", listimgproduit.children[indeximage].src);
     $("#addimgproduit").hide();
