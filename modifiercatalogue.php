@@ -40,7 +40,7 @@
         //chargement des produits du catalogue
         foreach ($dbrep as $row) {
           //recuperer l'image par rapport à l'id du produit
-          $reqphotoproduit = $bdd->prepare("SELECT * FROM photoproduit WHERE IDPhotoProduit = ?");
+          $reqphotoproduit = $bdd->prepare("SELECT * FROM photoproduit WHERE IDProduit = ?");
           $reqphotoproduit->execute(array($row["IDProduit"]));
           $produitexist = $reqphotoproduit->rowCount();
 
@@ -49,7 +49,7 @@
             $imgproduit = './assets/img/defaultproduitimg.png';
           }else {
             $imgproduitrep = $reqphotoproduit->fetch();
-            $imgproduit = './assets/img/imagesUpload/'.$imgproduitrep["Photo"];
+            $imgproduit = './assets/img/imagesupload/'.$imgproduitrep["Photo"];
           }
 
           //afficher le produit
@@ -60,7 +60,7 @@
               <img src="'.$imgproduit.'" alt="">
             </div>
             <div class="text-center m-1">
-              <button type="button" class="btn btn-warning" onclick="document.location.replace(\'modifierproduit.php?id='.$row["IDProduit"].'\')">Modifier</button>
+              <button type="button" class="btn btn-warning" onclick="document.location.href = \'modifierproduit.php?id='.$row["IDProduit"].'\'">Modifier</button>
             </div>
             <div class="text-center" style="width: 182px; float: left;">
               <form class="" action="" method="post">

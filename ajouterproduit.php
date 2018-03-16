@@ -81,7 +81,7 @@
                 $reqProduitId = $bdd->prepare("SELECT IDProduit FROM produits WHERE Reference = ?");
                 $reqProduitId->execute(array($reference));
                 // TODO: Insère dans photoproduit la photo avec idproduit
-                echo '<script> console.log("image teeeeest"); document.location.replace("modifiercatalogue.php")</script>';
+                //echo '<script> console.log("image teeeeest"); document.location.replace("modifiercatalogue.php")</script>';
 
               }else {
                 echo '<script> console.log("Pas d\'image ajouter. Image par default utiliser"); document.location.replace("modifiercatalogue.php")</script>';
@@ -194,7 +194,7 @@
               </div>
             </div>
             <!-- Contient la liste des images en JSON -->
-            <input type="text" name="ingsJSON" id="ingsJSON" value="" style="display:none;">
+            <input type="hidden" name="ingsJSON" id="ingsJSON" value="">
           </div>
           <div class="container mt-3 text-center">
             <button type="button" class="btn btn-danger float-left btn-lg" onclick="document.location.replace('modifiercatalogue.php')">Annuler</button>

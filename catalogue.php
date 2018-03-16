@@ -61,7 +61,7 @@
         //Chargement des produits du catalogue
         foreach ($dbrep as $row) {
           //Récupère l'image par raport à l'id du produit
-          $reqphotoproduit = $bdd->prepare("SELECT * FROM photoproduit WHERE IDPhotoProduit = ?");
+          $reqphotoproduit = $bdd->prepare("SELECT * FROM photoproduit WHERE IDProduit = ?");
           $reqphotoproduit->execute(array($row["IDProduit"]));
           $produitexist = $reqphotoproduit->rowCount();
 
@@ -70,7 +70,7 @@
             $imgproduit = './assets/img/defaultproduitimg.png';
           }else {
             $imgproduitrep = $reqphotoproduit->fetch();
-            $imgproduit = './assets/img/imagesUpload/'.$imgproduitrep["Photo"];
+            $imgproduit = './assets/img/imagesupload/'.$imgproduitrep["Photo"];
           }
 
           //Afficher le produit
