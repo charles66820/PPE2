@@ -6,7 +6,7 @@
             </strong><a href="#">Sécurité</a><strong> ·
             </strong><a href="#">Livraison</a><strong> ·
             </strong><a href="#">Paiement</a><strong> ·
-            </strong><a href="#">Assistance</a><a href="#"></a></p>
+            </strong><a href="#">Assistance</a></p>
         </div>
         <div class="col-sm-6 col-md-4 footer-contacts">
             <div><span class="fa fa-map-marker footer-contacts-icon" style="background-color:rgb(21,107,159);"> </span>
@@ -22,7 +22,7 @@
         <div class="clearfix"></div>
         <div class="col-md-4 footer-about">
             <h4>Remerciment&nbsp;</h4>
-            <p> Nous vous remercions d'avoir visiter notre site de vente. Nous espéreons de vous revoir très bientôt. MERCI !&nbsp;</p>
+            <p> Nous vous remercions d'avoir visité notre site de vente. Nous espérons vous revoir très bientôt.&nbsp;</p>
         </div>
     </div>
 </footer>

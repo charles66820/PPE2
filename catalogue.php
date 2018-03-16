@@ -81,9 +81,6 @@
           <div class="imgBox">
             <img src="'.$imgproduit.'" alt="">
           </div>
-          <div class="articleNom">testtttt
-          './*$row["description"].*/'
-          </div>
           <div class="stars3_5'./*stars0_5 ou stars4_5*/'" style="height: 35px; width: 182px; float: left;">
           </div>
           <div class="articlePrix">

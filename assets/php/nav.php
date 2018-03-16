@@ -28,9 +28,9 @@
           <li class="dropdown">
             <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Figurines</a>
             <div class="dropdown-menu" role="menu">
-              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=pop">Catégorie Pop</a>
-              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=nenedoroid">Catégorie Nenedoroid</a>
-              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=officiel">Catégorie figurines officielles</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=pop">Pop</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=nenedoroid">Nenedoroid</a>
+              <a class="dropdown-item" role="presentation" href="catalogue.php?categorie=officiel">Figurines officielles</a>
             </div>
           </li>
           <li class="dropdown">
@@ -50,7 +50,7 @@
             <a class="nav-link active" href="panier.php"><img class="imgPanier" src="./assets/img/panier.png"/>   Panier</a>
           </li>
           <?php
-          //test si un client est connecter
+          //test si un client est connecté
           if (isset($_SESSION['id'])) {
 
             //affiche les pages de gestion de l'admin
@@ -75,7 +75,7 @@
             </li>
             ';
           }else {
-            //afficher le menu par default
+            //afficher le menu par defaut
             echo '
             <li class="dropdown">
               <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Compte </a>
