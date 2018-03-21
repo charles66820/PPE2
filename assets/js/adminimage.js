@@ -149,14 +149,14 @@ $(function() {
   }).next().on("change", function(e){
     uploadimg(e.target.files[0]);// IDEA: multiple images
   })
-  document.getElementById('addimgproduit').ondrop = function(e) {
+  document.getElementById('addimgproduit').addEventListener("drop", function(e) {
     $(this).css({"border":"solid 2px rgba(255, 255, 255, 0)", "background-color":"rgb(255, 255, 255)"});
     e.preventDefault();
     $("#tiredropimg").text("Envois de l'image en cous").next().hide();
     $("#progressbarimg").css({"display":"inherit"}).next().hide();
     uploadimg(e.dataTransfer.files[0]);// IDEA: multiple images
     e.stopPropagation();
-  }
+  }, false)
 
 
   //annuler et valider
