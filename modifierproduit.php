@@ -278,6 +278,5 @@
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/functionimage.js"></script>
     <script src="assets/js/adminimage.js"></script>
-    <script src="assets/js/image.js"></script>
   </body>
 </html>

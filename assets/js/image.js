@@ -1,5 +1,5 @@
 //variable
-let indeximage;//let = var
+let indeximage = 0;//let = var
 let listimgproduit = document.getElementById('listimgproduit');
 
 $(function() {
