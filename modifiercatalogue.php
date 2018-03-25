@@ -4,19 +4,19 @@
       <meta charset="UTF-8">
       <title></title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="icon" href="./assets/img/logoIcon.gif"/>
+      <link rel="icon" href="/assets/img/logoIcon.gif"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
-      <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-      <link rel="stylesheet" href="./assets/css/catalogue.css">
-      <link rel="stylesheet" href="./assets/css/Footer-Clean.css">
-      <link rel="stylesheet" href="./assets/css/Pretty-Footer.css">
-      <link rel="stylesheet" href="./assets/css/stylesF.css">
+      <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/assets/css/catalogue.css">
+      <link rel="stylesheet" href="/assets/css/Footer-Clean.css">
+      <link rel="stylesheet" href="/assets/css/Pretty-Footer.css">
+      <link rel="stylesheet" href="/assets/css/stylesF.css">
   </head>
   <body>
     <?php
-    include './assets/php/nav.php';
+    include 'assets/php/nav.php';
     if (isset($_SESSION['id']) && $_SESSION['pseudo'] == 'Admin') {
       if (isset($_POST['delproduit'])) {
         $reqdel = $bdd->prepare("DELETE FROM photoproduit WHERE IDProduit = ?");
@@ -48,10 +48,10 @@
 
           //teste s'il y a une photo pour le produit ou pas
           if ($produitexist == 0) {
-            $imgproduit = './assets/img/defaultproduitimg.png';
+            $imgproduit = '/assets/img/defaultproduitimg.png';
           }else {
             $imgproduitrep = $reqphotoproduit->fetch();
-            $imgproduit = './assets/img/imagesupload/'.$imgproduitrep["Photo"];
+            $imgproduit = '/assets/img/imagesupload/'.$imgproduitrep["Photo"];
           }
 
           //afficher le produit
@@ -82,8 +82,8 @@
       }
       ?>
     </div>
-    <?php include './assets/php/footer.php'; ?>
-    <script src="./assets/js/jquery-3.3.1.min.js"></script>
-    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <?php include 'assets/php/footer.php'; ?>
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

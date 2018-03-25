@@ -4,24 +4,24 @@
     <meta charset="utf-8">
     <title>Untitled</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./assets/img/logoIcon.gif"/>
+    <link rel="icon" href="/assets/img/logoIcon.gif"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/Footer-Clean.css">
-    <link rel="stylesheet" href="./assets/css/Pretty-Footer.css">
-    <link rel="stylesheet" href="./assets/css/stylesF.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/Footer-Clean.css">
+    <link rel="stylesheet" href="/assets/css/Pretty-Footer.css">
+    <link rel="stylesheet" href="/assets/css/stylesF.css">
   </head>
 
   <body>
-    <?php include './assets/php/nav.php'; ?>
+    <?php include 'assets/php/nav.php'; ?>
     <div>
       <div class="container">
         <div class="row">
           <div class="col-md-8">
             <div class="m-2" style="overflow:auto; position:relative">
-              <img class="rounded mx-auto d-block" id="imgproduit" src="assets/img/defaultproduitimg.png" data-bs-hover-animate="pulse" style="width:422px; max-width:none; height:385px;">
+              <img class="rounded mx-auto d-block" id="imgproduit" src="/assets/img/defaultproduitimg.png" data-bs-hover-animate="pulse" style="width:422px; max-width:none; height:385px;">
             </div>
 
             <div class="m-2" id="listimgproduit">
@@ -32,7 +32,7 @@
               $photosProduit = $reqphotoproduit->fetchAll();
               //affiche les images qui sont existente dans la bdd
               foreach ($photosProduit as $photo) {
-                echo '<img src="assets/img/imagesupload/'.$photo["Photo"].'" data-image-id="'.$photo["IDPhotoProduit"].'" style="width:80px;height: 80px; margin:0 2px">';
+                echo '<img src="/assets/img/imagesupload/'.$photo["Photo"].'" data-image-id="'.$photo["IDPhotoProduit"].'" style="width:80px;height: 80px; margin:0 2px">';
               }
               ?>
             </div>
@@ -108,10 +108,10 @@
         </div>
       </div>
     </div>
-    <?php include './assets/php/footer.php'; ?>
-    <script src="./assets/js/jquery-3.3.1.min.js"></script>
-    <script src="./assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/image.js"></script>
-    <!-- <script src="assets/js/script.min.js"></script> -->
+    <?php include 'assets/php/footer.php'; ?>
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/image.js"></script>
+    <!-- <script src="/assets/js/script.min.js"></script> -->
 </body>
 </html>

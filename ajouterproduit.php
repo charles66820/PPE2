@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<?php include './assets/php/setting.bdd.php'; ?>
+<?php include 'assets/php/setting.bdd.php'; ?>
 <html lang="en">
   <head>
       <meta charset="UTF-8">
       <title>Modifier un produit</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="icon" href="./assets/img/logoIcon.gif"/>
-      <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-      <link href="assets/css/images.css" rel="stylesheet">
+      <link rel="icon" href="/assets/img/logoIcon.gif"/>
+      <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+      <link href="/assets/css/images.css" rel="stylesheet">
   </head>
   <body>
     <?php
@@ -186,7 +186,7 @@
                 $photosProduit = $reqphotoproduit->fetchAll();
                 //affiche les images qui sont existente dans la bdd
                 foreach ($photosProduit as $photo) {
-                  echo '<img src="assets/img/imagesupload/'.$photo["Photo"].'" data-image-id="'.$photo["IDPhotoProduit"].'" style="width:80px;height: 80px; margin:0 2px">';
+                  echo '<img src="/assets/img/imagesupload/'.$photo["Photo"].'" data-image-id="'.$photo["IDPhotoProduit"].'" style="width:80px;height: 80px; margin:0 2px">';
                 }
                 ?>
                 <div class="addx" id="btmaddimgproduit">
@@ -219,11 +219,11 @@
       <?php
       }
       ?>
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/ajouterproduit.js"></script>
-    <script src="assets/js/functionimage.js"></script>
-    <script src="assets/js/adminimage.js"></script>
-    <script src="assets/js/image.js"></script>
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/ajouterproduit.js"></script>
+    <script src="/assets/js/functionimage.js"></script>
+    <script src="/assets/js/adminimage.js"></script>
+    <script src="/assets/js/image.js"></script>
   </body>
 </html>

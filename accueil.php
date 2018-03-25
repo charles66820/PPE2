@@ -4,18 +4,18 @@
       <meta charset="UTF-8">
       <title>Accueil</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="icon" href="./assets/img/logoIcon.gif"/>
+      <link rel="icon" href="/assets/img/logoIcon.gif"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
-      <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-      <link rel="stylesheet" href="./assets/css/accueil.css">
-      <link rel="stylesheet" href="./assets/css/Footer-Clean.css">
-      <link rel="stylesheet" href="./assets/css/Pretty-Footer.css">
-      <link rel="stylesheet" href="./assets/css/stylesF.css">
+      <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/assets/css/accueil.css">
+      <link rel="stylesheet" href="/assets/css/Footer-Clean.css">
+      <link rel="stylesheet" href="/assets/css/Pretty-Footer.css">
+      <link rel="stylesheet" href="/assets/css/stylesF.css">
   </head>
   <body>
-    <?php include './assets/php/nav.php'; ?>
+    <?php include 'assets/php/nav.php'; ?>
     <div class="highlight-phone">
       <div class="container">
         <div class="row">
@@ -36,16 +36,16 @@
 
     <div id="slider">
       <figure>
-        <img src="./assets/img/promo13.jpg" alt>
-        <img src="./assets/img/promo12.jpg" alt>
-        <img src="./assets/img/promo14.jpg" alt>
-        <img src="./assets/img/promo15.jpg" alt>
-        <img src="./assets/img/promo5.jpg" alt>
-        <img src="./assets/img/promo13.jpg" alt>
+        <img src="/assets/img/promo13.jpg" alt>
+        <img src="/assets/img/promo12.jpg" alt>
+        <img src="/assets/img/promo14.jpg" alt>
+        <img src="/assets/img/promo15.jpg" alt>
+        <img src="/assets/img/promo5.jpg" alt>
+        <img src="/assets/img/promo13.jpg" alt>
       </figure>
     </div>
-    <?php include './assets/php/footer.php'; ?>
-    <script src="./assets/js/jquery-3.3.1.min.js"></script>
-    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <?php include 'assets/php/footer.php'; ?>
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <title>Inscription</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./assets/img/logoIcon.gif"/>
+    <link rel="icon" href="/assets/img/logoIcon.gif"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/Footer-Clean.css">
-    <link rel="stylesheet" href="./assets/css/Pretty-Footer.css">
-    <link rel="stylesheet" href="./assets/css/stylesF.css">
-    <!-- <link rel="stylesheet" href="./assets/css/inscription.css"> -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/Footer-Clean.css">
+    <link rel="stylesheet" href="/assets/css/Pretty-Footer.css">
+    <link rel="stylesheet" href="/assets/css/stylesF.css">
+    <!-- <link rel="stylesheet" href="/assets/css/inscription.css"> -->
   </head>
   <body>
     <?php
     //navbar
-    include './assets/php/nav.php';
+    include 'assets/php/nav.php';
 
     //Traitement inscription
     if(isset($_POST['forminscription'])) {
@@ -48,7 +48,7 @@
                   if($mdp == $mdp2) {
                     $insertmbr = $bdd->prepare("INSERT INTO client(Pseudo, Email, MotDePasse, Nom, Prenom, Civilite, Telephone, AvatarUrl) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
                     $insertmbr->execute(array($pseudo, $mail, $mdp, $nom, $prenom, $civilite, $telephone, $avatarurl));
-                    $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"./accueil.php\"><br />Revenir sur la page d'accueil</a>";
+                    $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"/accueil.php\"><br />Revenir sur la page d'accueil</a>";
 
                   } else {
                     $erreur = "Vos mots de passes ne correspondent pas !";
@@ -180,8 +180,8 @@
         }
       ?>
     </div>
-    <?php include './assets/php/footer.php'; ?>
-    <script src="./assets/js/jquery-3.3.1.min.js"></script>
-    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <?php include 'assets/php/footer.php'; ?>
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
