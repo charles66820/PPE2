@@ -20,13 +20,21 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8">
-            <div><img class="rounded" src="assets/img/4424460.jpg" data-bs-hover-animate="pulse" style="width:422px;max-width:none;height:385px;margin-top:27px;margin-left:66px;"></div>
-            <div>
-              <img src="assets/img/postal_pulpo_lindo_del_dibujo_animado_en_rosa-rab08a3c83fee4266ab88ca97e53546ba_vgbaq_8byvr_324.jpg" style="width:80px;">
-              <img src="assets/img/postal_pulpo_lindo_del_dibujo_animado_en_rosa-rab08a3c83fee4266ab88ca97e53546ba_vgbaq_8byvr_324.jpg" style="width:80px;">
-              <img src="assets/img/postal_pulpo_lindo_del_dibujo_animado_en_rosa-rab08a3c83fee4266ab88ca97e53546ba_vgbaq_8byvr_324.jpg" style="width:80px;">
-              <img src="assets/img/postal_pulpo_lindo_del_dibujo_animado_en_rosa-rab08a3c83fee4266ab88ca97e53546ba_vgbaq_8byvr_324.jpg" style="width:80px;">
-              <img src="assets/img/postal_pulpo_lindo_del_dibujo_animado_en_rosa-rab08a3c83fee4266ab88ca97e53546ba_vgbaq_8byvr_324.jpg" style="width:80px;">
+            <div class="m-2" style="overflow:auto; position:relative">
+              <img class="rounded mx-auto d-block" id="imgproduit" src="assets/img/defaultproduitimg.png" data-bs-hover-animate="pulse" style="width:422px; max-width:none; height:385px;">
+            </div>
+
+            <div class="m-2" id="listimgproduit">
+              <?php
+              //récupére le nom et l'id des photo du produit
+              $reqphotoproduit = $bdd->prepare("SELECT * FROM photoproduit WHERE IDProduit = ?");
+              $reqphotoproduit->execute(array($_GET['id']));
+              $photosProduit = $reqphotoproduit->fetchAll();
+              //affiche les images qui sont existente dans la bdd
+              foreach ($photosProduit as $photo) {
+                echo '<img src="assets/img/imagesupload/'.$photo["Photo"].'" data-image-id="'.$photo["IDPhotoProduit"].'" style="width:80px;height: 80px; margin:0 2px">';
+              }
+              ?>
             </div>
           </div>
           <div class="col-md-4">
@@ -103,6 +111,7 @@
     <?php include './assets/php/footer.php'; ?>
     <script src="./assets/js/jquery-3.3.1.min.js"></script>
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/script.min.js"></script>
+    <script src="assets/js/image.js"></script>
+    <!-- <script src="assets/js/script.min.js"></script> -->
 </body>
 </html>

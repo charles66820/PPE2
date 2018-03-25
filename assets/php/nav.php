@@ -1,4 +1,4 @@
-<?php include 'setting.bdd.php'; ?>
+<?php require 'setting.bdd.php'; ?>
 <head>
   <link rel="stylesheet" href="./assets/css/imgNav.css">
 </head>

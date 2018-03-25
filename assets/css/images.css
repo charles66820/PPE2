@@ -1,0 +1,31 @@
+.addx{
+  vertical-align: middle;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  box-shadow: 0 0 2px 0px rgba(0,0,0,0.2);
+  margin: 0 2px;
+  cursor: pointer;
+}
+.addx:hover{
+  background-color: #f8f8f8;
+}
+.line-x{
+  top: calc(50% - 12px);
+  left: calc(50% - 40px);
+  width: 80px;
+  height: 24px;
+  background-color: #eee;
+  position: absolute;
+  border-radius: 8px;
+}
+.line-y{
+  top: calc(50% - 40px);
+  left: calc(50% - 12px);
+  width: 24px;
+  height: 80px;
+  background-color: #eee;
+  position: absolute;
+  border-radius: 8px;
+}
