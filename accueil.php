@@ -40,7 +40,6 @@
         <img src="/assets/img/promo12.jpg" alt>
         <img src="/assets/img/promo14.jpg" alt>
         <img src="/assets/img/promo15.jpg" alt>
-        <img src="/assets/img/promo5.jpg" alt>
         <img src="/assets/img/promo13.jpg" alt>
       </figure>
     </div>
