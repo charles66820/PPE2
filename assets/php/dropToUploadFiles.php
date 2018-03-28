@@ -15,7 +15,7 @@ if (isset($_POST["upload"])) {
     $i++;
   }
 
-  if ($_FILES["image"]["size"] > 50000) {
+  if ($_FILES["image"]["size"] > 5000000) {
     $uploadOk = 0;
     $causeerreur = 'image trop lourde';
   }
