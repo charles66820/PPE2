@@ -6,7 +6,7 @@ if (isset($_POST["upload"])) {
   $extension = pathinfo($name, PATHINFO_EXTENSION);
   $imageFileType = strtolower($extension);
   $uploadOk = 1;
-  $causeerreur = 'inconue';
+  $causeerreur = 'inconnue';
 
   $i = 1;
   while(file_exists($path.$actual_name.".".$extension)){
@@ -15,14 +15,14 @@ if (isset($_POST["upload"])) {
     $i++;
   }
 
-  if ($_FILES["file"]["size"] > 50000) {
+  if ($_FILES["image"]["size"] > 50000) {
     $uploadOk = 0;
-    $causeerreur = 'image trops lourd';
+    $causeerreur = 'image trop lourde';
   }
 
   if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
     $uploadOk = 0;
-    $causeerreur = 'ce fichier n\'ai pas une image';
+    $causeerreur = 'ce fichier n\'est pas une image';
   }
 
   if ($uploadOk && @move_uploaded_file($_FILES["image"]["tmp_name"], $path.$name)) {
