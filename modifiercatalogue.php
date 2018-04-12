@@ -70,7 +70,7 @@
                 <button type="submit" class="btn btn-danger" name="delproduit">Supprimer</button>
               </form>
             </div>
-            <div class="articlePrix">'.$row["PrixUnitaireHT"].'</div>
+            <div class="articlePrix">'.$row["PrixUnitaireHT"].'€</div>
           </div>';
         }
       }else {
