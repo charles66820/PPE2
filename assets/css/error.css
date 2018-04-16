@@ -1,3 +1,12 @@
 .potitionerror{
-  margin: 225px auto;
+  margin: 10% auto;
+}
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+}
+section{
+  min-height: 85%;
 }
