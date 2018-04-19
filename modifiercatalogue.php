@@ -56,7 +56,7 @@
 
           //afficher le produit
           echo '
-          <div class="articleElm articleBox" style="height: 323px;">
+          <div class="articleElm articleBox" style="height: 338px;">
             <div class="articleNom">'.$row["LibelleProduit"].'</div>
             <div class="imgBox">
               <img src="'.$imgproduit.'" alt="">
