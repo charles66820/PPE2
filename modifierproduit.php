@@ -158,7 +158,7 @@
                     <select class="form-control" name="categorie" id="categorieproduit">
                       <?php
                       //charge les categories
-                      $reqcategorie = $bdd->prepare("SELECT * FROM categorie");
+                      $reqcategorie = $bdd->prepare("SELECT * FROM souscategorie");
                       $reqcategorie->execute();
                       $categorieinfo = $reqcategorie->fetchAll();
                       foreach ($categorieinfo as $row) {

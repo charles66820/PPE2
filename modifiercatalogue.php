@@ -31,7 +31,7 @@
         <button type="button" class="btn btn-success btn-lg mb-3" onclick="document.location.replace('ajouterproduit.php')">Ajouter un produit</button>
       </div>
     </div>
-    <div class="container articleBox">
+    <div class="container">
       <?php
         //création de requête sql
         // TODO: faire la requête sql en fonction du choix dans le menu (navbar)
@@ -56,7 +56,7 @@
 
           //afficher le produit
           echo '
-          <div class="articleElm" style="height: 323px;">
+          <div class="articleElm articleBox" style="height: 323px;">
             <div class="articleNom">'.$row["LibelleProduit"].'</div>
             <div class="imgBox">
               <img src="'.$imgproduit.'" alt="">

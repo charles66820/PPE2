@@ -14,18 +14,18 @@
     //Vérification du droit d'accès
     if (isset($_SESSION['id']) && $_SESSION['pseudo'] == 'Admin') {
 
+      //Variables
+      $nomproduit = isset($_POST['nomproduit'])? htmlspecialchars($_POST['nomproduit']) : '';
+      $prix = isset($_POST['prix'])? floatval(htmlspecialchars($_POST['prix'])) : '';
+      $reference = isset($_POST['reference'])? htmlspecialchars($_POST['reference']) : '';
+      $quantite = isset($_POST['quantite'])? intval(htmlspecialchars($_POST['quantite'])) : '';
+      $categorie = isset($_POST['categorie'])? intval(htmlspecialchars($_POST['categorie'])) : '';
+      $description = isset($_POST['description'])? htmlspecialchars($_POST['description']) : '';
+      $taille = isset($_POST['taille'])? intval(htmlspecialchars($_POST['taille'])) : '';
+
+
       //Si on clique sur le bouton "valider"
       if (isset($_POST['formajouterproduit'])) {
-
-        //Variables
-        $nomproduit = htmlspecialchars($_POST['nomproduit']);
-        $prix = floatval(htmlspecialchars($_POST['prix']));
-        $reference = htmlspecialchars($_POST['reference']);
-        $quantite = intval(htmlspecialchars($_POST['quantite']));
-        $categorie = intval(htmlspecialchars($_POST['categorie']));
-        $description = htmlspecialchars($_POST['description']);
-        $taille = intval(htmlspecialchars($_POST['taille']));
-
 
         //Teste si les champs ne sont pas vides
         if (!empty($_POST['nomproduit']) && !empty($_POST['prix']) && !empty($_POST['reference']) && !empty($_POST['quantite']) && !empty($_POST['categorie']) && !empty($_POST['description'])) {
@@ -119,7 +119,7 @@
                     <select class="form-control" name="categorie" id="categorieproduit">
                       <?php
                       //charge les categories
-                      $reqcategorie = $bdd->prepare("SELECT * FROM categorie");
+                      $reqcategorie = $bdd->prepare("SELECT * FROM souscategorie");
                       $reqcategorie->execute();
                       $categorieinfo = $reqcategorie->fetchAll();
                       foreach ($categorieinfo as $row) {
@@ -179,16 +179,6 @@
                   <input type="file" style="display:none;">
               </div>
               <div class="m-2" id="listimgproduit">
-                <?php
-                //récupére le nom et l'id des photo du produit
-                $reqphotoproduit = $bdd->prepare("SELECT * FROM photoproduit WHERE IDProduit = ?");
-                $reqphotoproduit->execute(array($_GET['id']));
-                $photosProduit = $reqphotoproduit->fetchAll();
-                //affiche les images qui sont existente dans la bdd
-                foreach ($photosProduit as $photo) {
-                  echo '<img src="/assets/img/imagesupload/'.$photo["Photo"].'" data-image-id="'.$photo["IDPhotoProduit"].'" style="width:80px;height: 80px; margin:0 2px">';
-                }
-                ?>
                 <div class="addx" id="btmaddimgproduit">
                   <div class="line-x"></div>
                   <div class="line-y"></div>

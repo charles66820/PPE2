@@ -22,39 +22,41 @@
     <div class="col-md-4" style="float: left; width: 280px;">
       <nav>
         <div class="range">
-          <form action="/action_page.php">
-            Prix de : <input type="range" name="points" min="0" max="100">€
+          <form>
+            <?php if (!empty($categorie)) {?><input type="hidden" name="categorie" value="<?php echo $categorie ?>"><?php } ?>
+            <?php if (!empty($type)) {?><input type="hidden" name="type" value="<?php echo $type ?>"><?php } ?>
+            <?php if (!empty($stars)) {?><input type="hidden" name="stars" value="<?php echo $stars ?>"><?php } ?>
+            Prix de : <input type="range" name="maxprice" min="0" max="200" value="<?php echo $maxprice ?>">€
+            <?php if (!empty($search)) {?><input type="hidden" name="search" value="<?php echo $search ?>"><?php } ?>
             <input type="submit">
           </form>
         </div>
         <div class="rectangle">
-        <?php
-        if ( isset($_GET['type']) && isset($_GET['categorie']) ) {
-          $categorie = "categorie=".$_GET['categorie']."&";
-          $type ="type=".$_GET['type']."&";
-        }elseif(isset($_GET['categorie'])) {
-          $categorie = "categorie=".$_GET['categorie']."&";
-          $type = '';
-        } else
-        {
-          $categorie = '';
-          $type = '';
-        }
-        ?>
-          <a href="catalogue.php?<?php echo $categorie.$type ?>stars=1"><div class="stars1"></div> <div class="etplus" style="top: 10px;">&plus</div> <a/> <!-- Met le "&plus" en face des étoiles -->
-          <a href="catalogue.php?<?php echo $categorie.$type ?>stars=2"><div class="stars2"></div> <div class="etplus" style="top: 45px;">&plus</div> <a/>
-          <a href="catalogue.php?<?php echo $categorie.$type ?>stars=3"><div class="stars3"></div> <div class="etplus" style="top: 80px;">&plus</div> <a/>
-          <a href="catalogue.php?<?php echo $categorie.$type ?>stars=4"><div class="stars4"></div> <div class="etplus" style="top: 115px;">&plus</div> <a/>
-          <a href="catalogue.php?<?php echo $categorie.$type ?>stars=5"><div class="stars5"></div> <div class="etplus" style="top: 115px;">&plus</div> <a/>
+          <a href="catalogue.php?<?php echo genurl('stars', 'stars=1'); ?>"><div class="stars1"></div> <div class="etplus" style="top: 10px;">&plus</div> <a/> <!-- Met le "&plus" en face des étoiles -->
+          <a href="catalogue.php?<?php echo genurl('stars', 'stars=2'); ?>"><div class="stars2"></div> <div class="etplus" style="top: 45px;">&plus</div> <a/>
+          <a href="catalogue.php?<?php echo genurl('stars', 'stars=3'); ?>"><div class="stars3"></div> <div class="etplus" style="top: 80px;">&plus</div> <a/>
+          <a href="catalogue.php?<?php echo genurl('stars', 'stars=4'); ?>"><div class="stars4"></div> <div class="etplus" style="top: 115px;">&plus</div> <a/>
+          <a href="catalogue.php?<?php echo genurl('stars', 'stars=5'); ?>"><div class="stars5"></div> <div class="etplus" style="top: 115px;">&plus</div> <a/>
         </div>
       </nav>
     </div>
     <div class="col-md-8" style="display: inline-block;">
-      <div class="container articleBox">
+      <div class="container">
         <?php
         //Création de la requête sql
         // TODO: Faire la requête sql en fonction du choix dans le menu (navbar)
-        $reqproduit = $bdd->prepare("SELECT * FROM produits");
+        $type;//selection les produit avec la sous categorie qui est égale a la valeur de $type
+
+
+        $stars;// selesction le produit en fontion de la moyende des avie une requet sql dans une autre avec un est plus grant ou égale (peut sajouter dans nimportquelle requet)
+        $maxprice;//selectionne les produit qui on un prix plu petit ou éguale au prix dans $maxprice (peut sajouter dans nimportquelle requet)
+        $search;//crée une requete sql qui recherche la valeur re $search dans le lbl du produit, dans la reference du produit et dans description du produit on utilise LIKE %$search% (peut sajouter dans nimportquelle requet)
+
+
+        $sql = "SELECT * FROM produits";
+
+        //récuprére les profuit avec une requet sql
+        $reqproduit = $bdd->prepare($sql);
         $reqproduit->execute();
         $dbrep = $reqproduit->fetchAll();
 
@@ -74,7 +76,7 @@
           }
 
           //Afficher le produit
-          echo '<a href="produit.php?id='.$row["IDProduit"].'" class="articleElm">
+          echo '<a href="produit.php?id='.$row["IDProduit"].'" class="articleElm articleBox">
           <div class="articleNom">
           '.$row["LibelleProduit"].'
           </div>
