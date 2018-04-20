@@ -32,12 +32,12 @@
           </form>
         </div>
         <div class="rectangle">
-          <a href="catalogue.php?<?php echo genurl('stars', 'stars=0'); ?>"><div class="stars stars0"></div> <div class="etplus">&plus</div> </a> <!-- Met le "&plus" en face des étoiles -->
-          <a href="catalogue.php?<?php echo genurl('stars', 'stars=1'); ?>"><div class="stars stars1"></div> <div class="etplus">&plus</div> </a> <!-- Met le "&plus" en face des étoiles -->
-          <a href="catalogue.php?<?php echo genurl('stars', 'stars=2'); ?>"><div class="stars stars2"></div> <div class="etplus">&plus</div> </a>
-          <a href="catalogue.php?<?php echo genurl('stars', 'stars=3'); ?>"><div class="stars stars3"></div> <div class="etplus">&plus</div> </a>
-          <a href="catalogue.php?<?php echo genurl('stars', 'stars=4'); ?>"><div class="stars stars4"></div> <div class="etplus">&plus</div> </a>
-          <a href="catalogue.php?<?php echo genurl('stars', 'stars=5'); ?>"><div class="stars stars5"></div></a>
+          <a href="catalogue.php?<?php echo genurl('stars', 'stars=0'); ?>"><div class="starsbox stars stars0"></div> <div class="etplus">&plus</div> </a> <!-- Met le "&plus" en face des étoiles -->
+          <a href="catalogue.php?<?php echo genurl('stars', 'stars=1'); ?>"><div class="starsbox stars stars1"></div> <div class="etplus">&plus</div> </a> <!-- Met le "&plus" en face des étoiles -->
+          <a href="catalogue.php?<?php echo genurl('stars', 'stars=2'); ?>"><div class="starsbox stars stars2"></div> <div class="etplus">&plus</div> </a>
+          <a href="catalogue.php?<?php echo genurl('stars', 'stars=3'); ?>"><div class="starsbox stars stars3"></div> <div class="etplus">&plus</div> </a>
+          <a href="catalogue.php?<?php echo genurl('stars', 'stars=4'); ?>"><div class="starsbox stars stars4"></div> <div class="etplus">&plus</div> </a>
+          <a href="catalogue.php?<?php echo genurl('stars', 'stars=5'); ?>"><div class="starsbox stars stars5"></div></a>
         </div>
       </nav>
     </div>
@@ -93,7 +93,7 @@
           <div class="imgBox">
             <img src="'.$imgproduit.'" alt="">
           </div>
-          <div class="stars3_5'./*stars0_5 ou stars4_5*/'" style="height: 26px; width: 148px; float: left; margin: 8px 16px;">
+          <div class="stars stars3_5'./*stars0_5 ou stars4_5*/'" style="height: 26px; width: 148px; float: left; margin: 8px 16px;">
           </div>
           <div class="articlePrix">
           '.$row["PrixUnitaireHT"].'
@@ -103,8 +103,20 @@
         ?>
       </div>
     </div>
+
+    <!-- pour gérée l'avie avec les étoiles -->
+    <div id="starsselecteur" class="stars0">
+      <img src="assets/img/empty_star.png" style="margin-left:0px;" alt="1 étoiles" height="28" width="28" data-star="1">
+      <img src="assets/img/empty_star.png" alt="2 étoiles" height="28" width="28" data-star="2">
+      <img src="assets/img/empty_star.png" alt="3 étoiles" height="28" width="28" data-star="3">
+      <img src="assets/img/empty_star.png" alt="4 étoiles" height="28" width="28" data-star="4">
+      <img src="assets/img/empty_star.png" alt="5 étoiles" height="28" width="28" data-star="5">
+      <input type="hidden" name="avie" value="0">
+    </div>
+
     <?php include 'assets/php/footer.php'; ?>
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/avie.js"></script>
   </body>
 </html>
