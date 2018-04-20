@@ -53,6 +53,7 @@
 :root{
   --starsize: 300px;
 }
+
 .stars0{
   background: url(../img/stars.png) -150px 0px;
   background-size: var(--starsize);
@@ -130,7 +131,7 @@
   box-shadow: 1px 0 5px 0 rgba(0,0,0,0.2);
 }
 
-.stars{
+.starsbox{
   height: 28px;
   width: 150px;
   display: inline-block;
@@ -140,4 +141,15 @@
 .etplus{
   display: inline-block;
   vertical-align: middle;
+}
+
+#starsselecteur{
+  height: 28px;
+  width: 150px;
+  margin: 8px 16px;
+  display: inline-flex;
+}
+
+#starsselecteur img{
+  margin: auto;
 }

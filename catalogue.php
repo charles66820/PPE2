@@ -111,12 +111,12 @@
       <img src="assets/img/empty_star.png" alt="3 étoiles" height="28" width="28" data-star="3">
       <img src="assets/img/empty_star.png" alt="4 étoiles" height="28" width="28" data-star="4">
       <img src="assets/img/empty_star.png" alt="5 étoiles" height="28" width="28" data-star="5">
-      <input type="hidden" name="avie" value="0">
+      <input type="hidden" name="avis" value="0">
     </div>
 
     <?php include 'assets/php/footer.php'; ?>
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/avie.js"></script>
+    <script src="/assets/js/avis.js"></script>
   </body>
 </html>
