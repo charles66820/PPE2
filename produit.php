@@ -38,6 +38,17 @@
             </div>
           </div>
           <div class="col-md-4">
+
+            <?php
+            $reqproduit = $bdd->prepare("SELECT * FROM produits WHERE IDProduit = ?");
+            $reqproduit->execute(array($_GET['id']));
+            $produit = $reqproduit->fetch();
+                echo $produit['LibelleProduit'];
+                echo $produit['idtaille'];
+                echo $produit['QuantiteProduit'];
+                echo $produit['PrixUnitaireHT'];
+             ?>
+
             <div>
               <h1 class="text-capitalize text-center">Nom du produit</h1>
             </div>
