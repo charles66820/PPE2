@@ -20,7 +20,7 @@
 
 
     <?php
-    // TODO: Faire en sorte que les données soient chargées de la bdd pour les voir avant de les modifier
+    //Faire en sorte que les données soient chargées de la bdd pour les voir avant de les modifier
 
     if(isset($_SESSION['id'])) {
       $requser = $bdd->prepare("SELECT * FROM membres WHERE id = ?");

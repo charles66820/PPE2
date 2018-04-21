@@ -131,34 +131,34 @@
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">Nom du Produit :</label>
-                    <input type="text" class="form-control" name="nomproduit" id="" value="<?php echo $nomproduit ?>">
+                    <input type="text" class="form-control" name="nomproduit" id="nomproduit" value="<?php echo $nomproduit ?>">
                   </div>
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">Prix Unitaire HT :</label>
-                    <input type="text" class="form-control" name="prix" id="" value="<?php echo $prix ?>">
+                    <input type="text" class="form-control" name="prix" id="prixproduit" value="<?php echo $prix ?>">
                   </div>
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">Référence :</label>
-                    <input type="text" class="form-control" name="reference" id="" value="<?php echo $reference ?>">
+                    <input type="text" class="form-control" name="reference" id="referenceproduit" value="<?php echo $reference ?>">
                   </div>
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">Quantité :</label>
-                    <input type="text" class="form-control" name="quantite" id="" value="<?php echo $quantite ?>">
+                    <input type="text" class="form-control" name="quantite" id="quantiteproduit" value="<?php echo $quantite ?>">
                   </div>
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">Catégorie :</label>
-                    <select class="form-control" name="categorie" id="">
+                    <select class="form-control" name="categorie" id="categorieproduit">
                       <?php
                       //charge les categories
-                      $reqcategorie = $bdd->prepare("SELECT * FROM categorie");
+                      $reqcategorie = $bdd->prepare("SELECT * FROM souscategorie");
                       $reqcategorie->execute();
                       $categorieinfo = $reqcategorie->fetchAll();
                       foreach ($categorieinfo as $row) {
@@ -195,7 +195,7 @@
               </div>
               <div class="form-group m-2">
                 <label class="mr-1">Description :</label>
-                <textarea class="form-control" rows="5" name="description" id="" style="min-height:100px;"><?php echo $description ?></textarea>
+                <textarea class="form-control" rows="5" name="description" id="descriptionproduit" style="min-height:100px;"><?php echo $description ?></textarea>
               </div>
             </div>
 
@@ -245,7 +245,23 @@
             }
             ?>
             <input type="text" name="idproduit" value="<?php if(isset($_GET['id'])) { echo $_GET['id'];} ?>" style="display:none">
-            <button type="submit" name="formmodifierproduit" class="btn btn-success float-right btn-lg" id="btndone">Valider</button>
+            <button type="button" class="btn btn-success float-right btn-lg" data-toggle="modal" data-target="#produitconfirme">Valider</button>
+          </div>
+          <!-- modale de confirmation -->
+          <div class="modal fade" id="produitconfirme">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Modifier le produit</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="modalbody"></div>
+                <div class="modal-footer justify-content-between">
+                  <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Annuler</button>
+                  <button type="submit" name="formmodifierproduit" class="btn btn-success btn-lg float-right" id="btndone">Valider</button>
+                </div>
+              </div>
+            </div>
           </div>
         </form>
       </div>
@@ -278,5 +294,6 @@
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/functionimage.js"></script>
     <script src="/assets/js/adminimage.js"></script>
+    <script src="/assets/js/modaladdandeditproduit.js"></script>
   </body>
 </html>

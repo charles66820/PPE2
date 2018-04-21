@@ -1,4 +1,7 @@
-<?php require 'setting.bdd.php'; ?>
+<?php
+require 'setting.bdd.php';
+include 'genurl.php';
+?>
 <head>
   <link rel="stylesheet" href="/assets/css/imgNav.css">
 </head>
@@ -12,13 +15,17 @@
         <span class="sr-only">Toggle navigation</span>
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse"id="navcol-1">
+      <div class="collapse navbar-collapse" id="navcol-1">
         <form class="form-inline navbar-left">
+          <?php if (!empty($categorie)) {?><input type="hidden" name="categorie" value="<?php echo $categorie ?>"><?php } ?>
+          <?php if (!empty($type)) {?><input type="hidden" name="type" value="<?php echo $type ?>"><?php } ?>
+          <?php if (!empty($stars)) {?><input type="hidden" name="stars" value="<?php echo $stars ?>"><?php } ?>
+          <?php if (!empty($maxprice)) {?><input type="hidden" name="maxprice" value="<?php echo $maxprice ?>"><?php } ?>
           <div class="input-group">
-            <span id="basic-addon1" class="input-group-addon">
+            <span id="basic-addon1" class="input-group-addon" onclick="this.parentNode.parentNode.submit()">
               <i class="fa fa-search"></i>
             </span>
-            <input class="form-control" type="text" placeholder="Recherche" aria-describedby="basic-addon1">
+            <input class="form-control" type="text" name="search" placeholder="Recherche" aria-describedby="basic-addon1" value="<?php echo $search ?>">
           </div>
         </form>
         <ul class="nav navbar-nav ml-auto">
@@ -28,22 +35,22 @@
           <li class="dropdown">
             <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Figurines</a>
             <div class="dropdown-menu" role="menu">
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?categorie=pop">Pop</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?categorie=nenedoroid">Nenedoroid</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?categorie=officiel">Figurines officielles</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=figurines&type=pop'); ?>">Pop</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=figurines&type=nenedoroid'); ?>">Nenedoroid</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=figurines&type=officiel'); ?>">Figurines officielles</a>
             </div>
           </li>
           <li class="dropdown">
             <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Vêtements</a>
             <div class="dropdown-menu" role="menu">
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?categorie=vetement&type=homme">Hommes</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?categorie=vetement&type=femme">Femmes</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?categorie=vetement&type=enfant">Enfants</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?categorie=vetement&type=cosplay">Cosplays</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?categorie=vetement&type=kigurumi">Kigurumi</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?categorie=vetement&type=bijoux">Bijoux</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?categorie=vetement&type=sous_vetements">Sous-vêtements</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?categorie=vetement&type=bonnets_casquettes">Bonnets & Casquettes</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=homme'); ?>">Hommes</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=femme'); ?>">Femmes</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=enfant'); ?>">Enfants</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=cosplay'); ?>">Cosplays</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=kigurumi'); ?>">Kigurumi</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=bijoux'); ?>">Bijoux</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=sous_vetements'); ?>">Sous-vêtements</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=bonnets_casquettes'); ?>">Bonnets & Casquettes</a>
             </div>
           </li>
           <li class="nav-item" role="presentation">

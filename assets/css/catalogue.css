@@ -1,13 +1,11 @@
 /* class du catalogue */
 .articleBox{
   background-color: #eee;
-  border-radius: 8px;
-  box-shadow: inset 1px 0 5px 0 rgba(0,0,0,0.2);
-  padding: 8px;
 }
 .articleElm{
   width: 250px;
-  height: 305px;
+  /*height: 305px;*/
+  height: 288px;
   position: relative;
   display: inline-block;
   margin: 8px;
@@ -31,11 +29,13 @@
   margin: auto;
 }
 .articleNom{
-  height: 35px;
+  height: 40px;
   overflow: hidden;
   text-align: center;
   font-size: 28px;
   color: black;
+  margin: 4px;
+  text-overflow: ellipsis;
 }
 .articlePrix{
   float: right;
@@ -46,87 +46,110 @@
   padding: 4px 12px;
   font-size: 18px;
   color: red;
+  margin: 4px 0px;
 }
 
 /*stars*/
+:root{
+  --starsize: 300px;
+}
+
 .stars0{
-  background: url(../img/stars.png) -176px 2px;
-  background-size: 358px;
+  background: url(../img/stars.png) -150px 0px;
+  background-size: var(--starsize);
   background-repeat: no-repeat;
 }
 .stars0_5{
-  background: url(../img/stars.png) -140px -32px;
-  background-size: 358px;
+  background: url(../img/stars.png) -121px -30px;
+  background-size: var(--starsize);
   background-repeat: no-repeat;
 }
 .stars1{
-  background: url(../img/stars.png) -140px 2px;
-  background-size: 358px;
+  background: url(../img/stars.png) -120px 0px;
+  background-size: var(--starsize);
   background-repeat: no-repeat;
 }
 .stars1_5{
-  background: url(../img/stars.png) -104px -32px;
-  background-size: 358px;
+  background: url(../img/stars.png) -91px -30px;
+  background-size: var(--starsize);
   background-repeat: no-repeat;
 }
 .stars2{
-  background: url(../img/stars.png) -104px 2px;
-  background-size: 358px;
+  background: url(../img/stars.png) -90px 0px;
+  background-size: var(--starsize);
   background-repeat: no-repeat;
 }
 .stars2_5{
-  background: url(../img/stars.png) -68px -32px;
-  background-size: 358px;
+  background: url(../img/stars.png) -61px -30px;
+  background-size: var(--starsize);
   background-repeat: no-repeat;
 }
 .stars3{
-  background: url(../img/stars.png) -68px 2px;
-  background-size: 358px;
+  background: url(../img/stars.png) -60px 0px;
+  background-size: var(--starsize);
   background-repeat: no-repeat;
 }
 .stars3_5{
-  background: url(../img/stars.png) -32px -32px;
-  background-size: 358px;
+  background: url(../img/stars.png) -31px -30px;
+  background-size: var(--starsize);
   background-repeat: no-repeat;
 }
 .stars4{
-  background: url(../img/stars.png) -32px 2px;
-  background-size: 358px;
+  background: url(../img/stars.png) -30px 0px;
+  background-size: var(--starsize);
   background-repeat: no-repeat;
 }
 .stars4_5{
-  background: url(../img/stars.png) 4px -32px;
-  background-size: 358px;
+  background: url(../img/stars.png) 1px -30px;
+  background-size: var(--starsize);
   background-repeat: no-repeat;
 }
 .stars5{
-  background: url(../img/stars.png) 4px 2px;
-  background-size: 358px;
+  background: url(../img/stars.png) 0px 0px;
+  background-size: var(--starsize);
   background-repeat: no-repeat;
 }
 
-nav{
-  position: relative;
+
+/*left panel*/
+.range{
+  height: 100px;
+  width: 200px;
 }
 
 .rectangle{
   position: relative;
-  left: 0px;
-  /* height: 300px; */
-  width: 200px;
 }
 
-.rectangle div {
-  height: 35px;
-  width: 182px;
+.rectangle a{
+  display: block;
+  text-decoration: none;
+  margin: 4px 0px;
+}
+
+.rectangle a:hover{
+  box-shadow: 1px 0 5px 0 rgba(0,0,0,0.2);
+}
+
+.starsbox{
+  height: 28px;
+  width: 150px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .etplus{
-  left: 182px;
-  position: absolute;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.range{
-  height: 100px;
-  width: 300px;
+#starsselecteur{
+  height: 28px;
+  width: 150px;
+  margin: 8px 16px;
+  display: inline-flex;
+}
+
+#starsselecteur img{
+  margin: auto;
 }

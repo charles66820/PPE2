@@ -14,18 +14,18 @@
     //Vérification du droit d'accès
     if (isset($_SESSION['id']) && $_SESSION['pseudo'] == 'Admin') {
 
+      //Variables
+      $nomproduit = isset($_POST['nomproduit'])? htmlspecialchars($_POST['nomproduit']) : '';
+      $prix = isset($_POST['prix'])? floatval(htmlspecialchars($_POST['prix'])) : '';
+      $reference = isset($_POST['reference'])? htmlspecialchars($_POST['reference']) : '';
+      $quantite = isset($_POST['quantite'])? intval(htmlspecialchars($_POST['quantite'])) : '';
+      $categorie = isset($_POST['categorie'])? intval(htmlspecialchars($_POST['categorie'])) : '';
+      $description = isset($_POST['description'])? htmlspecialchars($_POST['description']) : '';
+      $taille = isset($_POST['taille'])? intval(htmlspecialchars($_POST['taille'])) : '';
+
+
       //Si on clique sur le bouton "valider"
       if (isset($_POST['formajouterproduit'])) {
-
-        //Variables
-        $nomproduit = htmlspecialchars($_POST['nomproduit']);
-        $prix = floatval(htmlspecialchars($_POST['prix']));
-        $reference = htmlspecialchars($_POST['reference']);
-        $quantite = intval(htmlspecialchars($_POST['quantite']));
-        $categorie = intval(htmlspecialchars($_POST['categorie']));
-        $description = htmlspecialchars($_POST['description']);
-        $taille = intval(htmlspecialchars($_POST['taille']));
-
 
         //Teste si les champs ne sont pas vides
         if (!empty($_POST['nomproduit']) && !empty($_POST['prix']) && !empty($_POST['reference']) && !empty($_POST['quantite']) && !empty($_POST['categorie']) && !empty($_POST['description'])) {
@@ -92,34 +92,34 @@
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">Nom du Produit :</label>
-                    <input type="text" class="form-control" name="nomproduit" value="<?php echo $nomproduit ?>" id="">
+                    <input type="text" class="form-control" name="nomproduit" value="<?php echo $nomproduit ?>" id="nomproduit">
                   </div>
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">Prix Unitaire HT :</label>
-                    <input type="text" class="form-control" name="prix" value="<?php echo $prix ?>" id="">
+                    <input type="text" class="form-control" name="prix" value="<?php echo $prix ?>" id="prixproduit">
                   </div>
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">Référence :</label>
-                    <input type="text" class="form-control" name="reference" value="<?php echo $reference ?>" id="">
+                    <input type="text" class="form-control" name="reference" value="<?php echo $reference ?>" id="referenceproduit">
                   </div>
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">Quantité :</label>
-                    <input type="text" class="form-control" name="quantite" value="<?php echo $quantite ?>" id="">
+                    <input type="text" class="form-control" name="quantite" value="<?php echo $quantite ?>" id="quantiteproduit">
                   </div>
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
                     <label class="mr-1">Catégorie :</label>
-                    <select class="form-control" name="categorie" id="">
+                    <select class="form-control" name="categorie" id="categorieproduit">
                       <?php
                       //charge les categories
-                      $reqcategorie = $bdd->prepare("SELECT * FROM categorie");
+                      $reqcategorie = $bdd->prepare("SELECT * FROM souscategorie");
                       $reqcategorie->execute();
                       $categorieinfo = $reqcategorie->fetchAll();
                       foreach ($categorieinfo as $row) {
@@ -156,7 +156,7 @@
               </div>
               <div class="form-group m-2">
                 <label class="mr-1">Description :</label>
-                <textarea class="form-control" rows="5" name="description" id="" style="min-height:100px;"><?php echo $description ?></textarea>
+                <textarea class="form-control" rows="5" name="description" id="descriptionproduit" style="min-height:100px;"><?php echo $description ?></textarea>
               </div>
             </div>
 
@@ -179,16 +179,6 @@
                   <input type="file" style="display:none;">
               </div>
               <div class="m-2" id="listimgproduit">
-                <?php
-                //récupére le nom et l'id des photo du produit
-                $reqphotoproduit = $bdd->prepare("SELECT * FROM photoproduit WHERE IDProduit = ?");
-                $reqphotoproduit->execute(array($_GET['id']));
-                $photosProduit = $reqphotoproduit->fetchAll();
-                //affiche les images qui sont existente dans la bdd
-                foreach ($photosProduit as $photo) {
-                  echo '<img src="/assets/img/imagesupload/'.$photo["Photo"].'" data-image-id="'.$photo["IDPhotoProduit"].'" style="width:80px;height: 80px; margin:0 2px">';
-                }
-                ?>
                 <div class="addx" id="btmaddimgproduit">
                   <div class="line-x"></div>
                   <div class="line-y"></div>
@@ -206,7 +196,24 @@
             }
             ?>
             <input type="text" name="idproduit" value="<?php if(isset($_GET['id'])) { echo $_GET['id'];} ?>" style="display:none">
-            <button type="submit" name="formajouterproduit" class="btn btn-success float-right btn-lg" id="btndone">Valider</button>
+            <button type="button" class="btn btn-success float-right btn-lg" data-toggle="modal" data-target="#produitconfirme">Valider</button>
+          </div>
+
+          <!-- modale de confirmation -->
+          <div class="modal fade" id="produitconfirme">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Ajouter un produit</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="modalbody"></div>
+                <div class="modal-footer justify-content-between">
+                  <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Annuler</button>
+                  <button type="submit" name="formajouterproduit" class="btn btn-success btn-lg float-right" id="btndone">Valider</button>
+                </div>
+              </div>
+            </div>
           </div>
         </form>
       </div>
@@ -224,6 +231,6 @@
     <script src="/assets/js/ajouterproduit.js"></script>
     <script src="/assets/js/functionimage.js"></script>
     <script src="/assets/js/adminimage.js"></script>
-    <script src="/assets/js/image.js"></script>
+    <script src="/assets/js/modaladdandeditproduit.js"></script>
   </body>
 </html>
