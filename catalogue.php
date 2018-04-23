@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/assets/css/Footer-Clean.css">
     <link rel="stylesheet" href="/assets/css/Pretty-Footer.css">
     <link rel="stylesheet" href="/assets/css/stylesF.css">
+    <link rel="stylesheet" href="/assets/css/avis.css">
   </head>
 
   <body>
