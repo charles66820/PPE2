@@ -43,14 +43,14 @@ include 'genurl.php';
           <li class="dropdown">
             <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Vêtements</a>
             <div class="dropdown-menu" role="menu">
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=homme'); ?>">Hommes</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=femme'); ?>">Femmes</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=enfant'); ?>">Enfants</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=cosplay'); ?>">Cosplays</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=kigurumi'); ?>">Kigurumi</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=bijoux'); ?>">Bijoux</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=sous_vetements'); ?>">Sous-vêtements</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=bonnets_casquettes'); ?>">Bonnets & Casquettes</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=homme');?>">Hommes</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=femme');?>">Femmes</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=enfant');?>">Enfants</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=cosplay');?>">Cosplays</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=kigurumi');?>">Kigurumi</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=bijoux');?>">Bijoux</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=sous_vetements');?>">Sous-vêtements</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=vetement&type=bonnets_casquettes');?>">Bonnets & Casquettes</a>
             </div>
           </li>
           <li class="nav-item" role="presentation">
