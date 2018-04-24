@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/assets/css/Footer-Clean.css">
     <link rel="stylesheet" href="/assets/css/Pretty-Footer.css">
     <link rel="stylesheet" href="/assets/css/stylesF.css">
+    <link rel="stylesheet" href="/assets/css/avis.css">
   </head>
 
   <body>
@@ -38,6 +39,17 @@
             </div>
           </div>
           <div class="col-md-4">
+
+            <?php
+            $reqproduit = $bdd->prepare("SELECT * FROM produits WHERE IDProduit = ?");
+            $reqproduit->execute(array($_GET['id']));
+            $produit = $reqproduit->fetch();
+                echo $produit['LibelleProduit'];
+                echo $produit['idtaille'];
+                echo $produit['QuantiteProduit'];
+                echo $produit['PrixUnitaireHT'];
+             ?>
+
             <div>
               <h1 class="text-capitalize text-center">Nom du produit</h1>
             </div>
@@ -48,13 +60,44 @@
             <div>
               <h4 class="text-right" style="margin-top:18px;max-width:68px;height:33px;">Avis :&nbsp;</h4>
             </div>
-            <div class="float-right d-flex" style="background-color:#9d1616;font-size:22px;width:170px;margin-top:-35px;margin-right:32px;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+            <div class="float-right d-flex" style="background-color:#9d1616;font-size:22px;width:170px;margin-top:-35px;margin-right:32px;">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
             <div>
               <h5 class="text-center" style="margin-top:16px;margin-left:10px;padding-top:0px;padding-left:-1px;font-size:25px;width:120px;">Quantité :&nbsp;</h5>
-              <div><select class="float-right" style="height:26px;margin-top:-34px;margin-right:24px;"><optgroup label="Quantité"><option value="1" selected="">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></optgroup></select></div>
+              <div>
+                <select class="float-right" style="height:26px;margin-top:-34px;margin-right:24px;">
+                  <optgroup label="Quantité">
+                    <option value="1" selected="">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                  </optgroup>
+                </select>
+              </div>
               <div>
                 <h5 class="text-center" style="margin-top:22px;margin-left:10px;padding-top:0px;padding-left:-1px;font-size:25px;width:120px;">Taille :&nbsp;</h5>
-                <div><select class="float-right" style="height:26px;margin-top:-33px;margin-right:25px;"><optgroup label="Taille"><option value="1" selected="">XS</option><option value="2">S</option><option value="3">M</option><option value="4">L</option><option value="5">XL</option><option value="6">XXL</option></optgroup></select></div>
+                <div>
+                  <select class="float-right" style="height:26px;margin-top:-33px;margin-right:25px;">
+                    <optgroup label="Taille">
+                      <option value="1" selected="">XS</option>
+                      <option value="2">S</option>
+                      <option value="3">M</option>
+                      <option value="4">L</option>
+                      <option value="5">XL</option>
+                      <option value="6">XXL</option>
+                    </optgroup>
+                  </select>
+                </div>
               </div>
             </div>
             <div>
@@ -75,6 +118,23 @@
         </div>
       </div>
     </div>
+
+    <!-- les comantaires -->
+    <div class="container">
+
+      <!-- pour gérée l'avie avec les étoiles -->
+      <div id="starsselecteur" class="stars0">
+        <img src="/assets/img/empty_star.png" style="margin-left:0px;" alt="1 étoiles" height="28" width="28" data-star="1">
+        <img src="/assets/img/empty_star.png" alt="2 étoiles" height="28" width="28" data-star="2">
+        <img src="/assets/img/empty_star.png" alt="3 étoiles" height="28" width="28" data-star="3">
+        <img src="/assets/img/empty_star.png" alt="4 étoiles" height="28" width="28" data-star="4">
+        <img src="/assets/img/empty_star.png" alt="5 étoiles" height="28" width="28" data-star="5">
+        <input type="hidden" name="avis" value="0">
+      </div>
+
+
+    </div>
+
     <div>
       <div class="container">
         <div class="row">
@@ -108,10 +168,12 @@
         </div>
       </div>
     </div>
+
     <?php include 'assets/php/footer.php'; ?>
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/image.js"></script>
+    <script src="/assets/js/avis.js"></script>
     <!-- <script src="/assets/js/script.min.js"></script> -->
 </body>
 </html>
