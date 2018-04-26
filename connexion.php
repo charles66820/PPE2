@@ -34,7 +34,7 @@
           $_SESSION['mail'] = $userinfo['Email'];
           $_SESSION['avatarurl'] = $userinfo['AvatarUrl'];
 
-          //Remplacement du header("Location: index.php); par du js à cause d'une erreur
+          //Remplacement du header("Location: index.php"); par du js à cause d'une erreur
           echo '<script> document.location.replace("accueil.php"); </script>';
         } else {
           $erreur = "<br />Mauvais pseudo ou mauvais mot de passe !";
