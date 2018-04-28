@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/Footer-Clean.css">
     <link rel="stylesheet" href="/assets/css/Pretty-Footer.css">
-    <link rel="stylesheet" href="/assets/css/stylesF.css">
     <link rel="stylesheet" href="/assets/css/avis.css">
     <link rel="stylesheet" href="/assets/css/styleavis.css">
   </head>
@@ -102,7 +101,7 @@
             <div>
               <h1 class="text-center text-warning" style="padding-top:26px;max-width:292px;margin-top:-10px;margin-left:0px;padding-right:0px;padding-left:0px;font-size:47px;"><?php echo $produit['PrixUnitaireHT']; ?> €</h1>
             </div>
-              <div><button class="btn btn-primary" type="button" disabled="disabled" data-bs-hover-animate="tada" style="width:295px;height:80px;margin-top:18px;font-size:31px;">Ajouter au panier&nbsp;</button></div>
+              <div><button class="btn btn-primary" type="button" data-bs-hover-animate="tada" style="width:295px;height:80px;margin-top:18px;font-size:31px;">Ajouter au panier&nbsp;</button></div>
             </div>
           </div>
           <div style="margin-top:19px;">
@@ -110,7 +109,7 @@
               <h1>Description&nbsp;</h1>
             </div>
           <div>
-            <?php echo nl2br($produit['DescriptionProduit']); ?> 
+            <?php echo nl2br($produit['DescriptionProduit']); ?>
           </div>
         </div>
       </div>
@@ -147,7 +146,7 @@
 
         ?>
         <form class="" method='POST'>
-          <div class="comment-box">
+          <div class="col-sm-8 comment-box">
             <input type='hidden' name='IDClient' value="<?php echo $_SESSION['id'];?>">
             <!-- pour gérée l'avis avec les étoiles -->
             <div id="starsselecteur" class="stars0">
@@ -178,11 +177,10 @@
         $reqselectclient->execute(array($id));
         $repselectclient = $reqselectclient->fetch()
         ?>
-        <div class='comment-box'>
+        <div class='col-sm-8 comment-box'>
           <div class="form-row">
-            <p><?php echo $repselectclient['Pseudo'] ?></p>
-            <p><?php echo $row['DateAvis'] ?></p>
-            <p><?php echo $row['Note'] ?></p>
+            <div class="stars stars<?php echo $row['Note'] ?>" style="height: 26px; width: 148px; float: left; margin-right:8px;"></div>
+            <p class="text-justify" style="margin-top:8px;">Commantaire fait le <?php echo $row['DateAvis'] ?> par <?php echo $repselectclient['Pseudo'] ?></p>
           </div>
           <p><?php echo $row['Titre'] ?></p>
           <div class="textarea-avis">
@@ -248,6 +246,7 @@
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/image.js"></script>
     <script src="/assets/js/avis.js"></script>
+    <script src="/assets/js/BSanimation.js"></script>
     <!-- <script src="/assets/js/script.min.js"></script> -->
 </body>
 </html>
