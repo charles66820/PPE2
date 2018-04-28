@@ -121,7 +121,7 @@
     <!-- les commentaires -->
     <div class="container">
       <?php
-  //teste si l'utilisateur est connecté
+      //teste si l'utilisateur est connecté
       if (isset($_SESSION['id'])) {
         if (isset($_POST['commentSubmit'])){
           $idclient = intval(htmlspecialchars($_POST['IDClient']));
@@ -134,20 +134,22 @@
         }
 
       ?>
-        <form class="form form-group" method='POST'>
-          <!-- pour gérée l'avis avec les étoiles -->
-          <div id="starsselecteur" class="stars0">
-            <img src="/assets/img/empty_star.png" style="margin-left:0px;" alt="1 étoiles" height="28" width="28" data-star="1">
-            <img src="/assets/img/empty_star.png" alt="2 étoiles" height="28" width="28" data-star="2">
-            <img src="/assets/img/empty_star.png" alt="3 étoiles" height="28" width="28" data-star="3">
-            <img src="/assets/img/empty_star.png" alt="4 étoiles" height="28" width="28" data-star="4">
-            <img src="/assets/img/empty_star.png" alt="5 étoiles" height="28" width="28" data-star="5">
-            <input type="hidden" name="avis" value="0">
+        <form method='POST'>
+          <div class="form-group">
+            <!-- pour gérée l'avis avec les étoiles -->
+            <div id="starsselecteur" class="stars0">
+              <img src="/assets/img/empty_star.png" style="margin-left:0px;" alt="1 étoiles" height="28" width="28" data-star="1">
+              <img src="/assets/img/empty_star.png" alt="2 étoiles" height="28" width="28" data-star="2">
+              <img src="/assets/img/empty_star.png" alt="3 étoiles" height="28" width="28" data-star="3">
+              <img src="/assets/img/empty_star.png" alt="4 étoiles" height="28" width="28" data-star="4">
+              <img src="/assets/img/empty_star.png" alt="5 étoiles" height="28" width="28" data-star="5">
+              <input type="hidden" name="avis" value="0">
+            </div>
+            <input type='hidden' name='IDClient' value="<?php echo $_SESSION['id'];?>">
+            <input type='text' name='titreAvis' placeholder="Titre ou résumé pour votre commentaire (requis)">
+            <textarea class="textarea-avis" name='message' placeholder="Entrez ici votre commentaire"></textarea><br>
+            <button class="button-avis" type='submit' name='commentSubmit'>Comment</button>
           </div>
-          <input type='hidden' name='IDClient' value="<?php echo $_SESSION['id'];?>">
-          <input type='text' name='titreAvis' placeholder="Titre ou résumé pour votre commentaire (requis)">
-          <textarea class="textarea-avis" name='message' placeholder="Entrez ici votre commentaire"></textarea><br>
-          <button class="button-avis" type='submit' name='commentSubmit'>Comment</button>
         </form>
         <?php } else {
           echo "Vous devez être connecté pour écrire un commentaire";
