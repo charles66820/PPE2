@@ -54,13 +54,13 @@ if (!$erreur){
       Default:
          break;
    }
-}
+} ?>
 
-echo '<?xml version="1.0" encoding="utf-8"?>';?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<!DOCTYPE html>
+<html>
 <head>
 <title>Votre panier</title>
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -110,5 +110,20 @@ echo '<?xml version="1.0" encoding="utf-8"?>';?>
 	?>
 </table>
 </form>
+    <div class="container">
+        <div class="row">
+            <div class="col" style="width:59px;"><label class="col-form-label" style="width:80px;height:67px;">Nom</label></div>
+            <div class="col"><label class="col-form-label">Prix</label></div>
+            <div class="col" style="width:98px;"><label class="col-form-label">Quantité</label></div>
+            <div class="col"><button class="btn btn-primary" type="button">-</button><button class="btn btn-primary" type="button">+</button></div>
+        </div>
+        <div class="row">
+            <div class="col" style="width:59px;"><label class="col-form-label" style="width:80px;height:67px;">&nbsp;Nom (en stock ou pas)&nbsp;</label></div>
+            <div class="col"><label class="col-form-label">Prix</label></div>
+            <div class="col" style="width:98px;"><label class="col-form-label">Quantité</label></div>
+            <div class="col"><button class="btn btn-primary" type="button">-</button><button class="btn btn-primary" type="button">+</button></div>
+        </div><button class="btn btn-primary float-right" type="button">Valider</button></div><label>Sous-total (nre d'article) :</label><label>&nbsp;Prix total (...€) :</label>
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
 </body>
 </html>
