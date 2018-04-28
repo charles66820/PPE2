@@ -3,15 +3,16 @@
   <head>
       <meta charset="UTF-8" >
       <title>Connexion</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="icon" href="/assets/img/logoIcon.gif"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
-      <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-      <link rel="stylesheet" href="/assets/css/connexion.css">
-      <link rel="stylesheet" href="/assets/css/Footer-Clean.css">
-      <link rel="stylesheet" href="/assets/css/Pretty-Footer.css">
+      <?php include 'assets/php/allcss.php'; ?>
+      <style>
+      div#inscription {
+        margin: 0 auto;
+        width: 450px;
+      }
+      </style>
   </head>
   <body>
 
@@ -67,5 +68,6 @@
     <?php include 'assets/php/footer.php'; ?>
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/BSanimation.js"></script>
   </body>
 </html>

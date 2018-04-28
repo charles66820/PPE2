@@ -1,22 +1,18 @@
+'accueil.php'
 <!DOCTYPE html>
 <html lang="en">
   <head>
       <meta charset="UTF-8">
       <title>Accueil</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="icon" href="/assets/img/logoIcon.gif"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
-      <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.minAcc.css">
-      <link rel="stylesheet" href="assets/fonts/font-awesome.minAcc.css">
-      <link rel="stylesheet" href="assets/fonts/simple-line-icons.minAcc.css">
+      <link rel="stylesheet" href="/assets/fonts/font-awesome.minAcc.css">
+      <link rel="stylesheet" href="/assets/fonts/simple-line-icons.minAcc.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
-      <link rel="stylesheet" href="assets/css/stylesAcc.css">
+      <?php include 'assets/php/allcss.php'; ?>
       <link rel="stylesheet" href="/assets/css/accueil.css">
-      <link rel="stylesheet" href="/assets/css/Footer-Clean.css">
-      <link rel="stylesheet" href="/assets/css/Pretty-Footer.css">
   </head>
   <body>
     <?php include 'assets/php/nav.php'; ?>
@@ -46,9 +42,9 @@
       </figure>
     </div>
     <?php include 'assets/php/footer.php'; ?>
-    <script src="assets/js/jquery.minAcc.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.minAcc.js"></script>
-    <script src="assets/js/bs-animationAcc.js"></script>
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/BSanimation.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
   </body>
 </html>

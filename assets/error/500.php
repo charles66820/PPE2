@@ -3,16 +3,24 @@
   <head>
       <meta charset="UTF-8">
       <title>Erreur 500</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="icon" href="/assets/img/logoIcon.gif"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
-      <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-      <link rel="stylesheet" href="/assets/css/Footer-Clean.css">
-      <link rel="stylesheet" href="/assets/css/Pretty-Footer.css">
-      <link rel="stylesheet" href="/assets/css/stylesF.css">
-      <link rel="stylesheet" href="/assets/css/error.css">
+      <?php include 'assets/php/allcss.php'; ?>
+      <style>
+      .potitionerror{
+        margin: 10% auto;
+      }
+      html{
+        height: 100%;
+      }
+      body{
+        height: 100%;
+      }
+      section{
+        min-height: 85%;
+      }
+      </style>
   </head>
   <body>
     <?php include '../php/nav.php'; ?>

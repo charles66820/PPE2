@@ -292,6 +292,7 @@
     ?>
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/BSanimation.js"></script>
     <script src="/assets/js/functionimage.js"></script>
     <script src="/assets/js/adminimage.js"></script>
     <script src="/assets/js/modaladdandeditproduit.js"></script>

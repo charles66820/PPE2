@@ -2,9 +2,6 @@
 require 'setting.bdd.php';
 include 'genurl.php';
 ?>
-<head>
-  <link rel="stylesheet" href="/assets/css/imgNav.css">
-</head>
 <div>
   <nav class="navbar navbar-light navbar-expand-md">
     <div class="container">

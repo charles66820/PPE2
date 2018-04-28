@@ -60,7 +60,7 @@ if (!$erreur){
 <html>
 <head>
 <title>Votre panier</title>
-<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<?php include 'assets/php/allcss.php'; ?>
 </head>
 <body>
 
@@ -123,7 +123,8 @@ if (!$erreur){
             <div class="col" style="width:98px;"><label class="col-form-label">Quantité</label></div>
             <div class="col"><button class="btn btn-primary" type="button">-</button><button class="btn btn-primary" type="button">+</button></div>
         </div><button class="btn btn-primary float-right" type="button">Valider</button></div><label>Sous-total (nre d'article) :</label><label>&nbsp;Prix total (...€) :</label>
-    <script src="/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/jquery-3.3.1.min.js"></script>
+        <script src="/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/js/BSanimation.js"></script>
 </body>
 </html>
