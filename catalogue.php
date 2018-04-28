@@ -35,11 +35,11 @@
           </form>
         </div>
         <div class="rectangle">
-          <a href="/catalogue.php?<?php echo genurl('stars', 'stars=0'); ?>"><div class="starsbox stars stars0"></div> <div class="etplus">&plus</div> </a> <!-- Met le "&plus" en face des étoiles -->
-          <a href="/catalogue.php?<?php echo genurl('stars', 'stars=1'); ?>"><div class="starsbox stars stars1"></div> <div class="etplus">&plus</div> </a>
-          <a href="/catalogue.php?<?php echo genurl('stars', 'stars=2'); ?>"><div class="starsbox stars stars2"></div> <div class="etplus">&plus</div> </a>
-          <a href="/catalogue.php?<?php echo genurl('stars', 'stars=3'); ?>"><div class="starsbox stars stars3"></div> <div class="etplus">&plus</div> </a>
-          <a href="/catalogue.php?<?php echo genurl('stars', 'stars=4'); ?>"><div class="starsbox stars stars4"></div> <div class="etplus">&plus</div> </a>
+          <a href="/catalogue.php?<?php echo genurl('stars', 'stars=0'); ?>"><div class="starsbox stars stars0"></div> <div class="etplus">&plus</div></a> <!-- Met le "&plus" en face des étoiles -->
+          <a href="/catalogue.php?<?php echo genurl('stars', 'stars=1'); ?>"><div class="starsbox stars stars1"></div> <div class="etplus">&plus</div></a>
+          <a href="/catalogue.php?<?php echo genurl('stars', 'stars=2'); ?>"><div class="starsbox stars stars2"></div> <div class="etplus">&plus</div></a>
+          <a href="/catalogue.php?<?php echo genurl('stars', 'stars=3'); ?>"><div class="starsbox stars stars3"></div> <div class="etplus">&plus</div></a>
+          <a href="/catalogue.php?<?php echo genurl('stars', 'stars=4'); ?>"><div class="starsbox stars stars4"></div> <div class="etplus">&plus</div></a>
           <a href="/catalogue.php?<?php echo genurl('stars', 'stars=5'); ?>"><div class="starsbox stars stars5"></div></a>
         </div>
       </nav>
@@ -100,11 +100,10 @@
             <div class="articleNom">
               <?php echo $row["LibelleProduit"];?>
             </div>
-          <div class="imgBox">
-            <img src="<?php echo $imgproduit; ?>" alt="">
-          </div>
-            <div class="stars <?php echo affichestar($moyenavis); ?>" style="height: 26px; width: 148px; float: left; margin: 8px 16px;">
-          </div>
+            <div class="imgBox">
+              <img src="<?php echo $imgproduit; ?>" alt="">
+            </div>
+            <div class="stars <?php echo affichestar($moyenavis); ?>" style="height: 26px; width: 148px; float: left; margin: 8px 16px;"></div>
             <div class="articlePrix">
               <?php echo $row["PrixUnitaireHT"]; ?>
             </div>
