@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>Untitled</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <?php include 'assets/php/allcss.php'; ?>
     <link rel="stylesheet" href="/assets/css/avis.css">
     <link rel="stylesheet" href="/assets/css/styleavis.css">

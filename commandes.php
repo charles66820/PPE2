@@ -4,7 +4,6 @@
       <meta charset="UTF-8">
       <title>Commandes</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
       <?php include 'assets/php/allcss.php'; ?>
   </head>
   <body>
