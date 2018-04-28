@@ -110,9 +110,7 @@
               <h1>Description&nbsp;</h1>
             </div>
           <div>
-            <p><i class="icon ion-android-send"></i>Paragraphe</p>
-            <p><i class="icon ion-android-send"></i>Paragraphe</p>
-            <p><i class="icon ion-android-send"></i>Paragraphe</p>
+            <?php echo nl2br($produit['DescriptionProduit']); ?> 
           </div>
         </div>
       </div>
