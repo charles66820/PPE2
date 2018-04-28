@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/assets/css/Pretty-Footer.css">
     <link rel="stylesheet" href="/assets/css/stylesF.css">
     <link rel="stylesheet" href="/assets/css/avis.css">
+    <link rel="stylesheet" href="/assets/css/styleavis.css">
   </head>
 
   <body>
@@ -44,18 +45,20 @@
             $reqproduit = $bdd->prepare("SELECT * FROM produits WHERE IDProduit = ?");
             $reqproduit->execute(array($_GET['id']));
             $produit = $reqproduit->fetch();
-                echo $produit['LibelleProduit'];
-                echo $produit['idtaille'];
-                echo $produit['QuantiteProduit'];
-                echo $produit['PrixUnitaireHT'];
              ?>
 
             <div>
-              <h1 class="text-capitalize text-center">Nom du produit</h1>
+              <h1 class="text-capitalize text-center"><?php echo $produit['LibelleProduit']; ?></h1>
             </div>
             <div>
-              <h5 class="text-left text-success"><i class="fa fa-check"></i>&nbsp;Produit disponible en stock</h5>
+              <?php
+              $QuantiteProduit = $produit['QuantiteProduit'];
+              if ($QuantiteProduit > 0) { ?>
+                <h5 class="text-left text-success"><i class="fa fa-check"></i>&nbsp;Produit disponible en stock</h5>
+              <?php
+            } else { ?>
               <h5 class="text-left text-danger"><i class="fa fa-close"></i>&nbsp;Produit indisponible</h5>
+            <?php } ?>
             </div>
             <div>
               <h4 class="text-right" style="margin-top:18px;max-width:68px;height:33px;">Avis :&nbsp;</h4>
@@ -72,15 +75,11 @@
               <div>
                 <select class="float-right" style="height:26px;margin-top:-34px;margin-right:24px;">
                   <optgroup label="Quantité">
-                    <option value="1" selected="">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
+                    <?php
+                    for ($x = 1; $x <= $QuantiteProduit; $x++)  { ?>
+                      <option value="<?php echo $x ?>"><?php echo $x ?></option>
+                    <?php }
+                    ?>
                   </optgroup>
                 </select>
               </div>
@@ -101,7 +100,7 @@
               </div>
             </div>
             <div>
-              <h1 class="text-center text-warning" style="padding-top:26px;max-width:292px;margin-top:-10px;margin-left:0px;padding-right:0px;padding-left:0px;font-size:47px;">Prix €</h1>
+              <h1 class="text-center text-warning" style="padding-top:26px;max-width:292px;margin-top:-10px;margin-left:0px;padding-right:0px;padding-left:0px;font-size:47px;"><?php echo $produit['PrixUnitaireHT']; ?> €</h1>
             </div>
               <div><button class="btn btn-primary" type="button" disabled="disabled" data-bs-hover-animate="tada" style="width:295px;height:80px;margin-top:18px;font-size:31px;">Ajouter au panier&nbsp;</button></div>
             </div>
@@ -119,18 +118,41 @@
       </div>
     </div>
 
-    <!-- les comantaires -->
+    <!-- les commentaires -->
     <div class="container">
+      <?php
+  //teste si l'utilisateur est connecté
+      if (isset($_SESSION['id'])) {
+        if (isset($_POST['commentSubmit'])){
+          $idclient = intval(htmlspecialchars($_POST['IDClient']));
+          $titreavis = htmlspecialchars($_POST['titreAvis']);
+          $avis = intval(htmlspecialchars($_POST['avis']));
+          $message = htmlspecialchars($_POST['message']);
+          $sql = "INSERT INTO avis (IDClient, Titre, Description, Note, IDProduit) VALUES (?, ?, ?, ?, ?)";
+          $reqinser = $bdd->prepare($sql);
+          $reqinser->execute(array($idclient, $titreavis, $message, $avis, $produit['IDProduit']));
+        }
 
-      <!-- pour gérée l'avie avec les étoiles -->
-      <div id="starsselecteur" class="stars0">
-        <img src="/assets/img/empty_star.png" style="margin-left:0px;" alt="1 étoiles" height="28" width="28" data-star="1">
-        <img src="/assets/img/empty_star.png" alt="2 étoiles" height="28" width="28" data-star="2">
-        <img src="/assets/img/empty_star.png" alt="3 étoiles" height="28" width="28" data-star="3">
-        <img src="/assets/img/empty_star.png" alt="4 étoiles" height="28" width="28" data-star="4">
-        <img src="/assets/img/empty_star.png" alt="5 étoiles" height="28" width="28" data-star="5">
-        <input type="hidden" name="avis" value="0">
-      </div>
+      ?>
+        <form class="form form-group" method='POST'>
+          <!-- pour gérée l'avis avec les étoiles -->
+          <div id="starsselecteur" class="stars0">
+            <img src="/assets/img/empty_star.png" style="margin-left:0px;" alt="1 étoiles" height="28" width="28" data-star="1">
+            <img src="/assets/img/empty_star.png" alt="2 étoiles" height="28" width="28" data-star="2">
+            <img src="/assets/img/empty_star.png" alt="3 étoiles" height="28" width="28" data-star="3">
+            <img src="/assets/img/empty_star.png" alt="4 étoiles" height="28" width="28" data-star="4">
+            <img src="/assets/img/empty_star.png" alt="5 étoiles" height="28" width="28" data-star="5">
+            <input type="hidden" name="avis" value="0">
+          </div>
+          <input type='hidden' name='IDClient' value="<?php echo $_SESSION['id'];?>">
+          <input type='text' name='titreAvis' placeholder="Titre ou résumé pour votre commentaire (requis)">
+          <textarea class="textarea-avis" name='message' placeholder="Entrez ici votre commentaire"></textarea><br>
+          <button class="button-avis" type='submit' name='commentSubmit'>Comment</button>
+        </form>
+        <?php } else {
+          echo "Vous devez être connecté pour écrire un commentaire";
+        } ?>
+
 
 
     </div>
@@ -138,33 +160,33 @@
     <div>
       <div class="container">
         <div class="row">
-          <div class="col-md-3">
+          <?php
+          $reqproduit = $bdd->prepare("SELECT * FROM produits WHERE IdCategorie = ? LIMIT 4"); //récupère tous les produits qui ont le même idcatégorie que le produit de la page
+          $reqproduit->execute(array($produit['IdCategorie']));
+          $lesproduits = $reqproduit->fetchAll();
+          foreach ($lesproduits as $unproduit) {
+            //Récupère l'image par raport à l'id du produit
+            $reqphotoproduit = $bdd->prepare("SELECT * FROM photoproduit WHERE IDProduit = ?");
+            $reqphotoproduit->execute(array($unproduit["IDProduit"]));
+            $produitexist = $reqphotoproduit->rowCount();
+            //Teste s'il y a une photo pour le produit ou pas
+            if ($produitexist == 0) {
+              $imgproduit = '/assets/img/defaultproduitimg.png';
+            }else {
+              $imgproduitrep = $reqphotoproduit->fetch();
+              $imgproduit = '/assets/img/imagesupload/'.$imgproduitrep["Photo"];
+            }
+          ?>
+            <div class="col-md-3">
             <div>
-              <h3 class="text-center">Heading</h3>
-              <img class="rounded" src="assets/img/postal_pulpo_lindo_del_dibujo_animado_en_rosa-rab08a3c83fee4266ab88ca97e53546ba_vgbaq_8byvr_324.jpg" style="width:139px;margin-left:54px;">
-              <div><button class="btn btn-primary btn-lg" type="button" style="width:255px;height:50px;margin-top:1px;">Voir le produit</button></div>
+            <h3 class="text-center" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"><?php echo $unproduit['LibelleProduit'] ?></h3>
+            <img class="rounded" src="<?php echo $imgproduit ?>" style="width:139px;margin-left:54px;">
+            <div><button class="btn btn-primary btn-lg" type="button" style="width:255px;height:50px;margin-top:1px;">Voir le produit</button></div>
             </div>
-          </div>
-          <div class="col-md-3">
-            <div>
-              <h3 class="text-center">Heading</h3>
-              <img class="rounded" src="assets/img/postal_pulpo_lindo_del_dibujo_animado_en_rosa-rab08a3c83fee4266ab88ca97e53546ba_vgbaq_8byvr_324.jpg" style="width:139px;margin-left:54px;">
-              <div><button class="btn btn-primary btn-lg" type="button" style="width:255px;height:50px;margin-top:1px;">Voir le produit</button></div>
             </div>
-          </div>
-          <div class="col-md-3">
-            <div>
-              <h3 class="text-center">Heading</h3>
-              <img class="rounded" src="assets/img/postal_pulpo_lindo_del_dibujo_animado_en_rosa-rab08a3c83fee4266ab88ca97e53546ba_vgbaq_8byvr_324.jpg" style="width:139px;margin-left:54px;">
-              <div><button class="btn btn-primary btn-lg" type="button" style="width:255px;height:50px;margin-top:1px;">Voir le produit</button></div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div>
-              <h3 class="text-center">Heading</h3><img class="rounded" src="assets/img/postal_pulpo_lindo_del_dibujo_animado_en_rosa-rab08a3c83fee4266ab88ca97e53546ba_vgbaq_8byvr_324.jpg" style="width:139px;margin-left:54px;">
-              <div><button class="btn btn-primary btn-lg" type="button" style="width:255px;height:50px;margin-top:1px;">Voir le produit</button></div>
-            </div>
-          </div>
+          <?php
+          }
+          ?>
         </div>
       </div>
     </div>
