@@ -19,9 +19,11 @@ include 'genurl.php';
           <?php if (!empty($stars)) {?><input type="hidden" name="stars" value="<?php echo $stars ?>"><?php } ?>
           <?php if (!empty($maxprice)) {?><input type="hidden" name="maxprice" value="<?php echo $maxprice ?>"><?php } ?>
           <div class="input-group">
-            <span id="basic-addon1" class="input-group-addon" onclick="this.parentNode.parentNode.submit()">
-              <i class="fa fa-search"></i>
-            </span>
+            <div class="input-group-prepend">
+              <span id="basic-addon1" class="input-group-text" onclick="this.parentNode.parentNode.submit()">
+                <i class="fa fa-search"></i>
+              </span>
+            </div>
             <input class="form-control" type="text" name="search" placeholder="Recherche" aria-describedby="basic-addon1" value="<?php echo $search ?>">
           </div>
         </form>
