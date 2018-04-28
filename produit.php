@@ -119,7 +119,7 @@
     </div>
 
     <!-- les commentaires -->
-    <div class="container">
+    <div class="container" style="margin-bottom:60px;">
       <?php
       //teste si l'utilisateur est connecté
       if (isset($_SESSION['id'])) {
@@ -146,10 +146,11 @@
           $reqinser->execute(array($idclient, $titreavis, $message, $avis, $produit['IDProduit']));
         }
 
-<<<<<<< HEAD
-      ?>
-        <form method='POST'>
-          <div class="form-group">
+
+        ?>
+        <form class="" method='POST'>
+          <div class="comment-box">
+            <input type='hidden' name='IDClient' value="<?php echo $_SESSION['id'];?>">
             <!-- pour gérée l'avis avec les étoiles -->
             <div id="starsselecteur" class="stars0">
               <img src="/assets/img/empty_star.png" style="margin-left:0px;" alt="1 étoiles" height="28" width="28" data-star="1">
@@ -158,30 +159,11 @@
               <img src="/assets/img/empty_star.png" alt="4 étoiles" height="28" width="28" data-star="4">
               <img src="/assets/img/empty_star.png" alt="5 étoiles" height="28" width="28" data-star="5">
               <input type="hidden" name="avis" value="0">
-            </div>
-            <input type='hidden' name='IDClient' value="<?php echo $_SESSION['id'];?>">
-            <input type='text' name='titreAvis' placeholder="Titre ou résumé pour votre commentaire (requis)">
-            <textarea class="textarea-avis" name='message' placeholder="Entrez ici votre commentaire"></textarea><br>
-            <button class="button-avis" type='submit' name='commentSubmit'>Comment</button>
+            </div><br>
+            <input class="form-control" type='text' name='titreAvis' placeholder="Titre ou résumé pour votre commentaire (requis)"><br>
+            <textarea class="form-control textarea-avis" name='message' placeholder="Entrez ici votre commentaire"></textarea><br>
+            <button class="button-avis" type='submit' name='commentSubmit'>Commenter</button>
           </div>
-=======
-
-        ?>
-        <form class="form form-group" method='POST'>
-          <!-- pour gérée l'avis avec les étoiles -->
-          <div id="starsselecteur" class="stars0">
-            <img src="/assets/img/empty_star.png" style="margin-left:0px;" alt="1 étoiles" height="28" width="28" data-star="1">
-            <img src="/assets/img/empty_star.png" alt="2 étoiles" height="28" width="28" data-star="2">
-            <img src="/assets/img/empty_star.png" alt="3 étoiles" height="28" width="28" data-star="3">
-            <img src="/assets/img/empty_star.png" alt="4 étoiles" height="28" width="28" data-star="4">
-            <img src="/assets/img/empty_star.png" alt="5 étoiles" height="28" width="28" data-star="5">
-            <input type="hidden" name="avis" value="0">
-          </div>
-          <input type='hidden' name='IDClient' value="<?php echo $_SESSION['id'];?>">
-          <input type='text' name='titreAvis' placeholder="Titre ou résumé pour votre commentaire (requis)">
-          <textarea class="textarea-avis" name='message' placeholder="Entrez ici votre commentaire"></textarea><br>
-          <button class="button-avis" type='submit' name='commentSubmit'>Commenter</button>
->>>>>>> 6b1b9bf49283c494b67537a5bb5e9608ea594110
         </form>
         <?php
       } else {
@@ -199,10 +181,12 @@
         $repselectclient = $reqselectclient->fetch()
         ?>
         <div class='comment-box'>
-          <p><?php echo $repselectclient['Pseudo'] ?></p>
-          <p><?php echo $row['DateAvis'] ?></p>
+          <div class="form-row">
+            <p><?php echo $repselectclient['Pseudo'] ?></p>
+            <p><?php echo $row['DateAvis'] ?></p>
+            <p><?php echo $row['Note'] ?></p>
+          </div>
           <p><?php echo $row['Titre'] ?></p>
-          <p><?php echo $row['Note'] ?></p>
           <div class="textarea-avis">
             <?php
             echo nl2br($row['Description']); //contenu de l'avis / nl2br permet de faire des sauts de ligne
