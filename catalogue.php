@@ -34,7 +34,7 @@
         </div>
         <div class="rectangle">
           <a href="/catalogue.php?<?php echo genurl('stars', 'stars=0'); ?>"><div class="starsbox stars stars0"></div> <div class="etplus">&plus</div> </a> <!-- Met le "&plus" en face des étoiles -->
-          <a href="/catalogue.php?<?php echo genurl('stars', 'stars=1'); ?>"><div class="starsbox stars stars1"></div> <div class="etplus">&plus</div> </a> 
+          <a href="/catalogue.php?<?php echo genurl('stars', 'stars=1'); ?>"><div class="starsbox stars stars1"></div> <div class="etplus">&plus</div> </a>
           <a href="/catalogue.php?<?php echo genurl('stars', 'stars=2'); ?>"><div class="starsbox stars stars2"></div> <div class="etplus">&plus</div> </a>
           <a href="/catalogue.php?<?php echo genurl('stars', 'stars=3'); ?>"><div class="starsbox stars stars3"></div> <div class="etplus">&plus</div> </a>
           <a href="/catalogue.php?<?php echo genurl('stars', 'stars=4'); ?>"><div class="starsbox stars stars4"></div> <div class="etplus">&plus</div> </a>
@@ -45,6 +45,43 @@
     <div class="col-md-8" style="display: inline-block;">
       <div class="container" style="min-height:300px;">
         <?php
+        //function
+        function affichestar($avg){
+          if ($avg == 0) {
+            $result = "stars0";
+          } elseif ($avg <= 0.5) {
+            $result = "stars0_5";
+
+          } elseif ($avg <= 1){
+            $result = "stars1";
+
+          } elseif ($avg <= 1.5) {
+            $result = "stars1_5";
+
+          } elseif ($avg <= 2) {
+            $result = "stars2";
+
+          } elseif ($avg <= 2.5) {
+            $result = "stars2_5";
+
+          } elseif ($avg <= 3) {
+            $result = "stars3";
+
+          } elseif ($avg <= 3.5) {
+            $result = "stars3_5";
+
+          } elseif ($avg <= 4) {
+            $result = "stars4";
+
+          } elseif ($avg <= 4.5) {
+            $result = "stars4_5";
+
+          }else {
+            $result = "stars5";
+          }
+          return $result;
+        }
+
         //Création de la requête sql
         // TODO: Faire la requête sql en fonction du choix dans le menu (navbar)
         //selectionne tous le produit. requet par default
@@ -81,27 +118,35 @@
           //Teste s'il y a une photo pour le produit ou pas
           if ($produitexist == 0) {
             $imgproduit = '/assets/img/defaultproduitimg.png';
-          }else {
+          } else {
             $imgproduitrep = $reqphotoproduit->fetch();
             $imgproduit = '/assets/img/imagesupload/'.$imgproduitrep["Photo"];
           }
 
+          //selectionne la moyenne des notes du produit
+          $reqpmoyenne = $bdd->prepare("SELECT ROUND(AVG(Note), 1) as 'moyenne' FROM avis WHERE IDProduit = ? GROUP BY IDProduit");
+          $reqpmoyenne->execute(array($row["IDProduit"]));
+          $dbrepmoyenne = $reqpmoyenne->fetch();
+          $moyenavis = (float)$dbrepmoyenne['moyenne'];
           //Afficher le produit
-          echo '<a href="/produit.php?id='.$row["IDProduit"].'" class="articleElm articleBox">
-          <div class="articleNom">
-          '.$row["LibelleProduit"].'
-          </div>
+          ?>
+          <a href="/produit.php?id=<?php echo $row["IDProduit"];?>" class="articleElm articleBox">
+            <div class="articleNom">
+              <?php echo $row["LibelleProduit"];?>
+            </div>
           <div class="imgBox">
-            <img src="'.$imgproduit.'" alt="">
+            <img src="<?php echo $imgproduit; ?>" alt="">
           </div>
-          <div class="stars stars3_5'./*stars0_5 ou stars4_5*/'" style="height: 26px; width: 148px; float: left; margin: 8px 16px;">
+            <div class="stars <?php echo affichestar($moyenavis); ?>" style="height: 26px; width: 148px; float: left; margin: 8px 16px;">
           </div>
-          <div class="articlePrix">
-          '.$row["PrixUnitaireHT"].'
-          </div>
-          </a>';
+            <div class="articlePrix">
+              <?php echo $row["PrixUnitaireHT"]; ?>
+            </div>
+          </a>
+          <?php
         }
         ?>
+
       </div>
     </div>
 
