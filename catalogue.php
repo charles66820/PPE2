@@ -13,12 +13,14 @@
     <link rel="stylesheet" href="/assets/css/catalogue.css">
     <link rel="stylesheet" href="/assets/css/Footer-Clean.css">
     <link rel="stylesheet" href="/assets/css/Pretty-Footer.css">
-    <link rel="stylesheet" href="/assets/css/stylesF.css">
     <link rel="stylesheet" href="/assets/css/avis.css">
   </head>
 
   <body>
-    <?php include 'assets/php/nav.php'; ?>
+    <?php
+    include 'assets/php/nav.php';
+    include 'assets/php/fonction-catalogue.php';
+    ?>
 
     <div style="display:  inline-block; vertical-align:  top;margin: 20px;">
       <nav>
@@ -45,43 +47,6 @@
     <div class="col-md-8" style="display: inline-block;">
       <div class="container" style="min-height:300px;">
         <?php
-        //function
-        function affichestar($avg){
-          if ($avg == 0) {
-            $result = "stars0";
-          } elseif ($avg <= 0.5) {
-            $result = "stars0_5";
-
-          } elseif ($avg <= 1){
-            $result = "stars1";
-
-          } elseif ($avg <= 1.5) {
-            $result = "stars1_5";
-
-          } elseif ($avg <= 2) {
-            $result = "stars2";
-
-          } elseif ($avg <= 2.5) {
-            $result = "stars2_5";
-
-          } elseif ($avg <= 3) {
-            $result = "stars3";
-
-          } elseif ($avg <= 3.5) {
-            $result = "stars3_5";
-
-          } elseif ($avg <= 4) {
-            $result = "stars4";
-
-          } elseif ($avg <= 4.5) {
-            $result = "stars4_5";
-
-          }else {
-            $result = "stars5";
-          }
-          return $result;
-        }
-
         //Création de la requête sql
         // TODO: Faire la requête sql en fonction du choix dans le menu (navbar)
         //selectionne tous le produit. requet par default
@@ -128,6 +93,7 @@
           $reqpmoyenne->execute(array($row["IDProduit"]));
           $dbrepmoyenne = $reqpmoyenne->fetch();
           $moyenavis = (float)$dbrepmoyenne['moyenne'];
+
           //Afficher le produit
           ?>
           <a href="/produit.php?id=<?php echo $row["IDProduit"];?>" class="articleElm articleBox">
@@ -148,16 +114,6 @@
         ?>
 
       </div>
-    </div>
-
-    <!-- pour gérée l'avie avec les étoiles -->
-    <div id="starsselecteur" class="stars0">
-      <img src="/assets/img/empty_star.png" style="margin-left:0px;" alt="1 étoiles" height="28" width="28" data-star="1">
-      <img src="/assets/img/empty_star.png" alt="2 étoiles" height="28" width="28" data-star="2">
-      <img src="/assets/img/empty_star.png" alt="3 étoiles" height="28" width="28" data-star="3">
-      <img src="/assets/img/empty_star.png" alt="4 étoiles" height="28" width="28" data-star="4">
-      <img src="/assets/img/empty_star.png" alt="5 étoiles" height="28" width="28" data-star="5">
-      <input type="hidden" name="avis" value="0">
     </div>
 
     <?php include 'assets/php/footer.php'; ?>

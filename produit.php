@@ -16,7 +16,10 @@
   </head>
 
   <body>
-    <?php include 'assets/php/nav.php'; ?>
+    <?php
+    include 'assets/php/nav.php';
+    include 'assets/php/fonction-catalogue.php';
+    ?>
     <div>
       <div class="container">
         <div class="row">
@@ -62,12 +65,15 @@
             <div>
               <h4 class="text-right" style="margin-top:18px;max-width:68px;height:33px;">Avis :&nbsp;</h4>
             </div>
-            <div class="float-right d-flex" style="background-color:#9d1616;font-size:22px;width:170px;margin-top:-35px;margin-right:32px;">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
+            <?php
+              //selectionne la moyenne des notes du produit
+              $reqpmoyenne = $bdd->prepare("SELECT ROUND(AVG(Note), 1) as 'moyenne' FROM avis WHERE IDProduit = ? GROUP BY IDProduit");
+              $reqpmoyenne->execute(array($_GET['id']));
+              $dbrepmoyenne = $reqpmoyenne->fetch();
+              $moyenavis = (float)$dbrepmoyenne['moyenne'];
+              ?>
+            <div class="float-right d-flex" style="margin-top: -40px; margin-right: 28px;">
+              <div class="stars <?php echo affichestar($moyenavis) ?>" style="height: 26px; width: 148px;"></div>
             </div>
             <div>
               <h5 class="text-center" style="margin-top:16px;margin-left:10px;padding-top:0px;padding-left:-1px;font-size:25px;width:120px;">Quantité :&nbsp;</h5>
@@ -101,7 +107,7 @@
             <div>
               <h1 class="text-center text-warning" style="padding-top:26px;max-width:292px;margin-top:-10px;margin-left:0px;padding-right:0px;padding-left:0px;font-size:47px;"><?php echo $produit['PrixUnitaireHT']; ?> €</h1>
             </div>
-              <div><button class="btn btn-primary" type="button" data-bs-hover-animate="tada" style="width:295px;height:80px;margin-top:18px;font-size:31px;">Ajouter au panier&nbsp;</button></div>
+              <div><button class="btn btn-primary" type="button" data-bs-hover-animate="tada" style="max-width:295px;max-height:80px;margin-top:18px;font-size:31px;">Ajouter au panier&nbsp;</button></div>
             </div>
           </div>
           <div style="margin-top:19px;">

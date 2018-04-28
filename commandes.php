@@ -12,7 +12,6 @@
       <link rel="stylesheet" href="/assets/css/accueil.css">
       <link rel="stylesheet" href="/assets/css/Footer-Clean.css">
       <link rel="stylesheet" href="/assets/css/Pretty-Footer.css">
-      <link rel="stylesheet" href="/assets/css/stylesF.css">
   </head>
   <body>
     <?php include 'assets/php/nav.php'; ?>
