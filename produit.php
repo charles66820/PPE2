@@ -123,16 +123,30 @@
       <?php
       //teste si l'utilisateur est connecté
       if (isset($_SESSION['id'])) {
+
+        if (isset($_POST['commentDelete'])){
+          $cid = $_POST['IDAvis'];
+          $requseravis = $bdd->prepare("SELECT IDClient FROM avis WHERE IDAvis = ?");
+          $requseravis->execute(array($cid));
+          if ($_SESSION['id'] == $requseravis->fetch()['IDClient']) {
+            $sql = "DELETE FROM avis WHERE IDAvis = ?";
+            $result = $bdd->prepare($sql);
+            $result->execute(array($cid));
+          }
+      	}
+
+
         if (isset($_POST['commentSubmit'])){
           $idclient = intval(htmlspecialchars($_POST['IDClient']));
           $titreavis = htmlspecialchars($_POST['titreAvis']);
           $avis = intval(htmlspecialchars($_POST['avis']));
           $message = htmlspecialchars($_POST['message']);
-          $sql = "INSERT INTO avis (IDClient, Titre, Description, Note, IDProduit) VALUES (?, ?, ?, ?, ?)";
+          $sql = "INSERT INTO avis (IDClient, Titre, Description, Note, IDProduit) VALUES (?, ?, ?, ?, ?)" ;
           $reqinser = $bdd->prepare($sql);
           $reqinser->execute(array($idclient, $titreavis, $message, $avis, $produit['IDProduit']));
         }
 
+<<<<<<< HEAD
       ?>
         <form method='POST'>
           <div class="form-group">
@@ -150,12 +164,66 @@
             <textarea class="textarea-avis" name='message' placeholder="Entrez ici votre commentaire"></textarea><br>
             <button class="button-avis" type='submit' name='commentSubmit'>Comment</button>
           </div>
+=======
+
+        ?>
+        <form class="form form-group" method='POST'>
+          <!-- pour gérée l'avis avec les étoiles -->
+          <div id="starsselecteur" class="stars0">
+            <img src="/assets/img/empty_star.png" style="margin-left:0px;" alt="1 étoiles" height="28" width="28" data-star="1">
+            <img src="/assets/img/empty_star.png" alt="2 étoiles" height="28" width="28" data-star="2">
+            <img src="/assets/img/empty_star.png" alt="3 étoiles" height="28" width="28" data-star="3">
+            <img src="/assets/img/empty_star.png" alt="4 étoiles" height="28" width="28" data-star="4">
+            <img src="/assets/img/empty_star.png" alt="5 étoiles" height="28" width="28" data-star="5">
+            <input type="hidden" name="avis" value="0">
+          </div>
+          <input type='hidden' name='IDClient' value="<?php echo $_SESSION['id'];?>">
+          <input type='text' name='titreAvis' placeholder="Titre ou résumé pour votre commentaire (requis)">
+          <textarea class="textarea-avis" name='message' placeholder="Entrez ici votre commentaire"></textarea><br>
+          <button class="button-avis" type='submit' name='commentSubmit'>Commenter</button>
+>>>>>>> 6b1b9bf49283c494b67537a5bb5e9608ea594110
         </form>
-        <?php } else {
-          echo "Vous devez être connecté pour écrire un commentaire";
-        } ?>
+        <?php
+      } else {
+        echo "Vous devez être connecté pour écrire un commentaire";
+      }
 
+      $sql = "SELECT * FROM avis WHERE IDProduit = ? LIMIT 20"; //sélectionne les avis
+      $selectcomment = $bdd->prepare($sql);
+      $selectcomment->execute(array($_GET['id']));
 
+      foreach($selectcomment->fetchAll() as $row) { //Permet de donner tous les avis de la bdd
+        $id = $row['IDClient'];
+        $reqselectclient = $bdd->prepare("SELECT IDClient, Pseudo FROM client WHERE IDClient = ?");
+        $reqselectclient->execute(array($id));
+        $repselectclient = $reqselectclient->fetch()
+        ?>
+        <div class='comment-box'>
+          <p><?php echo $repselectclient['Pseudo'] ?></p>
+          <p><?php echo $row['DateAvis'] ?></p>
+          <p><?php echo $row['Titre'] ?></p>
+          <p><?php echo $row['Note'] ?></p>
+          <div class="textarea-avis">
+            <?php
+            echo nl2br($row['Description']); //contenu de l'avis / nl2br permet de faire des sauts de ligne
+            ?>
+          </div>
+          <?php
+          if (isset($_SESSION['id'])) { //L'utilisateur ne voit les boutons delete et edit que pour ses propres avis
+            if ($_SESSION['id'] == $repselectclient['IDClient']) {
+              ?>
+              <form class='delete-form' method='POST'>
+                <input type='hidden' name='IDAvis' value='<?php echo $row['IDAvis']; ?>'>
+                <button type='submit' name='commentDelete'>Supprimer</button>
+              </form>
+              <?php
+            }
+          }
+          ?>
+        </div>
+      <?php
+      }
+      ?>
 
     </div>
 
