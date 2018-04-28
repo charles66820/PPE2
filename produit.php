@@ -149,7 +149,7 @@
 
         ?>
         <form class="" method='POST'>
-          <div class="comment-box">
+          <div class="col-sm-8 comment-box">
             <input type='hidden' name='IDClient' value="<?php echo $_SESSION['id'];?>">
             <!-- pour gérée l'avis avec les étoiles -->
             <div id="starsselecteur" class="stars0">
@@ -180,11 +180,10 @@
         $reqselectclient->execute(array($id));
         $repselectclient = $reqselectclient->fetch()
         ?>
-        <div class='comment-box'>
+        <div class='col-sm-8 comment-box'>
           <div class="form-row">
-            <p><?php echo $repselectclient['Pseudo'] ?></p>
-            <p><?php echo $row['DateAvis'] ?></p>
-            <p><?php echo $row['Note'] ?></p>
+            <div class="stars stars<?php echo $row['Note'] ?>" style="height: 26px; width: 148px; float: left; margin-right:8px;"></div>
+            <p class="text-justify" style="margin-top:8px;">Commantaire fait le <?php echo $row['DateAvis'] ?> par <?php echo $repselectclient['Pseudo'] ?></p>
           </div>
           <p><?php echo $row['Titre'] ?></p>
           <div class="textarea-avis">
