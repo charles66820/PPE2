@@ -3,9 +3,7 @@
   <head>
       <meta charset="UTF-8">
       <title>Erreur 404</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
-      <?php include 'assets/php/allcss.php'; ?>
+      <?php include '../php/allcss.php'; ?>
       <style>
       .potitionerror{
         margin: 10% auto;

@@ -10,13 +10,13 @@
         </div>
         <div class="col-sm-6 col-md-4 footer-contacts">
             <div><span class="fa fa-map-marker footer-contacts-icon" style="background-color:rgb(21,107,159);"> </span>
-                <p><span class="new-line-span">21 Revolution Street</span> Paris, France</p>
+                <p><span class="new-line-span">21 Revolution Street</span> Perpignan, France</p>
             </div>
             <div><i class="fa fa-phone footer-contacts-icon" style="background-color:rgb(21,107,159);"></i>
-                <p class="footer-center-info email text-left"> +1 555 123456</p>
+                <p class="footer-center-info email text-left"> +334 27 86 84 23</p>
             </div>
             <div><i class="fa fa-envelope footer-contacts-icon" style="background-color:rgb(21,107,159);"></i>
-                <p> <a href="#">support@company.com</a></p>
+                <p> <a href="mailto:Poulpi.OTako@ppe.sio" target="_top">Poulpi.OTako@ppe.sio</a></p>
             </div>
         </div>
         <div class="clearfix"></div>
