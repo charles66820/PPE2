@@ -16,7 +16,7 @@
     if (!isset($_GET['id'])) {
       ?>
       <div class="container">
-        <h1 class="m-5 p-5">Aucun produit selectionner :( retourné sur le catalogue</h1>
+        <h1 class="m-5 p-5">Aucun produit selectionné :( retournez sur le catalogue ;-)</h1>
       </div>
       <?php
     }else {
@@ -28,7 +28,7 @@
         if (!ajouterArticle(intval(htmlspecialchars($_POST['addproduitpanier'])), intval(htmlspecialchars($_POST['quentiterproduit'])))) {
           ?>
           <div class="container">
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">Quentiter du produit invalide
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">Quantité du produit invalide
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -213,7 +213,7 @@
           <div class='col-sm-8 comment-box'>
             <div class="form-row">
               <div class="stars stars<?php echo $row['Note'] ?>" style="height: 26px; width: 148px; float: left; margin-right:8px;"></div>
-              <p class="text-justify" style="margin-top:8px;">Commantaire fait le <?php echo $row['DateAvis'] ?> par <?php echo $repselectclient['Pseudo'] ?></p>
+              <p class="text-justify" style="margin-top:8px;">Commentaire fait le <?php echo $row['DateAvis'] ?> par <?php echo $repselectclient['Pseudo'] ?></p>
             </div>
             <p><?php echo $row['Titre'] ?></p>
             <div class="textarea-avis">
@@ -248,7 +248,7 @@
             $reqproduit->execute(array($produit['IdCategorie']));
             $lesproduits = $reqproduit->fetchAll();
             foreach ($lesproduits as $unproduit) {
-              //Récupère l'image par raport à l'id du produit
+              //Récupère l'image par rapport à l'id du produit
               $reqphotoproduit = $bdd->prepare("SELECT * FROM photoproduit WHERE IDProduit = ?");
               $reqphotoproduit->execute(array($unproduit["IDProduit"]));
               $produitexist = $reqphotoproduit->rowCount();
@@ -264,7 +264,7 @@
                 <div>
                   <h3 class="text-center" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"><?php echo $unproduit['LibelleProduit'] ?></h3>
                   <img class="rounded" src="<?php echo $imgproduit ?>" style="width:139px;margin-left:54px;">
-                  <div><button class="btn btn-primary btn-lg" type="button" style="width:255px;height:50px;margin-top:1px;">Voir le produit</button></div>
+                  <div><button class="btn btn-primary btn-lg" type="button" onclick="document.location.href='produit.php?id=<?php echo $unproduit["IDProduit"]?>'" style="width:255px;height:50px;margin-top:1px;">Voir le produit</button></div> <!--Met le lien des produits en fonction de leur id-->
                 </div>
               </div>
               <?php

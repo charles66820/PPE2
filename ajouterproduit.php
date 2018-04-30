@@ -54,7 +54,7 @@
 
                 $listeDesImages = json_decode($_POST['imgsJSON'], true);
                 foreach ($listeDesImages as $image) {//pour chaque image
-                  //selectionne l'id du produit grace a ça referance
+                  //selectionne l'id du produit grâce à sa référence
                   $reqProduitId = $bdd->prepare("SELECT IDProduit FROM produits WHERE Reference = ?");
                   $reqProduitId->execute(array($reference));
                   $ProduitId = $reqProduitId->fetch();
@@ -135,7 +135,7 @@
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
-                    <label class="mr-1">taille :</label>
+                    <label class="mr-1">Taille :</label>
                     <select class="form-control" name="" id="taille">
                       <?php
                       //charge les categories

@@ -57,7 +57,7 @@
                   //teste s'il y a une image envoyée
                   if (!empty($_POST['imgsJSON'])) {
 
-                    //récuper l'id des photoproduit par raport au produit id
+                    //récuper l'id des photoproduit par rapport au produit id
                     $selectIdImageExiste = $bdd->prepare("SELECT IDPhotoProduit FROM photoproduit WHERE IDProduit = ?");
                     $selectIdImageExiste->execute(array($idproduit));
                     $idImageExiste = $selectIdImageExiste->fetchAll();
@@ -69,16 +69,16 @@
                         $insertPhotoProduit = $bdd->prepare("INSERT INTO photoproduit(IDProduit, Photo) VALUES(?, ?)");
                         $insertPhotoProduit->execute(array($idproduit, $image["imagename"]));
                       }else{
-                        for ($i=0; $i < sizeof($idImageExiste); $i++) {//test si l'image existe et si il faut la metre a jour
+                        for ($i=0; $i < sizeof($idImageExiste); $i++) {//test si l'image existe et s'il faut la mettre à jour
                           if ($image["id"] == $idImageExiste[$i]["IDPhotoProduit"]) {
-                            array_splice($idImageExiste, $i, 1);//enléve l'id de l'image existente de la liste
+                            array_splice($idImageExiste, $i, 1);//enlève l'id de l'image existante de la liste
                             $UpdatePhotoProduit = $bdd->prepare("UPDATE photoproduit SET Photo = ? WHERE IDPhotoProduit = ?");
                             $UpdatePhotoProduit->execute(array($image["imagename"], $image["id"]));
                           }
                         }
                       }
                     }
-                    //supprime la liste des images restante
+                    //supprime la liste des images restantes
                     foreach ($idImageExiste as $id) {
                       $deletePhotoProduit = $bdd->prepare("DELETE FROM photoproduit WHERE IDPhotoProduit = ?");
                       $deletePhotoProduit->execute(array($id["IDPhotoProduit"]));
@@ -86,7 +86,7 @@
                     echo '<script> console.log("image teeeeest"); document.location.replace("modifiercatalogue.php")</script>';
 
                   }else {
-                    //supprime toute les image existente
+                    //supprime toutes les images existantes
                     $deletePhotoProduit = $bdd->prepare("DELETE FROM photoproduit WHERE IDProduit = ?");
                     $deletePhotoProduit->execute(array($idproduit));
                     echo '<script> console.log("Pas d\'image ajouter. Image par default utiliser"); document.location.replace("modifiercatalogue.php")</script>';
@@ -95,7 +95,7 @@
                   $erreur = "La référence \"".$reference."\" est déjà utilisée !";
                 }
               }else {
-                $erreur = "Le champ Prix Unitair HT et/ou Quantité ne doit contenir que des chiffres !";
+                $erreur = "Le champ Prix Unitaire HT et/ou Quantité ne doit contenir que des chiffres !";
               }
             }else {
               $erreur = "Tous les champs doivent être complétés !";
@@ -109,7 +109,7 @@
           $reqproduit->execute(array($_GET['id']));
           $dbrep = $reqproduit->fetch();
 
-          //le resultat remplis des variables
+          //le resultat remplit des variables
           $nomproduit = $dbrep["LibelleProduit"];
           $prix = $dbrep["PrixUnitaireHT"];
           $reference = $dbrep["Reference"];
@@ -174,10 +174,10 @@
                 </div>
                 <div class="col-sm-5">
                   <div class="form-inline m-2">
-                    <label class="mr-1">taille :</label>
+                    <label class="mr-1">Taille :</label>
                     <select class="form-control" name="" id="taille">
                       <?php
-                      //charge les categorie
+                      //charge les catégories
                       $reqcategorie = $bdd->prepare("SELECT * FROM taille");
                       $reqcategorie->execute();
                       $categorieinfo = $reqcategorie->fetchAll();
@@ -199,7 +199,7 @@
               </div>
             </div>
 
-            <!-- gestion des image -->
+            <!-- gestion des images -->
             <div class="col-xl-6">
               <div class="m-2" style="overflow:auto; position:relative">
                 <img class="rounded mx-auto d-block" id="imgproduit" src="" data-bs-hover-animate="pulse" style="width:422px; max-width:none; height:385px;">
@@ -208,7 +208,7 @@
                 <div id="addimgproduit" style="position:absolute; background-color:white; top:0; left:0; width:100%; height:100%; min-width:422px; display:none; border: 2px solid rgba(0, 0, 0, 0);">
                   <div class="container text-center" style="position:absolute; top: 0; bottom: 0; margin: auto; height: 50%;">
                     <h2 id="tiredropimg" class="text-primary">Envoyer une image</h2>
-                    <p class="text-primary">Glissé déposer votre image ou cliqué ici.</p>
+                    <p class="text-primary">Glissez et déposez votre image ou cliquez ici.</p>
                     <div id="progressbarimg" class="progress" style="display:none">
                       <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:0%">0%</div>
                     </div>
@@ -219,11 +219,11 @@
               </div>
               <div class="m-2" id="listimgproduit">
                 <?php
-                //récupére le nom et l'id des photo du produit
+                //récupére le nom et l'id des photos du produit
                 $reqphotoproduit = $bdd->prepare("SELECT * FROM photoproduit WHERE IDProduit = ?");
                 $reqphotoproduit->execute(array($_GET['id']));
                 $photosProduit = $reqphotoproduit->fetchAll();
-                //affiche les images qui sont existente dans la bdd
+                //affiche les images qui sont existantes dans la bdd
                 foreach ($photosProduit as $photo) {
                   echo '<img src="/assets/img/imagesupload/'.$photo["Photo"].'" data-image-id="'.$photo["IDPhotoProduit"].'" style="width:80px;height: 80px; margin:0 2px">';
                 }

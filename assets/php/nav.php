@@ -66,7 +66,7 @@ include 'genurl.php';
               $adminoption = ' ';
             }
 
-            //afficher le menu connecter
+            //afficher le menu connecté
             echo '
             <li class="dropdown">
               <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">
@@ -81,7 +81,7 @@ include 'genurl.php';
             </li>
             ';
           }else {
-            //afficher le menu par defaut
+            //afficher le menu par défaut
             echo '
             <li class="dropdown">
               <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Compte </a>

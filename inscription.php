@@ -28,7 +28,7 @@
         if($pseudolength <= 20) {
           $reqpseudo = $bdd->prepare("SELECT * FROM client WHERE Pseudo = ?");
           $reqpseudo->execute(array($pseudo));
-          $pseudoexist = $reqpseudo->rowCount(); /* Fonction qui compte le nombre de colonnes existantes pour ce que l'on a rentré */
+          $pseudoexist = $reqpseudo->rowCount(); /* Fonction qui compte le nombre de colonnes existantes pour ce que l'on à rentrer */
           if($pseudoexist == 0) {
             if($mail == $mail2) {
               if(filter_var($mail, FILTER_VALIDATE_EMAIL)) { /* Fonction qui permet de voir si c'est bien un email */
@@ -42,7 +42,7 @@
                     $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"/accueil.php\"><br />Revenir sur la page d'accueil</a>";
 
                   } else {
-                    $erreur = "Vos mots de passes ne correspondent pas !";
+                    $erreur = "Vos mots de passe ne correspondent pas !";
                   }
                 } else {
                   $erreur = "L'adresse mail est déjà utilisée !";
@@ -155,8 +155,8 @@
               <label>Civilité : </label>
             </td>
             <td>
-              <input type="radio" name="civilite" value="homme" checked> Monsieur<br>
-              <input type="radio" name="civilite" value="femme"> Madame<br>
+              <input type="radio" name="civilite" value="homme" checked>Monsieur<br>
+              <input type="radio" name="civilite" value="femme">Madame<br>
 
             </td>
           </tr>

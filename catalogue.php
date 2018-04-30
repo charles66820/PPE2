@@ -41,33 +41,33 @@
         <?php
         //Création de la requête sql
         // TODO: Faire la requête sql en fonction du choix dans le menu (navbar)
-        //selectionne tous le produit. requet par default
+        //selectionne tous les produits. Requête par defaut
         $sql = "SELECT produits.IDProduit, produits.LibelleProduit, produits.PrixUnitaireHT FROM produits WHERE produits.IDProduit = produits.IDProduit ";
 
-        //selection les produit avec la sous categorie qui est égale a la valeur de $type
+        //sélectionne les produits avec la sous-categorie qui est égale à la valeur de $type
         if (!empty($type)) {
           $sql = "SELECT produits.IDProduit, produits.LibelleProduit, produits.PrixUnitaireHT FROM produits, souscategorie WHERE produits.IdCategorie = souscategorie.IdCategorie AND souscategorie.nomsouscat = '".$type."' ";
         }
 
-        $stars;// selesction le produit en fontion de la moyende des avie une requet sql dans une autre avec un est plus grant ou égale (peut sajouter dans nimportquelle requet)
+        $stars;// sélectionne un produit en fontion de la moyenne des avis, une requête sql dans une autre avec un est plus grand ou égal (peut sajouter dans nimporte quelle requête)
 
-        $maxprice;//selectionne les produit qui on un prix plu petit ou éguale au prix dans $maxprice (peut sajouter dans nimportquelle requet)
+        $maxprice;//sélectionne les produits qui ont un prix plus petit ou égal au prix dans $maxprice (peut sajouter dans nimporte quelle requête)
         if (!empty($maxprice)) {
           $sql .="AND produits.PrixUnitaireHT <= '".$maxprice."'";
         }
 
-        $search;//crée une requete sql qui recherche la valeur re $search dans le lbl du produit, dans la reference du produit et dans description du produit on utilise LIKE %$search% (peut sajouter dans nimportquelle requet)
+        $search;//crée une requête sql qui recherche la valeur de $search dans le lbl du produit, dans la référence du produit et dans description du produit on utilise LIKE %$search% (peut s'ajouter dans nimporte quelle requête)
 
 
 
-        //récuprére les profuit avec une requet sql
+        //récupère les produits avec une requête sql
         $reqproduit = $bdd->prepare($sql);
         $reqproduit->execute();
         $dbrep = $reqproduit->fetchAll();
 
         //Chargement des produits du catalogue
         foreach ($dbrep as $row) {
-          //Récupère l'image par raport à l'id du produit
+          //Récupère l'image par rapport à l'id du produit
           $reqphotoproduit = $bdd->prepare("SELECT * FROM photoproduit WHERE IDProduit = ?");
           $reqphotoproduit->execute(array($row["IDProduit"]));
           $produitexist = $reqphotoproduit->rowCount();
@@ -80,7 +80,7 @@
             $imgproduit = '/assets/img/imagesupload/'.$imgproduitrep["Photo"];
           }
 
-          //selectionne la moyenne des notes du produit
+          //sélectionne la moyenne des notes du produit
           $reqpmoyenne = $bdd->prepare("SELECT ROUND(AVG(Note), 1) as 'moyenne' FROM avis WHERE IDProduit = ? GROUP BY IDProduit");
           $reqpmoyenne->execute(array($row["IDProduit"]));
           $dbrepmoyenne = $reqpmoyenne->fetch();

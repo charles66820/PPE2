@@ -33,7 +33,7 @@
 
         //chargement des produits du catalogue
         foreach ($dbrep as $row) {
-          //recuperer l'image par rapport à l'id du produit
+          //récupérer l'image par rapport à l'id du produit
           $reqphotoproduit = $bdd->prepare("SELECT * FROM photoproduit WHERE IDProduit = ?");
           $reqphotoproduit->execute(array($row["IDProduit"]));
           $produitexist = $reqphotoproduit->rowCount();

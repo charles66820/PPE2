@@ -23,7 +23,7 @@
         <div class="col-md-4 footer-about">
             <h4>Pour information :&nbsp;</h4>
             <p> Octlantis est une ville sous-marine construite par des poulpes ! <br>
-                Plus d'infos ici --> <a href="https://www.lexpress.fr/actualite/sciences/voici-octlantis-une-ville-sous-marine-construite-par-des-poulpes_1944982.html">Octlantis</a> &nbsp;</p>
+                Plus d'infos ici --> <a href="https://www.lexpress.fr/actualite/sciences/voici-octlantis-une-ville-sous-marine-construite-par-des-poulpes_1944982.html">Octlantis 🐙</a> &nbsp;</p>
         </div>
     </div>
 </footer>
