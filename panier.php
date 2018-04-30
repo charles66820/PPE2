@@ -1,130 +1,90 @@
-<?php
-include("assets/php/setting.bdd.php");
-include("assets/php/fonctions-panier.php");
-
-$erreur = false;
-
-$action = (isset($_POST['action'])? $_POST['action']:  (isset($_GET['action'])? $_GET['action']:null )) ;
-if($action !== null)
-{
-   if(!in_array($action,array('ajout', 'suppression', 'refresh')))
-   $erreur=true;
-
-   //récuperation des variables en POST ou GET
-   $l = (isset($_POST['l'])? $_POST['l']:  (isset($_GET['l'])? $_GET['l']:null )) ;
-   $p = (isset($_POST['p'])? $_POST['p']:  (isset($_GET['p'])? $_GET['p']:null )) ;
-   $q = (isset($_POST['q'])? $_POST['q']:  (isset($_GET['q'])? $_GET['q']:null )) ;
-
-   //Suppression des espaces verticaux
-   $l = preg_replace('#\v#', '',$l);
-   //On verifie que $p soit un float
-   $p = floatval($p);
-
-   //On traite $q qui peut être un entier simple ou un tableau d'entiers
-
-   if (is_array($q)){
-      $quantiteArticle = array();
-      $i=0;
-      foreach ($q as $contenu){
-         $quantiteArticle[$i++] = intval($contenu);
-      }
-   }
-   else
-   $q = intval($q);
-
-}
-
-if (!$erreur){
-   switch($action){
-      Case "ajout":
-         ajouterArticle($l,$q,$p);
-         break;
-
-      Case "suppression":
-         supprimerArticle($l);
-         break;
-
-      Case "refresh" :
-         for ($i = 0 ; $i < count($quantiteArticle) ; $i++)
-         {
-            modifierQTeArticle($_SESSION['panier']['LibelleProduit'][$i],round($QteArticle[$i]));
-         }
-         break;
-
-      Default:
-         break;
-   }
-} ?>
-
 <!DOCTYPE html>
 <html>
-<head>
-<title>Votre panier</title>
-<?php include 'assets/php/allcss.php'; ?>
-</head>
-<body>
+  <head>
+    <title>Votre panier</title>
+    <?php include 'assets/php/allcss.php'; ?>
+  </head>
+  <body>
+    <?php include 'assets/php/nav.php';
+    include("assets/php/fonctions-panier.php");
 
-<form method="post" action="panier.php">
-<table style="width: 400px">
-	<tr>
-		<td colspan="4">Votre panier</td>
-	</tr>
-	<tr>
-		<td>Libellé</td>
-		<td>Quantité</td>
-		<td>Prix Unitaire</td>
-		<td>Action</td>
-	</tr>
+    if (isset($_POST['quentiterplus']) && !empty($_POST['quentiterplus']) && isset($_POST['produitidlignepanier']) && !empty($_POST['produitidlignepanier'])) {
+      modifierQTeArticle(intval(htmlspecialchars($_POST['produitidlignepanier'])), intval(htmlspecialchars($_POST['quentiterplus'])));
+    }
+    if (isset($_POST['quentitermoins']) && isset($_POST['produitidlignepanier']) && !empty($_POST['produitidlignepanier'])) {
+      modifierQTeArticle(intval(htmlspecialchars($_POST['produitidlignepanier'])), intval(htmlspecialchars($_POST['quentitermoins'])));
+    }
 
+    ?>
 
-	<?php
-	if (creationPanier())
-	{
-	   $nbArticles=count($_SESSION['panier']['LibelleProduit']);
-	   if ($nbArticles <= 0)
-	   echo "<tr><td>Votre panier est vide </ td></tr>";
-	   else
-	   {
-	      for ($i=0 ;$i < $nbArticles ; $i++)
-	      {
-	         echo "<tr>";
-	         echo "<td>".htmlspecialchars($_SESSION['panier']['LibelleProduit'][$i])."</ td>";
-	         echo "<td><input type=\"text\" size=\"4\" name=\"q[]\" value=\"".htmlspecialchars($_SESSION['panier']['quantiteProduit'][$i])."\"/></td>";
-	         echo "<td>".htmlspecialchars($_SESSION['panier']['prixUnitaireHT'][$i])."</td>";
-	         echo "<td><a href=\"".htmlspecialchars("panier.php?action=suppression&l=".rawurlencode($_SESSION['panier']['LibelleProduit'][$i]))."\">XX</a></td>";
-	         echo "</tr>";
-	      }
-
-	      echo "<tr><td colspan=\"2\"> </td>";
-	      echo "<td colspan=\"2\">";
-	      echo "Total : ".MontantGlobal();
-	      echo "</td></tr>";
-
-	      echo "<tr><td colspan=\"4\">";
-	      echo "<input type=\"submit\" value=\"Rafraichir\"/>";
-	      echo "<input type=\"hidden\" name=\"action\" value=\"refresh\"/>";
-
-	      echo "</td></tr>";
-	   }
-	}
-	?>
-</table>
-</form>
-    <div class="container">
+    <div class="container pb-1" style="box-shadow: 1px 0 5px 0 rgba(0,0,0,0.2);">
+      <div class="col-12 col-md-12 mb-2">
         <div class="row">
-            <div class="col" style="width:59px;"><label class="col-form-label" style="width:80px;height:67px;">Nom</label></div>
-            <div class="col"><label class="col-form-label">Prix</label></div>
-            <div class="col" style="width:98px;"><label class="col-form-label">Quantité</label></div>
-            <div class="col"><button class="btn btn-primary" type="button">-</button><button class="btn btn-primary" type="button">+</button></div>
+          <div class="col col-sm-6 col-md-8 col-lg-9"><label class="col-form-label">Nom</label></div>
+          <div class="col col-sm-2 col-md-1 col-lg-1"><label class="col-form-label">Prix</label></div>
+          <div class="col col-sm-4 col-md-3 col-lg-2"><label class="col-form-label pull-right">Quantité</label></div>
         </div>
-        <div class="row">
-            <div class="col" style="width:59px;"><label class="col-form-label" style="width:80px;height:67px;">&nbsp;Nom (en stock ou pas)&nbsp;</label></div>
-            <div class="col"><label class="col-form-label">Prix</label></div>
-            <div class="col" style="width:98px;"><label class="col-form-label">Quantité</label></div>
-            <div class="col"><button class="btn btn-primary" type="button">-</button><button class="btn btn-primary" type="button">+</button></div>
-        </div><button class="btn btn-primary float-right" type="button">Valider</button></div><label>Sous-total (nre d'article) :</label><label>&nbsp;Prix total (...€) :</label>
-        <script src="/assets/js/jquery-3.3.1.min.js"></script>
-        <script src="/assets/js/bootstrap.bundle.min.js"></script>
-        <script src="/assets/js/BSanimation.js"></script>
-</body>
+      </div>
+      <?php
+
+      if (creationPanier()){
+        $nbArticles = count($_SESSION['panier']['idproduit']);
+        if ($nbArticles <= 0){
+          ?>
+          <div class="ml-2 mb-5">Votre panier est vide</div>
+          <?php
+        } else {
+          for ($i=0 ;$i < $nbArticles ; $i++){
+            ?>
+            <div class="col-12 col-md-12 mb-2" style="box-shadow: 1px 0 5px 0 rgba(0,0,0,0.2);">
+              <div class="row">
+                <div class="col-xs-2 col-sm-6 col-md-8 col-lg-9">
+                  <label class="col-form-label"><?php echo htmlspecialchars($_SESSION['panier']['LibelleProduit'][$i]) ?></label>
+                </div>
+                <div class="col-xs-1 col-sm-6 col-md-4 col-lg-3">
+                  <label class="col-form-label"><?php echo htmlspecialchars($_SESSION['panier']['prixUnitaireHT'][$i]) ?>€</label>
+                  <form method="post" style="display: initial;">
+                    <input type="hidden" name="produitidlignepanier" value="<?php echo htmlspecialchars($_SESSION['panier']['idproduit'][$i]) ?>">
+                    <button class="btn btn-primary pull-right m-1" name="quentiterplus" value="<?php echo htmlspecialchars($_SESSION['panier']['quantiteProduit'][$i])+1 ?>" type="submit">+</button>
+                  </form>
+                  <form method="post" style="display: initial;">
+                    <input type="hidden" name="produitidlignepanier" value="<?php echo htmlspecialchars($_SESSION['panier']['idproduit'][$i]) ?>">
+                    <button class="btn btn-primary pull-right m-1" name="quentitermoins" value="<?php echo htmlspecialchars($_SESSION['panier']['quantiteProduit'][$i])-1 ?>" type="submit">-</button>
+                  </form>
+                  <label class="col-form-label pull-right m-1"><?php echo htmlspecialchars($_SESSION['panier']['quantiteProduit'][$i]) ?></label>
+                </div>
+              </div>
+            </div>
+            <?php
+          }
+        }
+      }
+      ?>
+      <div class="mb-3">
+        <div class="col-xs-1">
+          <label>Sous-total (nre d'article) : <?php echo compterArticles(); ?></label>
+        </div>
+        <div class="col-xs-1">
+          <label>&nbsp;Prix total HT : <?php echo MontantGlobal(); ?>€</label>
+          <button class="btn btn-primary pull-right" type="button">passé la commande</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/BSanimation.js"></script>
+  </body>
 </html>
+<?php
+// supprimePanier();
+// if (!ajouterArticle(8, 3)) {
+//   echo "erreur";
+// }
+// if (!ajouterArticle(22, 4)) {
+//   echo "erreur";
+// }
+// if (!ajouterArticle(35, 2)) {
+//   echo "erreur";
+// }
+?>
