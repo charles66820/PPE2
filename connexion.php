@@ -12,11 +12,9 @@
       </style>
   </head>
   <body>
-
     <!-- Barre de navigation -->
     <?php
     include 'assets/php/nav.php';
-
     if(isset($_POST['formconnexion'])) {
       $pseudoconnect = htmlspecialchars($_POST['pseudoconnect']);
       $mdpconnect = sha1($_POST['mdpconnect']);
@@ -41,7 +39,6 @@
       }
     }
     ?>
-
     <div align="center">
       <div class="container">
         <div class="card card-container" style="max-width: 350px; padding: 40px 40px;">
