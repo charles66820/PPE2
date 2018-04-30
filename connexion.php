@@ -7,7 +7,7 @@
       <style>
       div#inscription {
         margin: 0 auto;
-        width: 450px;
+        width: 332px;
       }
       </style>
   </head>
@@ -43,19 +43,28 @@
     ?>
 
     <div align="center">
-      <h2>Connexion</h2>
-      <br /><br />
-      <form method="POST" action="">
-        <input type="text" name="pseudoconnect" placeholder="Pseudo" />
-        <input type="password" name="mdpconnect" placeholder="Mot de passe" />
-        <br /><br />
-        <input type="submit" name="formconnexion" value="Se connecter" />
-      </form>
-      <?php
-      if(isset($erreur)) {
-        echo '<font color="red">'.$erreur."</font>";
-      }
-      ?>
+      <div class="container">
+        <div class="card card-container" style="max-width: 350px; padding: 40px 40px;">
+          <h2>Connexion</h2>
+          <br /><br />
+          <form method="POST">
+            <div class="form-group">
+              <input type="text" class="form-control"name="pseudoconnect" placeholder="Pseudo" />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control"name="mdpconnect" placeholder="Mot de passe" />
+            </div>
+
+            <br /><br />
+            <input type="submit" name="formconnexion" value="Se connecter" />
+          </form>
+          <?php
+          if(isset($erreur)) {
+            echo '<font color="red">'.$erreur."</font>";
+          }
+          ?>
+        </div>
+      </div>
     </div>
 
     <div id="inscription">
