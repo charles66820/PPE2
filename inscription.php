@@ -38,8 +38,8 @@
                 if($mailexist == 0) {
                   if($mdp == $mdp2) {
 
-                    $insertmbr = $bdd->prepare("INSERT INTO client(Pseudo, Email, MotDePasse, Nom, Prenom, Civilite, Telephone, AvatarUrl, Actif) VALUES(?, ?, ?, ?, ?, ?, ?, ?, 0)");
-                    $insertmbr->execute(array($pseudo, $mail, $mdp, $nom, $prenom, $civilite, $telephone, $avatarurl, ));
+                    $insertmbr = $bdd->prepare("INSERT INTO client(Pseudo, Email, MotDePasse, Nom, Prenom, Civilite, Telephone, AvatarUrl, Actif, Token) VALUES(?, ?, ?, ?, ?, ?, ?, ?, 0, ?)");
+                    $insertmbr->execute(array($pseudo, $mail, $mdp, $nom, $prenom, $civilite, $telephone, $avatarurl, $token));
                     $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"/accueil.php\"><br />Revenir sur la page d'accueil</a>";
 
                   } else {
