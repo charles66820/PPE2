@@ -64,7 +64,7 @@
           <th>Produit</th>
           <th>Prix unitaire HT</th>
         </tr>
-        <?php
+        <?
         $reqcommande = $bdd->prepare("SELECT DateCommande, TotalTVA, FraisPortTTC, IDClient, IDAdresseFacturation, IDAdresseLivraison, LibelleProduit, PrixUnitaireHT FROM commande, produits WHERE commande.IDProduit = produits.IDProduit AND IDClient = ?");
         $reqcommande->execute(array($_SESSION['id']));
         $dbrep = $reqcommande->fetchAll();
