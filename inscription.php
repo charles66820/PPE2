@@ -10,16 +10,17 @@
     //navbar
     include 'assets/php/nav.php';
     function random_str($nbr) {
-      $str = "";
-      $chaine = "abcdefghijklmnpqrstuvwxyABCDEFGHIJKLMNOPQRSUTVWXYZ0123456789";
-      $nb_chars = strlen($chaine);
+    $str = "";
+    $chaine = "abcdefghijklmnpqrstuvwxyABCDEFGHIJKLMNOPQRSUTVWXYZ0123456789";
+    $nb_chars = strlen($chaine);
 
-      for($i=0; $i<$nbr; $i++){
+    for($i=0; $i<$nbr; $i++)
+    {
         $str .= $chaine[ rand(0, ($nb_chars-1)) ];
-      }
-      return $str;
     }
 
+    return $str;
+}
     //Traitement inscription
     if(isset($_POST['forminscription'])) {
       $pseudo = htmlspecialchars($_POST['pseudo']); /* Fonction qui permet d'enlever tous les caractères html */
@@ -51,9 +52,6 @@
                     $insertmbr = $bdd->prepare("INSERT INTO client(Pseudo, Email, MotDePasse, Nom, Prenom, Civilite, Telephone, AvatarUrl, Token) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     $insertmbr->execute(array($pseudo, $mail, $mdp, $nom, $prenom, $civilite, $telephone, $avatarurl, $token));
                     $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"/accueil.php\"><br />Revenir sur la page d'accueil</a>";
-
-                    //envois un maile avec le $token
-
                   } else {
                     $erreur = "Vos mots de passe ne correspondent pas !";
                   }
