@@ -52,7 +52,7 @@
                     $insertmbr->execute(array($pseudo, $mail, $mdp, $nom, $prenom, $civilite, $telephone, $avatarurl, $token));
                     $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"/accueil.php\"><br />Revenir sur la page d'accueil</a>";
 
-                    //envois un maile avec le $token
+                    //envois un mail avec le $token
 
                   } else {
                     $erreur = "Vos mots de passe ne correspondent pas !";
