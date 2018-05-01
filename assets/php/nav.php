@@ -70,7 +70,7 @@ include 'genurl.php';
             echo '
             <li class="dropdown">
               <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">
-                <img src="/assets/img/'.$_SESSION['avatarurl'].'" style="width:20px;">
+                <img src="/assets/img/imagesupload/'.$_SESSION['avatarurl'].'" style="width:20px;">
                 <span>'.$_SESSION['pseudo'].'</span>
               </a>
               <div class="dropdown-menu" role="menu">

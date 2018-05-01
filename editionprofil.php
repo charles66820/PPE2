@@ -18,27 +18,6 @@
 
         $idclient = $_SESSION['id'];
 
-        // //si le bouton "Valider" est clické
-        // if (isset($_POST['formmodifieruser'])) {
-        //   //teste si les champs ne sont pas vides
-        //   if (!empty($_POST['Pseudo']) && !empty($_POST['Email']) && !empty($_POST['MotDePasse']) && !empty($_POST['Civilite'])) {
-        //
-        //     //variables
-        //     $pseudo = htmlspecialchars($_POST['Pseudo']);
-        //     $mailuser = htmlspecialchars($_POST['Email']);
-        //     $mdpuser = htmlspecialchars($_POST['MotDePasse']);
-        //     $nomuser = htmlspecialchars($_POST['Nom']);
-        //     $prenomuser = htmlspecialchars($_POST['Prenom']);
-        //     $civilite = htmlspecialchars($_POST['Civilite']);
-        //     $teluser = htmlspecialchars($_POST['Telephone']);
-        //
-        //     //le PDO
-        //     $requser = $bdd->prepare("UPDATE `client` SET `Pseudo` = ?, `Nom` = ?, `Prenom` = ?, `Email` = ?, `Telephone` = ?, `Civilite` = ?, `MotDePasse` = ? WHERE IDClient = ?");
-        //     $requser->execute(array($pseudo, $nomuser, $prenomuser, $mailuser, $teluser, $civilite, $mdpuser, $idclient));
-        //   }else {
-        //     echo "Les champs pseudo, email, mot de passe et civilité doivent être complétés !";
-        //   }
-        // }
       }
       //charge les information actuelles de l'utilisateur
 
@@ -47,16 +26,20 @@
       $requser->execute(array($idclient));
       $dbrep = $requser->fetch();
 
+      $_SESSION['avatarurl'] = $dbrep['AvatarUrl'];
+
+      if ($dbrep['AvatarUrl'] != null) {
+        $imageurl = 'assets/img/imagesupload/'.$dbrep['AvatarUrl'];
+        $image = 'data: '.mime_content_type($imageurl).';base64,'.base64_encode(file_get_contents($imageurl));
+        $styleavatar = 'style="background: url(\''.$image.'\') 50% 50% / cover;";';
+      }else {
+        $styleavatar = null;
+      }
       ?>
       <div class="container profile profile-view" id="profile">
-        <form method="post">
-          <input type="text" name="test" value="truc">
-          <input type="submit" name="submit" value="submit">
-        </form>
         <div class="row">
-          <div class="col-md-12 alert-col relative">
+          <div class="col-md-12 alert-col position-fixed" style="width:80%; z-index:1000;">
             <div class="alert alert-info absolue center" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
               <span>message du profil</span>
             </div>
           </div>
@@ -65,7 +48,7 @@
           <div class="form-row profile-row">
             <div class="col-md-4 relative">
               <div class="avatar">
-                <div class="avatar-bg center" style=""></div>
+                <div class="avatar-bg center" <?php echo $styleavatar ?>></div>
               </div>
               <input type="file" name="avatar-file" class="form-control">
             </div>
@@ -130,8 +113,9 @@
               </div>
               <hr>
               <div class="form-row">
+                <input type="hidden" name="modifiecompte">
                 <div class="col-md-12 content-right">
-                  <button class="btn btn-primary form-btn" name="test" value="truc" type="submit">Sauvegarder</button>
+                  <button class="btn btn-primary form-btn" type="submit">Sauvegarder</button>
                   <button class="btn btn-danger form-btn" type="reset">Annuler</button>
                 </div>
               </div>
@@ -155,7 +139,7 @@
                     $reqcompoparc->execute(array($idclient));
                     foreach ($reqcompoparc->fetchAll() as $row) {
                       ?>
-                      <li class="list-group-item"><?php echo $row['nomComposants']." | ".$row['typeComposants'] ?><input type="checkbox" name="" value=""></li>
+                      <li class="list-group-item"><?php echo $row['nomComposants']." | ".$row['typeComposants'] ?><input type="checkbox" value=""></li>
                       <?php
                     }
                     ?>
@@ -184,6 +168,7 @@
                   <input type="text" placeholder="Pays" class="form-control" name="Pays" value="" />
                 </div>
                 <hr>
+                <input type="hidden" name="addadresse">
                 <button class="btn btn-primary form-btn float-right" type="submit">Ajouter l'adresse</button>
               </div>
             </div>
@@ -192,7 +177,6 @@
         <?php
         if ($dbrep['Actif'] == 0) {
           ?>
-          <p>confirmation du comptte avec un token </p>
           <!-- kevide s'aucupe du mail pour le token -->
           <h2>Confirmation du compte</h2>
           <hr>

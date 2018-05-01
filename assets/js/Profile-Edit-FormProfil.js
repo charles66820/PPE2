@@ -56,7 +56,7 @@ $(function(){
       },
       error: function (error) {
         console.log("erreur : "+error.responseText);
-        //toggleAlert("alert-danger",true, error.responseText);
+        toggleAlert("alert-danger",true, error.responseText);
       }
     })
 
