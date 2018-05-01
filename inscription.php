@@ -50,7 +50,7 @@
                     $token = random_str(40);
                     $insertmbr = $bdd->prepare("INSERT INTO client(Pseudo, Email, MotDePasse, Nom, Prenom, Civilite, Telephone, AvatarUrl, Token) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     $insertmbr->execute(array($pseudo, $mail, $mdp, $nom, $prenom, $civilite, $telephone, $avatarurl, $token));
-                    $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"/accueil.php\"><br />Revenir sur la page d'accueil</a>";
+                    $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"/accueil.php\"><br />Revenir sur la page d'accueil<br /></a><a href=\"/connexion.php\"><br />Se connecter!</a>";
 
                     //envois un mail avec le $token
 
@@ -81,109 +81,69 @@
 
     <!-- formulaire d'inscription -->
     <div align="center">
-      <h1>Inscription</h1>
-      <br/>
-      <form method="POST" action="">
-        <table>
+      <div class="container">
+        <div class="card card-container" style="max-width: 350px; padding: 40px 40px;">
+          <h1>Inscription</h1>
+          <br /><br />
+          <form method="POST">
 
-          <!-- pseudo -->
-          <tr>
-            <td align="right">
-              <label for="pseudo">Pseudo : </label>
-            </td>
-            <td>
-              <input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" /> <!--Permet de laisser affiché après validation si erreur-->
-            </td>
-          </tr>
+            <!-- pseudo -->
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" /> <!--Permet de laisser affiché après validation si erreur-->
+              </div>
 
-          <!-- mail -->
-          <tr>
-            <td align="right">
-              <label for="mail">Mail : </label>
-            </td>
-            <td>
-              <input type="email" placeholder="Votre mail" id="mail" name="mail" value="<?php if(isset($mail)) { echo $mail; } ?>" />
-            </td>
-          </tr>
-          <tr>
-            <td align="right">
-              <label for="mail2">Confirmation du mail : </label>
-            </td>
-            <td>
-              <input type="email" placeholder="Confirmez votre mail" id="mail2" name="mail2" value="<?php if(isset($mail2)) { echo $mail2; } ?>" />
-            </td>
-          </tr>
+              <!-- mail -->
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Votre mail" id="mail" name="mail" value="<?php if(isset($mail)) { echo $mail; } ?>" />
+              </div>
 
-          <!-- mdp -->
-          <tr>
-            <td align="right">
-              <label for="mdp">Mot de passe : </label>
-            </td>
-            <td>
-              <input type="password" placeholder="Votre mot de passe" id="mdp" name="mdp" />
-            </td>
-          </tr>
-          <tr>
-            <td align="right">
-              <label for="mdp2">Confirmation du mot de passe : </label>
-            </td>
-            <td>
-              <input type="password" placeholder="Confirmez votre mdp" id="mdp2" name="mdp2" />
-            </td>
-          </tr>
+              <!-- confirmation mail -->
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Confirmez votre mail" id="mail2" name="mail2" value="<?php if(isset($mail2)) { echo $mail2; } ?>" />
+              </div>
 
-          <!-- Nom -->
-          <tr>
-            <td align="right">
-              <label for="nom">Nom : </label>
-            </td>
-            <td>
-              <input type="nom" placeholder="Votre nom" id="nom" name="nom" value="<?php if(isset($nom)) { echo $nom; } ?>" />
-            </td>
-          </tr>
+              <!-- mdp -->
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Votre mot de passe" id="mdp" name="mdp" />
+              </div>
 
-          <!-- Prénom -->
-          <tr>
-            <td align="right">
-              <label for="prenom">Prénom : </label>
-            </td>
-            <td>
-              <input type="prenom" placeholder="Votre prénom" id="prenom" name="prenom" value="<?php if(isset($prenom)) { echo $prenom; } ?>" />
-            </td>
-          </tr>
+              <!-- confirmation mdp -->
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Confirmez votre mot de passe" id="mdp2" name="mdp2" />
+              </div>
 
-          <!-- Téléphone -->
-          <tr>
-            <td align="right">
-              <label for="telephone">Téléphone : </label>
-            </td>
-            <td>
-              <input type="telephone" placeholder="Votre n° de téléphone" id="telephone" name="telephone" value="<?php if(isset($telephone)) { echo $telephone; } ?>" />
-            </td>
-          </tr>
+              <!-- Nom -->
+              <div class="form-group">
+                <input type="nom" class="form-control" placeholder="Votre nom" id="nom" name="nom" value="<?php if(isset($nom)) { echo $nom; } ?>" />
+              </div>
 
-          <!--Civilité-->
-          <tr>
-            <td align="right">
-              <label>Civilité : </label>
-            </td>
-            <td>
-              <input type="radio" name="civilite" value="homme" checked>Monsieur<br>
-              <input type="radio" name="civilite" value="femme">Madame<br>
+              <!-- Prénom -->
+              <div class="form-group">
+                <input type="prenom" class="form-control" placeholder="Votre prénom" id="prenom" name="prenom" value="<?php if(isset($prenom)) { echo $prenom; } ?>" />
+              </div>
 
-            </td>
-          </tr>
+              <!-- Téléphone -->
+              <div class="form-group">
+                <input type="telephone" class="form-control" placeholder="Votre n° de téléphone" id="telephone" name="telephone" value="<?php if(isset($telephone)) { echo $telephone; } ?>" />
+              </div>
 
-        </table>
-        <br />
-        <input type="submit" name="forminscription" value="Je m'inscris" />
-      </form>
-      <?php
-        if(isset($erreur)) {
-          echo '<font color="red">'.$erreur."</font>";
-        }
-      ?>
+              <!--Civilité-->
+              <div class="form-group">
+                  <label>Civilité : </label><br />
+                  <input type="radio" name="civilite" value="homme" checked>Monsieur<br>
+                  <input type="radio" name="civilite" value="femme">Madame<br>
+              </div>
+
+              <input type="submit" class="btn btn-primary" name="forminscription" value="Je m'inscris" />
+            </form>
+          <?php
+            if(isset($erreur)) {
+              echo '<font color="red">'.$erreur."</font>";
+            }
+          ?>
+      </div>
     </div>
+  </div>
     <?php include 'assets/php/footer.php'; ?>
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
