@@ -49,10 +49,13 @@
 
       ?>
       <div class="container profile profile-view" id="profile">
+        <!-- test
         <form method="post">
           <input type="text" name="test" value="truc">
           <input type="submit" name="submit" value="submit">
         </form>
+        -->
+        <!-- message d'alerte
         <div class="row">
           <div class="col-md-12 alert-col relative">
             <div class="alert alert-info absolue center" role="alert">
@@ -61,6 +64,7 @@
             </div>
           </div>
         </div>
+      -->
         <form method="post" class="mb-5" id="infouser">
           <div class="form-row profile-row">
             <div class="col-md-4 relative">
@@ -131,7 +135,7 @@
               <hr>
               <div class="form-row">
                 <div class="col-md-12 content-right">
-                  <button class="btn btn-primary form-btn" name="test" value="truc" type="submit">Sauvegarder</button>
+                  <button class="btn btn-primary form-btn" name="test" value="jghf" type="submit">Sauvegarder</button>
                   <button class="btn btn-danger form-btn" type="reset">Annuler</button>
                 </div>
               </div>
@@ -143,9 +147,7 @@
             <div class="col-md-6 relative">
               <div class="row m-1">
                 <h2 class="col-md-6">Adresses</h2>
-                <div class="col-md-6">
-                  <p class="absolue" style="bottom: 0px; right: 0px;">Adresse par default</p>
-                </div>
+
               </div>
               <div class="col-sm-12 col-md-12">
                 <div class="form-group">
@@ -192,12 +194,12 @@
         <?php
         if ($dbrep['Actif'] == 0) {
           ?>
-          <p>confirmation du comptte avec un token </p>
+          <!--<p>confirmation du compte avec un token </p>-->
           <!-- kevide s'aucupe du mail pour le token -->
           <h2>Confirmation du compte</h2>
           <hr>
           <form method="post" class="mb-5" id="token">
-            <label>Entrez le token que vous avais reçu par mail</label>
+            <label>Entrez le token que vous avez reçu par mail</label>
             <input type="text" placeholder="Token" class="form-control" name="Token" value="" />
             <button class="btn btn-primary form-btn float-right m-2" type="submit">Valider le compte</button>
           </form>
