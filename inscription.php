@@ -9,7 +9,18 @@
     <?php
     //navbar
     include 'assets/php/nav.php';
+    function random_str($nbr) {
+    $str = "";
+    $chaine = "abcdefghijklmnpqrstuvwxyABCDEFGHIJKLMNOPQRSUTVWXYZ0123456789";
+    $nb_chars = strlen($chaine);
 
+    for($i=0; $i<$nbr; $i++)
+    {
+        $str .= $chaine[ rand(0, ($nb_chars-1)) ];
+    }
+
+    return $str;
+}
     //Traitement inscription
     if(isset($_POST['forminscription'])) {
       $pseudo = htmlspecialchars($_POST['pseudo']); /* Fonction qui permet d'enlever tous les caractères html */
@@ -37,7 +48,7 @@
                 $mailexist = $reqmail->rowCount();
                 if($mailexist == 0) {
                   if($mdp == $mdp2) {
-
+                    $token = random_str(40);
                     $insertmbr = $bdd->prepare("INSERT INTO client(Pseudo, Email, MotDePasse, Nom, Prenom, Civilite, Telephone, AvatarUrl, Token) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     $insertmbr->execute(array($pseudo, $mail, $mdp, $nom, $prenom, $civilite, $telephone, $avatarurl, $token));
                     $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"/accueil.php\"><br />Revenir sur la page d'accueil</a>";
