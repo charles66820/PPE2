@@ -10,7 +10,8 @@
         </div>
         <div class="col-sm-6 col-md-4 footer-contacts">
             <div><span class="fa fa-map-marker footer-contacts-icon" style="background-color:rgb(21,107,159);"> </span>
-                <p><span class="new-line-span">8 rue des tentacules, Avenue des otakus, 66000 Octlantis World.</span></p>
+                <p'..\mail.php'
+><span class="new-line-span">8 rue des tentacules, Avenue des otakus, </span>66000 Octlantis World.</p>
             </div>
             <div><i class="fa fa-phone footer-contacts-icon" style="background-color:rgb(21,107,159);"></i>
                 <p class="footer-center-info email text-left"> +334 27 86 84 23</p>

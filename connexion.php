@@ -53,7 +53,7 @@
             </div>
 
             <br /><br />
-            <input type="submit" name="formconnexion" value="Se connecter" />
+            <input type="submit" class="btn btn-primary" name="formconnexion" value="Se connecter" />
           </form>
           <?php
           if(isset($erreur)) {
