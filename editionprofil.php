@@ -127,9 +127,7 @@
             <div class="col-md-6 relative">
               <div class="row m-1">
                 <h2 class="col-md-6">Adresses</h2>
-                <div class="col-md-6">
-                  <p class="absolue" style="bottom: 0px; right: 0px;">Adresse par default</p>
-                </div>
+
               </div>
               <div class="col-sm-12 col-md-12">
                 <div class="form-group">
@@ -181,7 +179,7 @@
           <h2>Confirmation du compte</h2>
           <hr>
           <form method="post" class="mb-5" id="token">
-            <label>Entrez le token que vous avais reçu par mail</label>
+            <label>Entrez le token que vous avez reçu par mail</label>
             <input type="text" placeholder="Token" class="form-control" name="Token" value="" />
             <button class="btn btn-primary form-btn float-right m-2" type="submit">Valider le compte</button>
           </form>
