@@ -73,13 +73,13 @@
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label>Pseudo : </label>
-                    <input type="text" name="newpseudo" class="form-control" placeholder="Pseudo" value="<?php echo $dbrep['pseudo']; ?>" />
+                    <input type="text" name="newpseudo" class="form-control" placeholder="Pseudo" value="<?php echo $dbrep['Pseudo']; ?>" />
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label>Mail : </label>
-                    <input type="text" name="newmail" class="form-control" placeholder="Mail" value="<?php echo $dbrep['mail']; ?>" />
+                    <input type="text" name="newmail" class="form-control" placeholder="Mail" value="<?php echo $dbrep['Email']; ?>" />
                   </div>
                 </div>
               </div>
@@ -87,13 +87,13 @@
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label>Mot de passe : </label>
-                    <input type="password" name="newmdp1" class="form-control" placeholder="Mot de passe" value="<?php echo $dbrep['']; ?>" />
+                    <input type="password" name="newmdp1" class="form-control" placeholder="Mot de passe" />
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label>Confirmation du mot de passe : </label>
-                    <input type="password" name="newmdp2" class="form-control" placeholder="Confirmation du mdp" value="<?php echo $dbrep['']; ?>" />
+                    <input type="password" name="newmdp2" class="form-control" placeholder="Confirmation du mdp" />
                   </div>
                 </div>
               </div>
@@ -101,13 +101,13 @@
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label>Nom : </label>
-                    <input type="text" name="newnom" class="form-control" placeholder="Nom" value="<?php echo $dbrep['']; ?>" />
+                    <input type="text" name="newnom" class="form-control" placeholder="Nom" value="<?php echo $dbrep['Nom']; ?>" />
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label>Prénom : </label>
-                    <input type="text" name="newprenom" class="form-control" placeholder="Prenom" value="<?php echo $dbrep['']; ?>" />
+                    <input type="text" name="newprenom" class="form-control" placeholder="Prenom" value="<?php echo $dbrep['Prenom']; ?>" />
                   </div>
                 </div>
               </div>
@@ -115,13 +115,13 @@
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label>Civilité : </label>
-                    <input type="password" name="newcivilite" class="form-control" placeholder="Civilité" value="<?php echo $dbrep['']; ?>" />
+                    <input type="test" name="newcivilite" class="form-control" placeholder="Civilité" value="<?php echo $dbrep['Civilite']; ?>" />
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label>N° de téléphone : </label>
-                    <input type="password" name="newtel" class="form-control" placeholder="N° de téléphone" value="<?php echo $dbrep['']; ?>" />
+                    <input type="test" name="newtel" class="form-control" placeholder="N° de téléphone" value="<?php echo $dbrep['']; ?>" />
                   </div>
                 </div>
               </div>
@@ -136,8 +136,6 @@
           </div>
         </form>
       </div>
-
-
 
       <label for="Complement">Complément d'adresse : </label>
       <input type="text" placeholder="Complément d'adresse" id="Complement" name="Complement" value="" />
@@ -164,11 +162,6 @@
     }
     //footer
     include 'assets/php/footer.php'; ?>
-    <pre>
-    <?php
-    print_r(apache_get_modules());
-    ?>
-    </pre>
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/BSanimation.js"></script>
