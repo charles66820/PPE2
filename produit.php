@@ -21,9 +21,7 @@
       <?php
     }else {
       $produitid = $_GET['id'];
-      // if (!ajouterArticle(8, 3)) {
-      //   echo "erreur";
-      // }
+      
       if (isset($_POST['addproduitpanier']) && !empty($_POST['addproduitpanier']) && isset($_POST['quentiterproduit']) && !empty($_POST['quentiterproduit'])) {
         if (!ajouterArticle(intval(htmlspecialchars($_POST['addproduitpanier'])), intval(htmlspecialchars($_POST['quentiterproduit'])))) {
           ?>
@@ -279,6 +277,7 @@
     include 'assets/php/footer.php'; ?>
 
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/BSanimation.js"></script>
     <script src="/assets/js/image.js"></script>

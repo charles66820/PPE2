@@ -51,7 +51,7 @@
                     $token = random_str(40);
                     $insertmbr = $bdd->prepare("INSERT INTO client(Pseudo, Email, MotDePasse, Nom, Prenom, Civilite, Telephone, AvatarUrl, Token) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     $insertmbr->execute(array($pseudo, $mail, $mdp, $nom, $prenom, $civilite, $telephone, $avatarurl, $token));
-                    $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"/accueil.php\"><br />Revenir sur la page d'accueil</a>";
+                    $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"/accueil.php\"><br />Revenir sur la page d'accueil<br /></a><a href=\"/connexion.php\"><br />Se connecter!</a>";
 
                     $mail->setFrom('cornichon66820@gmail.com');
                     $mail->addAddress($mail);
@@ -97,6 +97,7 @@
 
     <!-- formulaire d'inscription -->
     <div align="center">
+<<<<<<< HEAD
       <h1>Inscription</h1>
       <br/>
       <form method="POST" action="">
@@ -197,9 +198,74 @@
           echo '<font color="red">'.$erreur."</font>";
         }
       ?>
+=======
+      <div class="container">
+        <div class="card card-container" style="max-width: 350px; padding: 40px 40px;">
+          <h1>Inscription</h1>
+          <br /><br />
+          <form method="POST">
+
+            <!-- pseudo -->
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" /> <!--Permet de laisser affiché après validation si erreur-->
+              </div>
+
+              <!-- mail -->
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Votre mail" id="mail" name="mail" value="<?php if(isset($mail)) { echo $mail; } ?>" />
+              </div>
+
+              <!-- confirmation mail -->
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Confirmez votre mail" id="mail2" name="mail2" value="<?php if(isset($mail2)) { echo $mail2; } ?>" />
+              </div>
+
+              <!-- mdp -->
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Votre mot de passe" id="mdp" name="mdp" />
+              </div>
+
+              <!-- confirmation mdp -->
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Confirmez votre mot de passe" id="mdp2" name="mdp2" />
+              </div>
+
+              <!-- Nom -->
+              <div class="form-group">
+                <input type="nom" class="form-control" placeholder="Votre nom" id="nom" name="nom" value="<?php if(isset($nom)) { echo $nom; } ?>" />
+              </div>
+
+              <!-- Prénom -->
+              <div class="form-group">
+                <input type="prenom" class="form-control" placeholder="Votre prénom" id="prenom" name="prenom" value="<?php if(isset($prenom)) { echo $prenom; } ?>" />
+              </div>
+
+              <!-- Téléphone -->
+              <div class="form-group">
+                <input type="telephone" class="form-control" placeholder="Votre n° de téléphone" id="telephone" name="telephone" value="<?php if(isset($telephone)) { echo $telephone; } ?>" />
+              </div>
+
+              <!--Civilité-->
+              <div class="form-group">
+                  <label>Civilité : </label><br />
+                  <input type="radio" name="civilite" value="homme" checked>Monsieur<br>
+                  <input type="radio" name="civilite" value="femme">Madame<br>
+              </div>
+
+              <input type="submit" class="btn btn-primary" name="forminscription" value="Je m'inscris" />
+            </form>
+          <?php
+            if(isset($erreur)) {
+              echo '<font color="red">'.$erreur."</font>";
+            }
+          ?>
+      </div>
+>>>>>>> 4fd13dc37ec60ec2045e8a2ffbe9fc45f9350ee5
     </div>
+  </div>
     <?php include 'assets/php/footer.php'; ?>
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/BSanimation.js"></script>
   </body>

@@ -40,29 +40,37 @@
       <div class="container" style="min-height:300px;">
         <?php
         //Création de la requête sql
-        // TODO: Faire la requête sql en fonction du choix dans le menu (navbar)
         //selectionne tous les produits. Requête par defaut
-        $sql = "SELECT produits.IDProduit, produits.LibelleProduit, produits.PrixUnitaireHT FROM produits WHERE produits.IDProduit = produits.IDProduit ";
+        $sql = "SELECT DISTINCT produits.IDProduit, produits.LibelleProduit, produits.PrixUnitaireHT FROM produits, avis WHERE produits.IDProduit = produits.IDProduit ";
 
         //sélectionne les produits avec la sous-categorie qui est égale à la valeur de $type
         if (!empty($type)) {
-          $sql = "SELECT produits.IDProduit, produits.LibelleProduit, produits.PrixUnitaireHT FROM produits, souscategorie WHERE produits.IdCategorie = souscategorie.IdCategorie AND souscategorie.nomsouscat = '".$type."' ";
+          $sql = "SELECT DISTINCT produits.IDProduit, produits.LibelleProduit, produits.PrixUnitaireHT FROM produits, souscategorie, avis WHERE produits.IdCategorie = souscategorie.IdCategorie AND souscategorie.nomsouscat = '".$type."' ";
         }
 
-        $stars;// sélectionne un produit en fontion de la moyenne des avis, une requête sql dans une autre avec un est plus grand ou égal (peut sajouter dans nimporte quelle requête)
+        // sélectionne un produit en fontion de la moyenne des avis, une requête sql dans une autre avec un est plus grand ou égal (peut sajouter dans nimporte quelle requête)
+        if (!empty($stars)) {
+          $sql .="AND produits.IDProduit = avis.IDProduit AND (SELECT ROUND(AVG(Note), 1) FROM avis WHERE IDProduit = produits.IDProduit GROUP BY IDProduit) >= '".$stars."'";
+        }
 
-        $maxprice;//sélectionne les produits qui ont un prix plus petit ou égal au prix dans $maxprice (peut sajouter dans nimporte quelle requête)
+        //sélectionne les produits qui ont un prix plus petit ou égal au prix dans $maxprice (peut sajouter dans nimporte quelle requête)
         if (!empty($maxprice)) {
           $sql .="AND produits.PrixUnitaireHT <= '".$maxprice."'";
         }
 
-        $search;//crée une requête sql qui recherche la valeur de $search dans le lbl du produit, dans la référence du produit et dans description du produit on utilise LIKE %$search% (peut s'ajouter dans nimporte quelle requête)
-
-
+        //crée une requête sql qui recherche la valeur de $search dans le lbl du produit, dans la référence du produit et dans description du produit on utilise LIKE %$search% (peut s'ajouter dans nimporte quelle requête)
+        if (!empty($search)) {
+          $search = '%'.$search.'%';
+          $sql .="AND (produits.LibelleProduit LIKE ? OR produits.DescriptionProduit LIKE ?) ";
+        }
 
         //récupère les produits avec une requête sql
         $reqproduit = $bdd->prepare($sql);
-        $reqproduit->execute();
+        if (!empty($search)) {
+          $reqproduit->execute(array($search, $search));
+        }else {
+          $reqproduit->execute();
+        }
         $dbrep = $reqproduit->fetchAll();
 
         //Chargement des produits du catalogue
@@ -109,6 +117,7 @@
 
     <?php include 'assets/php/footer.php'; ?>
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/BSanimation.js"></script>
     <script src="/assets/js/avis.js"></script>

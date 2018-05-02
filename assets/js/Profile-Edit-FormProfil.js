@@ -44,7 +44,7 @@ $(function(){
     $(inst).find("button[type = submit]").addClass("loading").prop("disabled", true);
 
     $.ajax({
-      url: "/php/editprofil.php",
+      url: "/assets/php/editprofil.php",
       method: "post",
       data: formData,
       enctype: 'multipart/form-data',
@@ -52,9 +52,11 @@ $(function(){
       processData: false,
       success: function (result) {
         toggleAlert("alert-success", true, result);
+        $('#adresses').load('/assets/php/loadaddress.php?bdd');
       },
       error: function (error) {
         console.log("erreur : "+error.responseText);
+        toggleAlert("alert-danger",true, error.responseText);
       }
     })
 

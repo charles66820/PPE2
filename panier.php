@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Votre panier</title>
     <?php include 'assets/php/allcss.php'; ?>
   </head>
@@ -66,25 +67,14 @@
         </div>
         <div class="col-xs-1">
           <label>&nbsp;Prix total HT : <?php echo MontantGlobal(); ?>€</label>
-          <button class="btn btn-primary pull-right" type="button">passé la commande</button>
+          <button class="btn btn-primary pull-right" type="button" onclick="document.location.href='commander.php'">passé la commande</button>
         </div>
       </div>
     </div>
-
+    <?php include 'assets/php/footer.php'; ?>
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/BSanimation.js"></script>
   </body>
 </html>
-<?php
-// supprimePanier();
-// if (!ajouterArticle(8, 3)) {
-//   echo "erreur";
-// }
-// if (!ajouterArticle(22, 4)) {
-//   echo "erreur";
-// }
-// if (!ajouterArticle(35, 2)) {
-//   echo "erreur";
-// }
-?>
