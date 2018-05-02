@@ -61,11 +61,12 @@ function ajouterArticle($idProduit, $quantiteProduit) {
         if(isset($_SESSION['id'])){
           $reqselect = $bdd->prepare("SELECT * FROM lignepanier WHERE IDProduit = ?");
           $reqselect->execute(array($idProduit));
-          $repselect = $reqselect->fetchAll();
-          if ($repselect->rowCount() >= 1) {
+          if ($reqselect->rowCount() >= 1) {
+            $repselect = $reqselect->fetchAll();
             $bdd->prepare("UPDATE lignepanier SET quantite = ? WHERE IDProduit = ? AND IDClient = ?")->execute(array($quantiteProduit, $idProduit, $_SESSION['id']));
           } else {
             $bdd->prepare("INSERT INTO lignepanier(IDProduit, IDClient, quantite) VALUES (?, ?, ?)")->execute(array($idProduit, $_SESSION['id'], $quantiteProduit));
+
           }
         }
       }
@@ -98,7 +99,7 @@ function modifierQTeArticle($idProduit, $quantiteProduit){
         //Recharche du produit dans le panier
         $positionProduit = array_search($idProduit, $_SESSION['panier']['idproduit']);
 
-        if ($positionProduit !== false) {
+        if ($positionProduit != false) {
           $_SESSION['panier']['quantiteProduit'][$positionProduit] = $quantiteProduit ;
           //pdo
           if(isset($_SESSION['id'])){
@@ -120,6 +121,7 @@ function modifierQTeArticle($idProduit, $quantiteProduit){
 * @return unknown_type
 */
 function supprimerArticle($idProduit){
+  global $bdd;
   //Si le panier existe
   if (creationPanier() && !isVerrouille()) {
     //Nous allons passer par un panier temporaire
@@ -131,7 +133,7 @@ function supprimerArticle($idProduit){
     $tmp['verrou'] = $_SESSION['panier']['verrou'];
 
     for($i = 0; $i < count($_SESSION['panier']['idproduit']); $i++) {
-      if ($_SESSION['panier']['idproduit'][$i] !== $idProduit) {
+      if ($_SESSION['panier']['idproduit'][$i] != $idProduit) {
         array_push( $tmp['idproduit'],$_SESSION['panier']['idproduit'][$i]);
         array_push( $tmp['LibelleProduit'],$_SESSION['panier']['LibelleProduit'][$i]);
         array_push( $tmp['quantiteProduit'],$_SESSION['panier']['quantiteProduit'][$i]);
@@ -169,6 +171,7 @@ function MontantGlobal(){
 * @return void
 */
 function supprimePanier(){
+  global $bdd;
   unset($_SESSION['panier']);
   //pdo supprimer toutes les lignes du panier du client
   if(isset($_SESSION['id'])){
