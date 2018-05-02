@@ -1,6 +1,6 @@
-//function & methods
+//fonctions et méthodes
 
-//affichie image avec son index
+//affiche l'image avec son index
 function showimgbyindex() {
   if (listimgproduit.children[indeximage].src != "") {
     $("#imgproduit").attr("src", listimgproduit.children[indeximage].src);
@@ -21,7 +21,7 @@ function addimg() {
   console.log(indeximage);
 }
 
-//ajax uploade de l'image
+//ajax upload l'image
 function uploadimg(files) {
   let formData = new FormData();
   formData.append('upload', '');
@@ -32,7 +32,7 @@ function uploadimg(files) {
     data: formData,
     contentType: false,
     processData: false,
-    xhr: function(){//pour la bar de progretion
+    xhr: function(){//pour la barre de progression
       var xhr = new window.XMLHttpRequest();
       //Upload progress
       xhr.upload.addEventListener("progress", function(evt){
@@ -48,7 +48,7 @@ function uploadimg(files) {
       if (indeximage == listimgproduit.children.length-2 && listimgproduit.children[listimgproduit.children.length-2].currentSrc == "") {
         images.push({"id":null,"imagename":result});//ajoute l'image a la liste des images
 
-        //réactive le button ajouter une image
+        //réactive le bouton "ajouter une image"
         $("#btmaddimgproduit").css({"cursor":"pointer"});
         buttonactive = true;
       }else {
@@ -62,7 +62,7 @@ function uploadimg(files) {
       console.log(JSON.stringify(images));
       showimgbyindex()
 
-      //change les valeur de l'interface d'envois des images
+      //change les valeurs de l'interface d'envoi des images
       $("#tiredropimg").text("Envoyer une image").next().show().text("Glissé déposer votre image ou cliqué ici.");
       $("#progressbarimg").hide().children().text("0%").css({"width":"0%"});
       $("#addimgproduit").hide();

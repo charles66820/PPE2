@@ -1,5 +1,5 @@
 <?php
-//les variable
+//les variables
 $categorie = '';
 $type = '';
 $stars = '';
@@ -11,7 +11,7 @@ $urlstars = '';
 $urlmaxprice = '';
 $urlsearch = '';
 
-//récupére les valeur "Get" dans l'url
+//récupère les valeurs "Get" dans l'url
 if(isset($_GET['categorie'])) {
   $categorie = $_GET['categorie'];
   $urlcategorie = "categorie=".$categorie;
@@ -43,8 +43,8 @@ function genurl($ptype, $data){
 
   $returnurl = '';
 
-  //démerde toi pour comprendre mdr
-  //en sa péremet avec de la concaténation de générée le uri °~°
+  //démmerde toi pour comprendre mdr
+  //en fait ça pérmet avec de la concaténation de générer le uri °~°    // QUAND CHARLES PETE UN CABLE xD
   if ($ptype == "nav") {
     $returnurl .= $data;
   }else {

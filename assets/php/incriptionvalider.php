@@ -11,7 +11,7 @@ if($stmt->execute(array(':Speudo' => $speudo)) && $row = $stmt->fetch())
 }
 
 
-// On teste la valeur de la variable $actif récupéré dans la BDD
+// On teste la valeur de la variable $actif récupérée dans la BDD
 if($actif == '1') // Si le compte est déjà actif on prévient
 {
   echo "Votre compte est déjà actif !";

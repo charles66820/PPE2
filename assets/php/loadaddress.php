@@ -30,7 +30,7 @@ if (isset($_SESSION['id'])) {
               ?>
               <form method="post" style="display:initial;">
                 <input type="hidden" name="adressevalue" value="<?php echo $row['IDAdresse']; ?>">
-                <button type="submit" class="btn btn-danger float-right" onclick="if (confirm('Ête vous sur de vouloir supprimer cette adresse ?')) {return true;}else {return false;}">✗</button>
+                <button type="submit" class="btn btn-danger float-right" onclick="if (confirm('Êtes-vous sur de vouloir supprimer cette adresse ?')) {return true;}else {return false;}">✗</button>
               </div>
             </form>
           </div>

@@ -1,4 +1,4 @@
-//variable
+//variables
 let images = [];//let = var
 let listsupprimeimg = [];
 let buttonactive = true;
@@ -18,8 +18,8 @@ $(function() {
   }
 
 
-  //inisialisation
-  //récupére les image existente
+  //initialisation
+  //récupère les images existantes
   for (var i = 0; i < listimgproduit.children.length-1; i++) {
     images.push(
       {
@@ -29,7 +29,7 @@ $(function() {
     );
   }
 
-  //affiche l'image ou demende d'en ajouter une
+  //affiche l'image ou demande d'en ajouter une
   if (listimgproduit.children.length-1 != 0) {
     indeximage = 0;
     showimgbyindex();
@@ -41,7 +41,7 @@ $(function() {
   console.log(JSON.stringify(images));
 
 
-  //affiche l'image de la liste qui a aiter cliquer
+  //affiche l'image de la liste qui a été cliquée
   $("#listimgproduit").click(function(e) {
     if (e.target.localName == 'img') {
       let index = 0;
@@ -60,7 +60,7 @@ $(function() {
     }
   })
 
-  //s'active quant on click sur le button ajouter une image
+  //s'active quant on clique sur le bouton "ajouter une image"
   $("#btmaddimgproduit").click(function() {
     if (buttonactive) {
       addimg();
@@ -68,23 +68,23 @@ $(function() {
     }
   });
 
-  //supprimer image
+  //supprime l'image
   $("#btmremoveimgproduit").click(function() {
     //supprime l'image afficher
     $('#listimgproduit').find('img').eq(indeximage).remove();
 
     //test si l'image est dans la bdd ou non
     if (images[indeximage].id == null) {
-      //supprimer l'image sur le serveur
+      //supprime l'image sur le serveur
       removeimg([images[indeximage].imagename])
       console.log('supprime.php');
     }else {
-      //ajoute a la liste des image a supprimé
+      //ajoute à la liste des images a supprimé
       listsupprimeimg.push(images[indeximage].imagename);
       console.log("img a supprimer : "+listsupprimeimg);
     }
 
-    //supprimer du json
+    //supprime du json
     images.splice(indeximage, 1);
 
     if (listimgproduit.children.length-1 <= 0) {//si il n'y a pas d'autre image
@@ -92,7 +92,7 @@ $(function() {
       addimg();
 
     }else if (indeximage == listimgproduit.children.length-1) {//si c'est la derniére image
-      //afiicher image précédende
+      //afficher image précédente
       indeximage--;
       showimgbyindex();
 
@@ -115,7 +115,7 @@ $(function() {
     e.stopPropagation();
   })
 
-  //désactive l'ouverture des fichier au moment du drop
+  //désactive l'ouverture des fichiers au moment du drop
   document.addEventListener('drop', function(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -137,7 +137,7 @@ $(function() {
     e.stopPropagation();
   });
 
-  //change le style et envois le fichier en fonction du drag/drop
+  //change le style et envoit le fichier en fonction du drag/drop
   $("#addimgproduit").on("dragover", function(e) {
     e.preventDefault();
     $(this).css({"border":"dashed 2px rgba(0, 120, 255, 1)", "background-color":"rgb(150, 210, 255)"})
@@ -188,12 +188,12 @@ $(function() {
 
 });
 $( window ).on( "unload", function() {
-  //test si l'ajoute a éter effectuer ou pas
+  //test si l'ajout a été effectué ou pas
   if (valider != true) {
-    //supprime quant la page est quitter
+    //supprime quans la page est quittée
     for (var i = 0; i < images.length; i++) {
       if (images[i].id == null) {
-        //supprimer l'image sur le serveur
+        //supprime l'image sur le serveur
         removeimg([images[i].imagename]);
 
       }

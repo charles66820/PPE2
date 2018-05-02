@@ -1,10 +1,10 @@
 <?php
 require 'setting.bdd.php';
 
-//test si l'utilisateur est connecter
+//test si l'utilisateur est connecté
 if (isset($_SESSION['id'])) {
   if (isset($_POST['modifiecompte'])) {
-    //remplie les variable avec les donner du form
+    //remplit les variables avec les données du form
     $newpseudo = !empty($_POST['newpseudo']) ? htmlspecialchars($_POST['newpseudo']) : null ;
     $newmail = !empty($_POST['newmail']) ? htmlspecialchars($_POST['newmail']) : null ;
     $newnom = !empty($_POST['newnom']) ? htmlspecialchars($_POST['newnom']) : null ;
@@ -15,41 +15,41 @@ if (isset($_SESSION['id'])) {
     $newmdp2 = (!empty($_POST['newmdp2']) && strlen($_POST['newmdp2']) <= 13 ) ? htmlspecialchars($_POST['newmdp2']) : null ;
     if ($newpseudo == 'Admin' && $_SESSION['pseudo'] != 'Admin') {
       header('HTTP/1.1 500 Internal Server Error');
-      print 'erreur vous de pouver pas être admin! :(';
+      print 'Erreur vous ne pouver pas être admin! :(';
       die();
     }
     //test si l'email n'est pas null
     if ($newmail != null) {
-      //récupére les adresse email identique a celle dans le form
+      //récupère les adresses email identiques à celles dans le form
       $reqemail = $bdd->prepare("SELECT Email FROM client WHERE client.Email = ? AND client.IDClient <> ?");
       $reqemail->execute(array($newmail, $_SESSION['id']));
-      //si l'adresse email n'ai pas utiliser alors on continue
+      //si l'adresse email n'est pas utilisée alors on continue
       if ($reqemail->rowCount() == 0) {
-        //teste la longuer des chaine
+        //teste la longueur des chaînes
         if (strlen($_POST['newpseudo']) <= 20 ) {
           if (strlen($_POST['newnom']) <= 20) {
             if (strlen($_POST['newprenom']) <= 13) {
               if (strlen($_POST['newtel']) <= 13) {
-                //test si il faut changer le mdp
+                //test s'il faut changer le mdp
                 if ($newmdp1 != '' && $newmdp1 != null) {
-                  //test si le mots de passe est le mots de passe de confirmation sont identique
+                  //test si le mot de passe et le mot de passe de confirmation sont identiques
                   if ($newmdp1 == $newmdp2) {
-                    //modifie l'utilisateur ainsi que sont mdp
+                    //modifie l'utilisateur ainsi que son mdp
                     $requpdateuser = $bdd->prepare("UPDATE client SET client.Pseudo = ?, client.Email = ?, client.MotDePasse = ?, client.Nom = ?, client.Prenom = ?, client.Civilite = ?, client.Telephone = ? WHERE client.IDClient = ?");
                     $requpdateuser->execute(array($newpseudo, $newmail, sha1($newmdp1), $newnom, $newprenom, $newcivilite, $newtel, $_SESSION['id']));
-                    $msg = "Profil sauvegarder et mots de passe changer";
+                    $msg = "Profil sauvegardé et mot de passe changé";
                   } else {
-                    $msg = "Le mots de passe et le mots de passe de confirmation doive être identique";
+                    $msg = "Le mot de passe et le mot de passe de confirmation doivent être identiques";
                   }
                 }else {
-                  //modifie l'utisilateur
+                  //modifie l'utilisateur
                   $requpdateuser = $bdd->prepare("UPDATE client SET client.Pseudo = ?, client.Email = ?, client.Nom = ?, client.Prenom = ?, client.Civilite = ?, client.Telephone = ? WHERE client.IDClient = ?");
                   $requpdateuser->execute(array($newpseudo, $newmail, $newnom, $newprenom, $newcivilite, $newtel, $_SESSION['id']));
                   $msg = "Profil sauvegarder";
                 }
-                //test si il faut changer l'image ou non
+                //test s'il faut changer l'image ou non
                 if (!empty($_FILES['avatar-file']['name'])) {
-                  //récupére le nom de l'image actuelle
+                  //récupère le nom de l'image actuelle
                   $reqavatar = $bdd->prepare("SELECT client.AvatarUrl FROM client WHERE client.IDClient = ?");
                   $reqavatar->execute(array($_SESSION['id']));
 
@@ -65,7 +65,7 @@ if (isset($_SESSION['id'])) {
                   $extension = pathinfo($name, PATHINFO_EXTENSION);
                   $imageFileType = strtolower($extension);
                   $uploadOk = 1;
-                  $causeerreur = 'inconnue';
+                  $causeerreur = 'Inconnue';
 
                   $i = 1;
                   while(file_exists($path.$actual_name.".".$extension)){
@@ -76,18 +76,18 @@ if (isset($_SESSION['id'])) {
 
                   if ($_FILES['avatar-file']["size"] > 5000000) {
                     $uploadOk = 0;
-                    $causeerreur = 'image trop lourde';
+                    $causeerreur = 'Image trop lourde';
                   }
 
                   if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" && $imageFileType != "ico") {
                     $uploadOk = 0;
-                    $causeerreur = 'ce fichier n\'est pas une image';
+                    $causeerreur = 'Ce fichier n\'est pas une image';
                   }
 
                   if ($uploadOk && @move_uploaded_file($_FILES['avatar-file']["tmp_name"], $path.$name)) {
                     $requpdateavatar = $bdd->prepare("UPDATE client SET client.AvatarUrl = ? WHERE client.IDClient = ?");
                     $requpdateavatar->execute(array($name, $_SESSION['id']));
-                    $msg .= " Et l'avatar a bien êtait modifier";
+                    $msg .= " Et l'avatar a bien été modifié";
                   } else {
                     header('HTTP/1.1 500 Internal Server Error');
                     print $causeerreur;
@@ -95,22 +95,22 @@ if (isset($_SESSION['id'])) {
                   }
                 }
               }else {
-                $msg = "Le numéro de téléphone ne dois pas faire plus de 13 character de longue!";
+                $msg = "Le numéro de téléphone ne doit pas comporter plus de 13 caractères !";
               }
             }else {
-              $msg = "Le prénom ne dois pas faire plus de 50 character de longue!";
+              $msg = "Le prénom ne doit pas comporter plus de 50 caractères !";
             }
           } else {
-            $msg = "Le nom ne dois pas faire plus de 50 character de longue!";
+            $msg = "Le nom ne doit pas comporter plus de 50 caractères !";
           }
         }else {
-          $msg = "Le Pseudo ne dois pas faire plus de 20 character de longue!";
+          $msg = "Le Pseudo ne doit pas comporter plus de 50 caractères !";
         }
       } else {
-        $msg = "L'adresse email est déjà utiliser.";
+        $msg = "L'adresse email est déjà utilisée.";
       }
     } else {
-      $msg = "l'adressee email ne peut pas étre nue est ne dois pas faire plus de 60 character de longue!";
+      $msg = "L'adressee email ne peut pas étre nue est ne dois pas faire plus de 60 caractères !";
     }
     echo $msg;
   }
@@ -140,31 +140,31 @@ if (isset($_SESSION['id'])) {
               $bdd->prepare("INSERT INTO adresse(Voie, Complement, CodePostal, Ville, Pays, IDClient) VALUES (?, ?, ?, ?, ?, ?)")->execute(array($adresse, $Complement, $CodePostal, $Ville, $Pays, $_SESSION['id']));
               $msg = "nouvelle adresse ajouter";
             } else {
-              $msg = "Le Pays ne dois pas être vide et ne dois pas faire plus de 50 character de longue!";
+              $msg = "Le Pays ne doit pas être vide et ne doit comporter plus de 50 caractères !";
             }
           } else {
-            $msg = "La ville ne dois pas être vide et ne dois pas faire plus de 50 character de longue!";
+            $msg = "La ville ne doit pas être vide et ne doit pas comporter plus de 50 caractères !";
           }
         } else {
-          $msg = "Le code postal ne dois pas être vide et ne dois pas faire plus de 10 character de longue!";
+          $msg = "Le code postal ne doit pas être vide et ne doit pas comporter plus de 10 caractères !";
         }
       } else {
-        $msg = "Le complement adresse ne dois pas faire plus de 100 character de longue!";
+        $msg = "Le complèment d'adresse ne doit pas comporter plus de 100 caractères !";
       }
     } else {
-      $msg = "L'adresse ne dois pas être vide et ne dois pas faire plus de 100 character de longue!";
+      $msg = "L'adresse ne doit pas être vide et ne doit pas comporter plus de 100 caractères !";
     }
     echo $msg;
   }
 
   if (isset($_POST['adressevalue']) && !empty($_POST['adressevalue'])) {
     $bdd->prepare("DELETE FROM adresse WHERE IDAdresse = ? AND IDClient = ?")->execute(array(htmlspecialchars($_POST['adressevalue']), $_SESSION['id']));
-    $msg = 'adresse supprimer avec succés';
+    $msg = 'Adresse supprimée avec succés';
     echo $msg;
   }
 
   if (isset($_POST['defaultaddress'])) {
-    //select l'adresse par raport au client pour s'assurée que l'addresse apartien au client
+    //selectionne l'adresse par rapport au client pour s'assurer que l'addresse apartient au client
     $reqselectadresse = $bdd->prepare("SELECT * FROM adresse WHERE adresse.IDAdresse = ? AND adresse.IDClient = ?");
     $reqselectadresse->execute(array(htmlspecialchars($_POST['idadresse']), $_SESSION['id']));
     if ($reqselectadresse->rowCount() == 1) {
