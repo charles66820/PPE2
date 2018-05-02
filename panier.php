@@ -15,9 +15,7 @@
     if (isset($_POST['quentitermoins']) && isset($_POST['produitidlignepanier']) && !empty($_POST['produitidlignepanier'])) {
       modifierQTeArticle(intval(htmlspecialchars($_POST['produitidlignepanier'])), intval(htmlspecialchars($_POST['quentitermoins'])));
     }
-
     ?>
-
     <div class="container pb-1" style="box-shadow: 1px 0 5px 0 rgba(0,0,0,0.2);">
       <div class="col-12 col-md-12 mb-2">
         <div class="row">
