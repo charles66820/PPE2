@@ -75,10 +75,10 @@
                     $mailValidation->Body    = '
                     <html>
                       <body>
-                        <h1>Ne vous remercions de vous êtes inscrit sur notre site ^_^</h1>
+                        <h1>Nous vous remercions de vous être inscrit sur notre site ^_^</h1>
                         <br/>
                         <h3>Pour confirmez l\'inscription veuillez entrer le token sur le site</h3>
-                        <input value='.$token.'>
+                        <h3>'.$token.'</h3>
                       </body>
                     </html>
                     ';
