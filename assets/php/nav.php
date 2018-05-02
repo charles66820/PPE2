@@ -36,7 +36,7 @@ include 'genurl.php';
             <div class="dropdown-menu" role="menu">
               <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=figurines&type=pop'); ?>">Pop</a>
               <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=figurines&type=nenedoroid'); ?>">Nenedoroid</a>
-              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=figurines&type=officiel'); ?>">Figurines officielles</a>
+              <a class="dropdown-item" role="presentation" href="/catalogue.php?<?php echo genurl('nav', 'categorie=figurines&type=officielle'); ?>">Officielles</a>
             </div>
           </li>
           <li class="dropdown">
