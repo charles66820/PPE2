@@ -38,7 +38,7 @@
       ?>
       <div class="container profile profile-view" id="profile">
         <div class="row">
-          <div class="col-md-12 alert-col position-fixed" style="width:80%; z-index:1000;">
+          <div class="col-md-12 alert-col position-fixed" style="width:80%; z-index:1000;pointer-events: none;">
             <div class="alert alert-info absolue center" role="alert">
               <span>message du profil</span>
             </div>
@@ -122,56 +122,56 @@
             </div>
           </div>
         </form>
-        <form method="post" class="mb-5" id="addaddress">
           <div class="form-row">
             <div class="col-md-6 relative">
               <div class="row m-1">
                 <h2 class="col-md-6">Adresses</h2>
-
+                <div class="col-md-6">
+                  <p class="absolute" style="bottom: 0px;right: 0px;position: absolute;">adresse par default</p>
+                </div>
               </div>
               <div class="col-sm-12 col-md-12">
-                <div class="form-group">
-                  <ul class="list-group" style="overflow:auto; height: 420px;" >
-                    <?php
-                    $reqcompoparc = $bdd->prepare("SELECT * FROM adresse WHERE adresse.IDClient = ?");
-                    $reqcompoparc->execute(array($idclient));
-                    foreach ($reqcompoparc->fetchAll() as $row) {
-                      ?>
-                      <li class="list-group-item"><?php echo $row['nomComposants']." | ".$row['typeComposants'] ?><input type="checkbox" value=""></li>
-                      <?php
-                    }
-                    ?>
-                  </ul>
+                <script>
+                function defaultaddress(e) {
+                  let elmRoleId = $(e).attr("data-idadresse");
+                  $.post( "/assets/php/editprofil.php", { defaultaddress: '', idadresse: elmRoleId }).done(function( data ) { console.log(data)});
+                }
+                </script>
+                <div class="form-group" id="adresses">
+                  <?php
+                  include 'assets/php/loadaddress.php';
+                  ?>
                 </div>
               </div>
             </div>
             <div class="col-md-6 relative">
               <h2>Ajouter une adresse</h2>
               <hr>
-              <div class="col-sm-12 col-md-12">
-                <div class="form-group">
-                  <label>Adresse : </label>
-                  <input type="text" placeholder="Adresse" class="form-control" name="adresse" value="" />
+              <form method="post" class="mb-5" id="addaddress">
+                <div class="col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <label>Adresse : </label>
+                    <input type="text" placeholder="Adresse" class="form-control" name="adresse" value="" />
 
-                  <label>Complément d'adresse : </label>
-                  <input type="text" placeholder="Complément d'adresse" class="form-control" name="Complement" value="" />
+                    <label>Complément d'adresse : </label>
+                    <input type="text" placeholder="Complément d'adresse" class="form-control" name="Complement" value="" />
 
-                  <label>Code postal : </label>
-                  <input type="text" placeholder="Code postal" class="form-control" name="CodePostal" value="" />
+                    <label>Code postal : </label>
+                    <input type="text" placeholder="Code postal" class="form-control" name="CodePostal" value="" />
 
-                  <label>Ville : </label>
-                  <input type="text" placeholder="Ville" class="form-control" name="Ville" value="" />
+                    <label>Ville : </label>
+                    <input type="text" placeholder="Ville" class="form-control" name="Ville" value="" />
 
-                  <label>Pays : </label>
-                  <input type="text" placeholder="Pays" class="form-control" name="Pays" value="" />
+                    <label>Pays : </label>
+                    <input type="text" placeholder="Pays" class="form-control" name="Pays" value="" />
+                  </div>
+                  <hr>
+                  <input type="hidden" name="addadresse">
+                  <button class="btn btn-primary form-btn float-right" type="submit">Ajouter l'adresse</button>
                 </div>
-                <hr>
-                <input type="hidden" name="addadresse">
-                <button class="btn btn-primary form-btn float-right" type="submit">Ajouter l'adresse</button>
-              </div>
+              </form>
             </div>
           </div>
-        </form>
         <?php
         if ($dbrep['Actif'] == 0) {
           ?>

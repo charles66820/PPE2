@@ -52,7 +52,7 @@ $(function(){
       processData: false,
       success: function (result) {
         toggleAlert("alert-success", true, result);
-        console.log(result);
+        $('#adresses').load('/assets/php/loadaddress.php?bdd');
       },
       error: function (error) {
         console.log("erreur : "+error.responseText);

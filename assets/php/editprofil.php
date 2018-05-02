@@ -131,11 +131,45 @@ if (isset($_SESSION['id'])) {
     $CodePostal = !empty($_POST['CodePostal']) ? htmlspecialchars($_POST['CodePostal']) : null ;
     $Ville = !empty($_POST['Ville']) ? htmlspecialchars($_POST['Ville']) : null ;
     $Pays = !empty($_POST['Pays']) ? htmlspecialchars($_POST['Pays']) : null ;
-    
-    if (strlen($_POST['newpseudo']) <= 20 ) {
 
-
+    if (strlen($_POST['adresse']) <= 100 && $_POST['adresse'] != null) {
+      if (strlen($_POST['Complement']) <= 100) {
+        if (strlen($_POST['CodePostal']) <= 10 && $_POST['CodePostal'] != null) {
+          if (strlen($_POST['Ville']) <= 50 && $_POST['Ville'] != null) {
+            if (strlen($_POST['Pays']) <= 50 && $_POST['Pays'] != null) {
+              $bdd->prepare("INSERT INTO adresse(Voie, Complement, CodePostal, Ville, Pays, IDClient) VALUES (?, ?, ?, ?, ?, ?)")->execute(array($adresse, $Complement, $CodePostal, $Ville, $Pays, $_SESSION['id']));
+              $msg = "nouvelle adresse ajouter";
+            } else {
+              $msg = "Le Pays ne dois pas être vide et ne dois pas faire plus de 50 character de longue!";
+            }
+          } else {
+            $msg = "La ville ne dois pas être vide et ne dois pas faire plus de 50 character de longue!";
+          }
+        } else {
+          $msg = "Le code postal ne dois pas être vide et ne dois pas faire plus de 10 character de longue!";
+        }
+      } else {
+        $msg = "Le complement adresse ne dois pas faire plus de 100 character de longue!";
+      }
+    } else {
+      $msg = "L'adresse ne dois pas être vide et ne dois pas faire plus de 100 character de longue!";
+    }
+    echo $msg;
   }
-  var_dump($_POST);
+
+  if (isset($_POST['adressevalue']) && !empty($_POST['adressevalue'])) {
+    $bdd->prepare("DELETE FROM adresse WHERE IDAdresse = ? AND IDClient = ?")->execute(array(htmlspecialchars($_POST['adressevalue']), $_SESSION['id']));
+    $msg = 'adresse supprimer avec succés';
+    echo $msg;
+  }
+
+  if (isset($_POST['defaultaddress'])) {
+    //select l'adresse par raport au client pour s'assurée que l'addresse apartien au client
+    $reqselectadresse = $bdd->prepare("SELECT * FROM adresse WHERE adresse.IDAdresse = ? AND adresse.IDClient = ?");
+    $reqselectadresse->execute(array(htmlspecialchars($_POST['idadresse']), $_SESSION['id']));
+    if ($reqselectadresse->rowCount() == 1) {
+      $bdd->prepare("UPDATE client SET iddefaultadresse = ? WHERE IDClient = ?")->execute(array(htmlspecialchars($_POST['idadresse']), $_SESSION['id']));
+    }
+  }
 }
 ?>
