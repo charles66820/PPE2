@@ -32,6 +32,8 @@
         if ($reqselectadresse->rowCount() <= 0){
           echo '<script> document.location.replace("accueil.php"); </script>';
         } else {
+          $totalht = 0;
+          $fraitport = 10;
           foreach ($reqselectadresse->fetchAll() as $rows) {
             ?>
             <div class="col-12 col-md-12 mb-2">
@@ -46,7 +48,20 @@
               </div>
             </div>
             <?php
+            $totalht += (htmlspecialchars($rows['PrixUnitaireHT']) * intval(htmlspecialchars($rows['quantite'])));
           }
+          $prixttc = (($totalht+$fraitport)*1.2);
+          ?>
+          <div class="col-12 col-md-12 mb-2">
+            <div class="row">
+              <div class="col-12 col-sm-6 col-md-6">
+                <?php echo "prixHT :".$totalht." | frait de port : ".$fraitport." | prixTTC : ".$prixttc?>
+              </div>
+            </div>
+          </div>
+
+
+          <?php
         }
         ?>
         <form method="post" action="/assets/php/paiement.php">

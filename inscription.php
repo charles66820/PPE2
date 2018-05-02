@@ -16,8 +16,8 @@
     require 'assets/php/PHPMailer/src/PHPMailer.php';
     require 'assets/php/PHPMailer/src/SMTP.php';
     //Server settings
-    $mailValidation=new PHPMailer(true);
-    $mailValidation->SMTPDebug = 2;                                 // Enable verbose debug output
+    $mailValidation = new PHPMailer(true);
+    $mailValidation->SMTPDebug = 0;                                 // Enable verbose debug output
     $mailValidation->isSMTP();                                      // Set mailer to use SMTP
     $mailValidation->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
     $mailValidation->SMTPAuth = true;                               // Enable SMTP authentication
@@ -82,7 +82,7 @@
                       </body>
                     </html>
                     ';
-                    $mailValidation->AltBody = 'test';
+                    $mailValidation->AltBody = 'utiliser une boit de messageri qui supporte les mail html';
                     $mailValidation->send();
                   } else {
                     $erreur = "Vos mots de passe ne correspondent pas !";

@@ -33,7 +33,7 @@
           </tr>
 
     <?php
-        $reqcommande = $bdd->prepare("SELECT * FROM commande, produits WHERE commande.IDProduit = produits.IDProduit");
+        $reqcommande = $bdd->prepare("SELECT * FROM commande, contenucommande, produits WHERE commande.IDCommande = contenucommande.IDCommande AND contenucommande.idproduit = produits.IDProduit");
         $reqcommande->execute();
         $dbrep = $reqcommande->fetchAll();
         foreach ($dbrep as $row){
@@ -42,7 +42,6 @@
           echo "<td>".$row['DateCommande']."</td>";
           echo "<td>".$row['TotalHT']."</td>";
           echo "<td>".$row['TotalTVA']."</td>";
-          echo "<td>".$row['FraisPortTTC']."</td>";
           echo "<td>".$row['FraisPortHT']."</td>";
           echo "<td>".$row['IDClient']."</td>";
           echo "<td>".$row['IDAdresseFacturation']."</td>";
@@ -53,7 +52,6 @@
       </thead>
     </table>
   </div>
-
 <?php } else { // si pas admin alors on ne voit que sa propre commande ?>
   <div class="container">
     <h2>Vos commandes :</h2>
