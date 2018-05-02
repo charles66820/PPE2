@@ -12,6 +12,9 @@ $result = $gateway->transaction()->sale([
     'submitForSettlement' => True
   ]
 ]);
+if(isset($_POST['validecommande'])){
+  echo $_POST['validecommande'];
+}
 
 if ($result->success) {
   print_r("Success ID: " . $result->transaction->id);
