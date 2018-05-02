@@ -63,11 +63,11 @@
       ?>
       <div class="mb-3">
         <div class="col-xs-1">
-          <label>Sous-total (nre d'article) : <?php echo compterArticles(); ?></label>
+          <label>Sous-total (nbre d'articles) : <?php echo compterArticles(); ?></label>
         </div>
         <div class="col-xs-1">
           <label>&nbsp;Prix total HT : <?php echo MontantGlobal(); ?>€</label>
-          <button class="btn btn-primary pull-right" type="button" onclick="document.location.href='commander.php'">passé la commande</button>
+          <button class="btn btn-primary pull-right" type="button" onclick="document.location.href='commander.php'">Passer la commande</button>
         </div>
       </div>
     </div>

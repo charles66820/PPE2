@@ -66,7 +66,7 @@
                   }
                   ?>
                 </select>
-                <a href="/editionprofil.php">Vous pouver ajouter une nouvelle adresse dans votre profile</a>
+                <a href="/editionprofil.php">Vous pouver ajouter une nouvelle adresse dans votre profil</a>
               </div>
             </div>
             <div class="col-12 col-md-6">
@@ -87,7 +87,7 @@
                   }
                   ?>
                 </select>
-                <a href="/editionprofil.php">Vous pouver ajouter une nouvelle adresse dans votre profile</a>
+                <a href="/editionprofil.php">Vous pouver ajouter une nouvelle adresse dans votre profil</a>
               </div>
             </div>
           </div>
@@ -125,7 +125,7 @@
           }, '#paypal-button');
           </script>
           <div class="form-row">
-            <button type="button" class="btn btn-success mx-auto m-2" name="button">valider la commande</button>
+            <button type="button" class="btn btn-success mx-auto m-2" name="button">Valider la commande</button>
           </div>
         </form>
       </div>
