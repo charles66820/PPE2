@@ -15,6 +15,21 @@
     <!-- Barre de navigation -->
     <?php
     include 'assets/php/nav.php';
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+
+    require 'assets/php/PHPMailer/src/Exception.php';
+    require 'assets/php/PHPMailer/src/PHPMailer.php';
+    require 'assets/php/PHPMailer/src/SMTP.php';
+    //Server settings
+    $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = 'cornichon66820@gmail.com';                 // SMTP username
+    $mail->Password = 'concombre';                           // SMTP password
+    $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 465;// or 587                           // TCP port to connect to
     if(isset($_POST['formconnexion'])) {
       $pseudoconnect = htmlspecialchars($_POST['pseudoconnect']);
       $mdpconnect = sha1($_POST['mdpconnect']);

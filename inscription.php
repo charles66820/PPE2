@@ -52,6 +52,24 @@
                     $insertmbr = $bdd->prepare("INSERT INTO client(Pseudo, Email, MotDePasse, Nom, Prenom, Civilite, Telephone, AvatarUrl, Token) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     $insertmbr->execute(array($pseudo, $mail, $mdp, $nom, $prenom, $civilite, $telephone, $avatarurl, $token));
                     $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"/accueil.php\"><br />Revenir sur la page d'accueil</a>";
+
+                    $mail->setFrom('cornichon66820@gmail.com');
+                    $mail->addAddress($mail);
+
+                    //Content
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Bienvuenue a Ô\'Tako';
+                    $mail->Body    = '
+                    <html>
+                      <body>
+                        <h1>Ne vous remercions de vous êtes inscrit sur notre site ^_^</h1>
+                        <br/>
+                        <h3>Revenez et commander ce que vous souhaitez</h3>
+                      </body>
+                    </html>
+                    ';
+                    $mail->AltBody = 'test';
+                    $mail->send();
                   } else {
                     $erreur = "Vos mots de passe ne correspondent pas !";
                   }
@@ -83,7 +101,6 @@
       <br/>
       <form method="POST" action="">
         <table>
-
           <!-- pseudo -->
           <tr>
             <td align="right">
@@ -93,7 +110,6 @@
               <input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" /> <!--Permet de laisser affiché après validation si erreur-->
             </td>
           </tr>
-
           <!-- mail -->
           <tr>
             <td align="right">
