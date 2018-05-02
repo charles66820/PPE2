@@ -2,6 +2,23 @@
 include "assets/php/setting.bdd.php";
 include "assets/php/fonctions-panier.php";
 include 'assets/php/allcss.php';
+
+$mailCommande->SMTPDebug = 3;                                 // Enable verbose debug output
+$mailCommande->isSMTP();                                      // Set mailer to use SMTP
+$mailCommande->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+$mailCommande->SMTPAuth = true;                               // Enable SMTP authentication
+$mailCommande->Username = 'cornichon66820@gmail.com';                 // SMTP username
+$mailCommande->Password = 'concombre';                           // SMTP password
+$mailCommande->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+$mailCommande->Port = 465;// or 587                           // TCP port to connect to
+
+//Recipients
+$mailCommande->setFrom('cornichon66820@gmail.com');
+$mailCommande->addAddress($mail);
+$mailCommande->isHTML(true);                                  // Set email format to HTML
+$mailCommande->Subject = 'Votre commande';
+$mailCommande->Body    =
+
 $contenuMail = '
 <html>
   <body>
@@ -38,10 +55,11 @@ $contenuMail = '
         <div class="col-xs-1">
           <label>&nbsp;Prix total HT :'.MontantGlobal().'€</label>
         </div>
+        <h3>Votre commande a été expédier ! Vous le resevez dans 2 semaines.</h3>
       </div>
     </div>
   </body>
 </html>
 ';
-echo $contenuMail;
+
  ?>
