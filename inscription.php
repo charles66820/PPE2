@@ -16,15 +16,15 @@
     require 'assets/php/PHPMailer/src/PHPMailer.php';
     require 'assets/php/PHPMailer/src/SMTP.php';
     //Server settings
-    $mail=new PHPMailer(true);
-    $mail->SMTPDebug = 2;                                 // Enable verbose debug output
-    $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = 'cornichon66820@gmail.com';                 // SMTP username
-    $mail->Password = 'concombre';                           // SMTP password
-    $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 465;// or 587                           // TCP port to connect to
+    $mailValidation=new PHPMailer(true);
+    $mailValidation->SMTPDebug = 2;                                 // Enable verbose debug output
+    $mailValidation->isSMTP();                                      // Set mailer to use SMTP
+    $mailValidation->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+    $mailValidation->SMTPAuth = true;                               // Enable SMTP authentication
+    $mailValidation->Username = 'cornichon66820@gmail.com';                 // SMTP username
+    $mailValidation->Password = 'concombre';                           // SMTP password
+    $mailValidation->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+    $mailValidation->Port = 465;// or 587                           // TCP port to connect to
     function random_str($nbr) {
     $str = "";
     $chaine = "abcdefghijklmnpqrstuvwxyABCDEFGHIJKLMNOPQRSUTVWXYZ0123456789";
@@ -69,13 +69,13 @@
                     $insertmbr->execute(array($pseudo, $mail, $mdp, $nom, $prenom, $civilite, $telephone, $avatarurl, $token));
                     $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"/accueil.php\"><br />Revenir sur la page d'accueil<br /></a><a href=\"/connexion.php\"><br />Se connecter!</a>";
 
-                    $mail->setFrom('cornichon66820@gmail.com');
-                    $mail->addAddress($mail);
+                    $mailValidation->setFrom('cornichon66820@gmail.com');
+                    $mailValidation->addAddress($mail);
 
                     //Content
-                    $mail->isHTML(true);
-                    $mail->Subject = 'Bienvuenue a Ô\'Tako';
-                    $mail->Body    = '
+                    $mailValidation->isHTML(true);
+                    $mailValidation->Subject = 'Bienvuenue a Ô\'Tako';
+                    $mailValidation->Body    = '
                     <html>
                       <body>
                         <h1>Ne vous remercions de vous êtes inscrit sur notre site ^_^</h1>
@@ -84,8 +84,8 @@
                       </body>
                     </html>
                     ';
-                    $mail->AltBody = 'test';
-                    $mail->send();
+                    $mailValidation->AltBody = 'test';
+                    $mailValidation->send();
                   } else {
                     $erreur = "Vos mots de passe ne correspondent pas !";
                   }
