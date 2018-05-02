@@ -16,6 +16,7 @@
     require 'assets/php/PHPMailer/src/PHPMailer.php';
     require 'assets/php/PHPMailer/src/SMTP.php';
     //Server settings
+    $mail=new PHPMailer(true);
     $mail->SMTPDebug = 2;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
     $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
