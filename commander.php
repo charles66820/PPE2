@@ -15,6 +15,10 @@
       $requser = $bdd->prepare("SELECT client.iddefaultadresse FROM client WHERE IDClient = ?");
       $requser->execute(array($_SESSION['id']));
       $dbrepuser = $requser->fetch();
+
+      $reqselectadresse = $bdd->prepare("SELECT * FROM lignepanier, produits WHERE lignepanier.IDProduit = produits.IDProduit AND lignepanier.IDClient = ?");
+      $reqselectadresse->execute(array($_SESSION['id']));
+
       ?>
       <div class="container">
         <div class="col-12 col-md-12 mb-2">
@@ -25,33 +29,32 @@
           </div>
         </div>
         <?php
-        $nbArticles = count($_SESSION['panier']['idproduit']);
-        if ($nbArticles <= 0){
-          header("Location: accueil.php");
+        if ($reqselectadresse->rowCount() <= 0){
+          echo '<script> document.location.replace("accueil.php"); </script>';
         } else {
-          for ($i=0 ;$i < $nbArticles ; $i++){
+          foreach ($reqselectadresse->fetchAll() as $rows) {
             ?>
             <div class="col-12 col-md-12 mb-2">
               <div class="row">
                 <div class="col-xs-1 col-sm-6 col-md-8 col-lg-9">
-                  <label class="col-form-label"><?php echo htmlspecialchars($_SESSION['panier']['LibelleProduit'][$i]) ?></label>
+                  <label class="col-form-label"><?php echo htmlspecialchars($rows['LibelleProduit']) ?></label>
                 </div>
                 <div class="col-11 col-sm-5 col-md-3 col-lg-2">
-                  <label class="col-form-label"><?php echo htmlspecialchars($_SESSION['panier']['prixUnitaireHT'][$i]) ?>€</label>
+                  <label class="col-form-label"><?php echo htmlspecialchars($rows['PrixUnitaireHT']) ?>€</label>
                 </div>
-                  <label class="col-form-label pull-right m-1"><?php echo htmlspecialchars($_SESSION['panier']['quantiteProduit'][$i]) ?></label>
+                  <label class="col-form-label pull-right m-1"><?php echo htmlspecialchars($rows['quantite']) ?></label>
               </div>
             </div>
             <?php
           }
         }
         ?>
-        <form method="post" action="paiement.php">
+        <form method="post" action="/assets/php/paiement.php">
           <div class="form-row">
             <div class="col-12 col-md-6">
               <div class="form-group">
                 <h2>Adresse de facturation</h2>
-                <select class="form-control" name="adresselivreson">
+                <select class="form-control" name="adressefacturation">
                   <?php
                   foreach ($repselectadresse as $row) {
                     if ($row['IDAdresse'] == $dbrepuser['iddefaultadresse']) {
@@ -125,11 +128,13 @@
           }, '#paypal-button');
           </script>
           <div class="form-row">
-            <button type="button" class="btn btn-success mx-auto m-2" name="validecommande">Valider la commande</button>
+            <button type="submit" class="btn btn-success mx-auto m-2" name="validecommande">Valider la commande</button>
           </div>
         </form>
       </div>
       <?php
+    } else {
+      header("Location: panier.php");
     }
     include 'assets/php/footer.php'; ?>
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
