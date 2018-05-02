@@ -35,7 +35,7 @@
 
           }else {
             //recupération du panier lignepanier IDClient
-            $reqlignpanier = $bdd->prepare("SELECT * FROM lignepanier, produit WHERE lignepanier.IDProduit = produit.IDProduit")
+            $reqlignpanier = $bdd->prepare("SELECT * FROM lignepanier, produit WHERE lignepanier.IDProduit = produit.IDProduit");
             creationPanier();
             ajouterArticle();
           }
