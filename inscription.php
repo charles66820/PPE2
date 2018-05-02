@@ -68,10 +68,8 @@
                     $insertmbr = $bdd->prepare("INSERT INTO client(Pseudo, Email, MotDePasse, Nom, Prenom, Civilite, Telephone, AvatarUrl, Token) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     $insertmbr->execute(array($pseudo, $mail, $mdp, $nom, $prenom, $civilite, $telephone, $avatarurl, $token));
                     $erreur = "<br />Votre compte a bien été créé !<br /><a href=\"/accueil.php\"><br />Revenir sur la page d'accueil<br /></a><a href=\"/connexion.php\"><br />Se connecter!</a>";
-
                     $mailValidation->setFrom('cornichon66820@gmail.com');
                     $mailValidation->addAddress($mail);
-
                     //Content
                     $mailValidation->isHTML(true);
                     $mailValidation->Subject = 'Bienvuenue a Ô\'Tako';
@@ -80,7 +78,8 @@
                       <body>
                         <h1>Ne vous remercions de vous êtes inscrit sur notre site ^_^</h1>
                         <br/>
-                        <h3>Revenez et commander ce que vous souhaitez</h3>
+                        <h3>Pour confirmez l\'inscription veuillez entrer le token sur le site</h3>
+                        <input value='.$token.'>
                       </body>
                     </html>
                     ';
