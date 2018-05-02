@@ -15,6 +15,7 @@
     <!-- Barre de navigation -->
     <?php
     include 'assets/php/nav.php';
+    include("assets/php/fonctions-panier.php");
     if(isset($_POST['formconnexion'])) {
       $pseudoconnect = htmlspecialchars($_POST['pseudoconnect']);
       $mdpconnect = sha1($_POST['mdpconnect']);
@@ -29,6 +30,15 @@
           $_SESSION['mail'] = $userinfo['Email'];
           $_SESSION['avatarurl'] = $userinfo['AvatarUrl'];
 
+          //test si le panier n'est pas vide
+          if (isset($_SESSION['panier'])) {
+
+          }else {
+            //recupération du panier lignepanier IDClient
+            $reqlignpanier = $bdd->prepare("SELECT * FROM lignepanier, produit WHERE lignepanier.IDProduit = produit.IDProduit")
+            creationPanier();
+            ajouterArticle();
+          }
           //Remplacement du header("Location: index.php"); par du js à cause d'une erreur
           echo '<script> document.location.replace("accueil.php"); </script>';
         } else {

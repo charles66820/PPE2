@@ -55,7 +55,7 @@ include 'genurl.php';
           <li class="nav-item" role="presentation">
             <a class="nav-link active" style="position:relative" href="/panier.php">
               <img class="imgPanier" src="/assets/img/panier.png"/>
-              <span style="position: absolute; left: 15px; top: 14px; font-size: 10px; color: blue; font-weight: bold;"><?php echo count($_SESSION['panier']['idproduit']) ?></span>Panier
+              <span style="position: absolute; left: 15px; top: 14px; font-size: 10px; color: blue; font-weight: bold;"><?php echo isset($_SESSION['panier'])? count($_SESSION['panier']['idproduit']) : 0; ?></span>Panier
             </a>
           </li>
           <?php
