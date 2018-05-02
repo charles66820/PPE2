@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>commander</title>
+    <?php include 'assets/php/allcss.php'; ?>
   </head>
   <body>
-
+    <?php include 'assets/php/nav.php';?>
     <div class="container">
       <h2>Adresse de facturation</h2>
+      <select class="" name="">
       <?php
-      foreach($selectadresse as $row) { //Permet de donner les adresses du client
-        $id = $row['IDClient'];
+      if (isset($_SESSION['id'])) {
         $reqselectadresse = $bdd->prepare("SELECT * FROM adresse WHERE IDClient = ?");
         $reqselectadresse->execute(array($_SESSION['id']));
-        $repselectadresse = $reqselectadresse->fetch()
+        $repselectadresse = $reqselectadresse->fetchAll();
+        foreach ($repselectadresse as $row) {
+          ?>
+          <option value="<?php echo $row['IDAdresse']; ?>"><?php echo $row['Voie']." ".$row['Complement']." | ".$row['CodePostal']." ".$row['Ville'].", ".$row['Pays'];?></option>
+          <?php
+        }
         ?>
-
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Adresses
-          <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#"><?php echo $row['Voie'] ?></a></li>
-          </ul>
-        </div>
-      </div>
-
+      </select>
+      <?php
+    }
+    ?>
   </body>
 </html>
