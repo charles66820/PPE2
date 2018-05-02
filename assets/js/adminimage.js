@@ -147,7 +147,7 @@ $(function() {
   }).on("drop", function(e) {
     $(this).css({"border":"solid 2px rgba(255, 255, 255, 0)", "background-color":"rgb(255, 255, 255)"});
     e.preventDefault();
-    $("#tiredropimg").text("Envois de l'image en cous").next().hide();
+    $("#tiredropimg").text("Envoi de l'image en cours").next().hide();
     $("#progressbarimg").css({"display":"inherit"}).next().hide();
     uploadimg(e.originalEvent.dataTransfer.files[0]);// IDEA: multiple images
     e.stopPropagation();
