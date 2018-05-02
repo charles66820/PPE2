@@ -1,7 +1,7 @@
 <?php
 
 /**
-* Verifie si le panier existe, le créé sinon
+* Verifie si le panier existe, sinon ça le crée
 * @return booleen
 */
 function creationPanier(){
@@ -26,7 +26,7 @@ function creationPanier(){
 */
 function ajouterArticle($idProduit, $quantiteProduit) {
   global $bdd;
-  //recupération dans la bdd grace a l'id
+  //recupération dans la bdd grâce à l'id
   $reqproduit = $bdd->prepare("SELECT * FROM produits WHERE produits.IDProduit = ?");
   $reqproduit->execute(array($idProduit));
   $repproduit = $reqproduit->fetch();
@@ -56,6 +56,7 @@ function ajouterArticle($idProduit, $quantiteProduit) {
         array_push( $_SESSION['panier']['LibelleProduit'],$LibelleProduit);
         array_push( $_SESSION['panier']['quantiteProduit'],$quantiteProduit);
         array_push( $_SESSION['panier']['prixUnitaireHT'],$prixUnitaireHT);
+
         // PDO insert in bdd
         if(isset($_SESSION['id'])){
           $reqselect = $bdd->prepare("SELECT * FROM lignepanier WHERE IDProduit = ?");
@@ -84,12 +85,12 @@ function ajouterArticle($idProduit, $quantiteProduit) {
 */
 function modifierQTeArticle($idProduit, $quantiteProduit){
   global $bdd;
-  //recupération dans la bdd grace a l'id
+  //recupération dans la bdd grâce à l'id
   $reqproduit = $bdd->prepare("SELECT * FROM produits WHERE produits.IDProduit = ?");
   $reqproduit->execute(array($idProduit));
   $repproduit = $reqproduit->fetch();
 
-  //Si le panier éxiste
+  //Si le panier existe
   if (creationPanier() && !isVerrouille()) {
     //Si la quantité est positive on modifie sinon on supprime l'article
     if ($quantiteProduit > 0) {
@@ -169,7 +170,7 @@ function MontantGlobal(){
 */
 function supprimePanier(){
   unset($_SESSION['panier']);
-  //pdo supprimer toute les ligne panier du client
+  //pdo supprimer toutes les lignes du panier du client
   if(isset($_SESSION['id'])){
     $bdd->prepare("DELETE FROM lignepanier WHERE IDClient = ?")->execute(array($_SESSION['id']));
   }

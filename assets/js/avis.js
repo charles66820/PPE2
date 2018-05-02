@@ -1,4 +1,4 @@
-//permet de gérée le hover est la selection des étoiles
+//permet de gérer le hover et la selection des étoiles
 let selectstart = 0;
 $('#starsselecteur').children().on('click',function(){
     selectstart = $(this).attr("data-star");
