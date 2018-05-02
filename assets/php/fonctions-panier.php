@@ -47,6 +47,9 @@ function ajouterArticle($idProduit, $quantiteProduit) {
         } else {
           $_SESSION['panier']['quantiteProduit'][$positionProduit] = $quantiteProduit;
         }
+        if(isset($_SESSION['id'])){
+          $bdd->prepare("UPDATE lignepanier SET quantite = ? WHERE IDProduit = ? AND IDClient = ?")->execute(array($quantiteProduit, $idProduit, $_SESSION['id']));
+        }
       } else {
         //Sinon on ajoute le produit
         array_push( $_SESSION['panier']['idproduit'],$idProduit);
@@ -54,6 +57,16 @@ function ajouterArticle($idProduit, $quantiteProduit) {
         array_push( $_SESSION['panier']['quantiteProduit'],$quantiteProduit);
         array_push( $_SESSION['panier']['prixUnitaireHT'],$prixUnitaireHT);
         // PDO insert in bdd
+        if(isset($_SESSION['id'])){
+          $reqselect = $bdd->prepare("SELECT * FROM lignepanier WHERE IDProduit = ?");
+          $reqselect->execute(array($idProduit));
+          $repselect = $reqselect->fetchAll();
+          if ($repselect->rowCount() >= 1) {
+            $bdd->prepare("UPDATE lignepanier SET quantite = ? WHERE IDProduit = ? AND IDClient = ?")->execute(array($quantiteProduit, $idProduit, $_SESSION['id']));
+          } else {
+            $bdd->prepare("INSERT INTO lignepanier(IDProduit, IDClient, quantite) VALUES (?, ?, ?)")->execute(array($idProduit, $_SESSION['id'], $quantiteProduit));
+          }
+        }
       }
       return true;
     } else {
@@ -87,6 +100,9 @@ function modifierQTeArticle($idProduit, $quantiteProduit){
         if ($positionProduit !== false) {
           $_SESSION['panier']['quantiteProduit'][$positionProduit] = $quantiteProduit ;
           //pdo
+          if(isset($_SESSION['id'])){
+            $bdd->prepare("UPDATE lignepanier SET quantite = ? WHERE IDProduit = ? AND IDClient = ?")->execute(array($quantiteProduit, $idProduit, $_SESSION['id']));
+          }
         }
       }
     } else {
@@ -125,7 +141,10 @@ function supprimerArticle($idProduit){
     $_SESSION['panier'] =  $tmp;
     //On efface notre panier temporaire
     unset($tmp);
-    //pdo remove all panier ligne du client avec l'idProduit = $idProduit
+    //pdo remove all panier ligne of client WHERE idProduit = $idProduit
+    if(isset($_SESSION['id'])){
+      $bdd->prepare("DELETE FROM lignepanier WHERE IDProduit = ? AND IDClient = ?")->execute(array($idProduit, $_SESSION['id']));
+    }
   } else {
     echo "Un problème est survenu, veuillez contacter l'administrateur du site.";
   }
@@ -151,6 +170,9 @@ function MontantGlobal(){
 function supprimePanier(){
   unset($_SESSION['panier']);
   //pdo supprimer toute les ligne panier du client
+  if(isset($_SESSION['id'])){
+    $bdd->prepare("DELETE FROM lignepanier WHERE IDClient = ?")->execute(array($_SESSION['id']));
+  }
 }
 
 /**
