@@ -59,7 +59,7 @@
             <div class="text-center" style="width: 182px; float: left;">
               <form class="" action="" method="post">
                 <input type="text" name="id" value="'.$row["IDProduit"].'" style="display:none">
-                <button type="submit" class="btn btn-danger" name="delproduit">Supprimer</button>
+                <button type="submit" class="btn btn-danger" name="delproduit" onclick="if (confirm(\'Ête vous sur de vouloir supprimer ce produit ?\')) {return true;}else {return false;}">Supprimer</button>
               </form>
             </div>
             <div class="articlePrix">'.$row["PrixUnitaireHT"].'€</div>

@@ -21,9 +21,7 @@
       <?php
     }else {
       $produitid = $_GET['id'];
-      // if (!ajouterArticle(8, 3)) {
-      //   echo "erreur";
-      // }
+      
       if (isset($_POST['addproduitpanier']) && !empty($_POST['addproduitpanier']) && isset($_POST['quentiterproduit']) && !empty($_POST['quentiterproduit'])) {
         if (!ajouterArticle(intval(htmlspecialchars($_POST['addproduitpanier'])), intval(htmlspecialchars($_POST['quentiterproduit'])))) {
           ?>
