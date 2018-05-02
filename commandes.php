@@ -4,6 +4,11 @@
       <meta charset="UTF-8">
       <title>Commandes</title>
       <?php include 'assets/php/allcss.php'; ?>
+      <style>
+      div#connexion {
+        margin-left: 450px;
+      }
+      </style>
   </head>
   <body>
     <?php include 'assets/php/nav.php';
@@ -13,7 +18,7 @@
       if (isset($_SESSION['pseudo']) == 'Admin') { ?>
 
     <div class="container">
-      <h2>Commandes</h2>
+      <h2>Commandes :</h2>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -26,8 +31,8 @@
             <th>ID Client</th>
             <th>Adresse de facturation</th>
           </tr>
-    <?php
 
+    <?php
         $reqcommande = $bdd->prepare("SELECT * FROM commande, produits WHERE commande.IDProduit = produits.IDProduit");
         $reqcommande->execute();
         $dbrep = $reqcommande->fetchAll();
@@ -51,7 +56,7 @@
 
 <?php } else { // si pas admin alors on ne voit que sa propre commande ?>
   <div class="container">
-    <h2>Commandes</h2>
+    <h2>Vos commandes :</h2>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -64,7 +69,7 @@
           <th>Produit</th>
           <th>Prix unitaire HT</th>
         </tr>
-        <?
+        <?php
         $reqcommande = $bdd->prepare("SELECT DateCommande, TotalTVA, FraisPortTTC, IDClient, IDAdresseFacturation, IDAdresseLivraison, LibelleProduit, PrixUnitaireHT FROM commande, produits WHERE commande.IDProduit = produits.IDProduit AND IDClient = ?");
         $reqcommande->execute(array($_SESSION['id']));
         $dbrep = $reqcommande->fetchAll();
@@ -81,7 +86,12 @@
           echo "</tr>";
         }
       }
-    }
+    } else { ?>
+      <div id="connexion">
+        <?php echo "Vous devez être connecté pour accéder à vos commandes !"; ?><br/>
+      <a href="connexion.php"><br />Clique ici pour te connecter 🐙</a>
+      </div>
+    <?php }
     ?>
   </thead>
 </table>
