@@ -87,7 +87,7 @@ if (isset($_SESSION['id'])) {
                   if ($uploadOk && @move_uploaded_file($_FILES['avatar-file']["tmp_name"], $path.$name)) {
                     $requpdateavatar = $bdd->prepare("UPDATE client SET client.AvatarUrl = ? WHERE client.IDClient = ?");
                     $requpdateavatar->execute(array($name, $_SESSION['id']));
-                    $msg .= "Et l'avatar a bien êtait modifier";
+                    $msg .= " Et l'avatar a bien êtait modifier";
                   } else {
                     header('HTTP/1.1 500 Internal Server Error');
                     print $causeerreur;

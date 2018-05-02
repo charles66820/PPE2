@@ -18,7 +18,7 @@
   RewriteRule ^catalogue\.php$ http://%{HTTP_HOST}/catalogue/%1/%2?%3 [R=302,L,QSD,QSA]
 
   #pour enlever le .php de toutes les pages. passer de l'url par default a la nouvel
-  RewriteCond %{THE_REQUEST} ^([^/]].+)\.php([#?][^\ ]*)?\ HTTP/
+  RewriteCond %{THE_REQUEST} ^([^/]+)\.php([#?][^\ ]*)?\ HTTP/
   RewriteRule ^(.+)\.php$ http://%{HTTP_HOST}/$1 [R=301,L]
 
 
