@@ -16,7 +16,6 @@
     <?php
     include 'assets/php/nav.php';
     include("assets/php/fonctions-panier.php");
-    var_dump($_SESSION['panier']);
     if(isset($_POST['formconnexion'])) {
       $pseudoconnect = htmlspecialchars($_POST['pseudoconnect']);
       $mdpconnect = sha1($_POST['mdpconnect']);

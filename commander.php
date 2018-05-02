@@ -46,7 +46,7 @@
           }
         }
         ?>
-        <form method="post">
+        <form method="post" action="paiement.php">
           <div class="form-row">
             <div class="col-12 col-md-6">
               <div class="form-group">
@@ -125,7 +125,7 @@
           }, '#paypal-button');
           </script>
           <div class="form-row">
-            <button type="button" class="btn btn-success mx-auto m-2" name="button">Valider la commande</button>
+            <button type="button" class="btn btn-success mx-auto m-2" name="validecommande">Valider la commande</button>
           </div>
         </form>
       </div>
