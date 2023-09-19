@@ -1,0 +1,24 @@
+version: '2'
+
+volumes:
+  logs:
+    driver: local
+
+services:
+  ppe2:
+    container_name: ppe2
+    #restart: always
+    build:
+      context: .
+      args:
+        - SERVER_NAME=ppe2.magicorp.fr
+        - SERVER_ADMIN=support@magicorp.fr
+    volumes:
+      - ".:/var/www/html"
+    networks:
+      - backend
+
+networks:
+  backend:
+    external:
+      name: backend
