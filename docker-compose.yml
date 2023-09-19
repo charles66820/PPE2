@@ -15,6 +15,12 @@ services:
         - SERVER_ADMIN=support@magicorp.fr
     volumes:
       - ".:/var/www/html"
+    labels:
+      - "traefik.http.routers.ppe2.rule=Host(`ppe2.magicorp.fr`)"
+      - traefik.http.routers.ppe2.middlewares=https-redirectscheme
+      - "traefik.http.routers.ppe2-secure.rule=Host(`ppe2.magicorp.fr`)"
+      - traefik.http.routers.ppe2-secure.tls=true
+      - traefik.http.routers.ppe2-secure.tls.certresolver=sslresolver
     networks:
       - backend
 
