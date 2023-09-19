@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 <?php include 'assets/php/setting.bdd.php'; ?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
       <meta charset="UTF-8">

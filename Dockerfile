@@ -5,7 +5,10 @@ ARG WEB_PRJ_DIR=/var/www/html/
 ARG SERVER_NAME=www.example.com
 ARG SERVER_ADMIN=webmaster@localhost
 
-# # Configure apache2
+# Install php extensions
+RUN docker-php-ext-install pdo pdo_mysql
+
+# Configure apache2
 RUN sed -ri -e "s!/var/www/html!${WEB_PRJ_DIR}!g" /etc/apache2/sites-available/000-default.conf
 RUN sed -ri -e "s!#ServerName www.example.com!ServerName $SERVER_NAME!g" /etc/apache2/sites-available/000-default.conf
 RUN sed -ri -e "s!ServerAdmin webmaster@localhost!ServerAdmin $SERVER_ADMIN!g" /etc/apache2/sites-available/000-default.conf
